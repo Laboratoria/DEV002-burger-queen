@@ -1,12 +1,11 @@
 import { useState } from 'react';
-import { useAuth } from '../context/authContext';
+import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 //Componente
 export function Login() {
-    //Inicializar inputs en blanco
-    //user es un objeto
-    console.log("Hola");
+	//Inicializar inputs en blanco
+	//user es un objeto
 	const [user, setUser] = useState({
 		email: '',
 		password: '',
@@ -16,15 +15,15 @@ export function Login() {
 	const toNavigate = useNavigate();
 	const [error, setError] = useState();
 
-    //
+	//
 	const handleChange = ({ target: { name, value } }) => {
 		//copiar todos los datos que tenga el usuario hasta ese momento y luego mostrar
-        setUser({ ...user, [name]: value });
+		setUser({ ...user, [name]: value });
 	};
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		// setError('');
+		setError('');
 		try {
 			await signIn(user.email, user.password);
 			toNavigate('/home');
