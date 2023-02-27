@@ -1,18 +1,36 @@
 import { useState } from 'react';
+import { useAuth } from '../context/authContext';
+import { useNavigate } from 'react-router-dom';
 
-function Login() {
+//Componente
+export function Login() {
+    //Inicializar inputs en blanco
+    //user es un objeto
+    console.log("Hola");
 	const [user, setUser] = useState({
 		email: '',
 		password: '',
 	});
 
+	const { signIn } = useAuth();
+	const toNavigate = useNavigate();
+	const [error, setError] = useState();
+
+    //
 	const handleChange = ({ target: { name, value } }) => {
-		setUser({ ...user, [name]: value });
+		//copiar todos los datos que tenga el usuario hasta ese momento y luego mostrar
+        setUser({ ...user, [name]: value });
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log(user);
+		// setError('');
+		try {
+			await signIn(user.email, user.password);
+			toNavigate('/home');
+		} catch (error) {
+			setError(error.message);
+		}
 	};
 
 	return (
@@ -38,5 +56,3 @@ function Login() {
 		</form>
 	);
 }
-
-export default Login;
