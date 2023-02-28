@@ -1,36 +1,38 @@
 import { useState } from 'react';
-import { useAuth } from '../context/AuthContext';
+//import { UserAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 //Componente
-export function Login() {
+export const Login = (props) => {
+console.log(props);
+//crear constantes de lo que se va a utilizar
+	const setUser = props.setUser
 	//Inicializar inputs en blanco
 	//user es un objeto
-	const [user, setUser] = useState({
-		email: '',
-		password: '',
-	});
-
-	const { signIn } = useAuth();
+	const [email, setEmail] = useState('')
+	const [password, setPassword] = useState('')
+	const [error, setError] = useState('');
+	//const { signIn } = UserAuth();
 	const toNavigate = useNavigate();
-	const [error, setError] = useState();
+	
 
-	//
-	const handleChange = ({ target: { name, value } }) => {
-		//copiar todos los datos que tenga el usuario hasta ese momento y luego mostrar
-		setUser({ ...user, [name]: value });
-	};
-
-	const handleSubmit = async (e) => {
+	const handleSubmit =  (e) => {
 		e.preventDefault();
+		setUser(true);
 		setError('');
 		try {
-			await signIn(user.email, user.password);
+			//await signIn(email, password);
 			toNavigate('/home');
 		} catch (error) {
 			setError(error.message);
+			console.log();(error.message);
 		}
 	};
+
+	//
+	const handleChange = ({ target: { name, value } }) =>
+		//copiar todos los datos que tenga el usuario hasta ese momento y luego mostrar
+		setUser({ ...user, [name]: value });
 
 	return (
 		<form onSubmit={handleSubmit}>
@@ -51,7 +53,7 @@ export function Login() {
 				onChange={handleChange}
 			/>
 
-			<button>Iniciar Sesión</button>
+			<button type='submit'>Iniciar Sesión</button>
 		</form>
 	);
-}
+};
