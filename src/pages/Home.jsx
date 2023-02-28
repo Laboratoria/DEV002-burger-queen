@@ -1,8 +1,10 @@
 //import { UserAuth } from '../context/AuthContext';
+import { logOut } from '/src/firebase/auth.jsx';
+
 export function Home(props) {
 	const user = props.user;
-	const logOut = props.logOut;
-	console.log(user);
+	//const logOut = props.logOut;
+	console.log('Home user: ' + user.email);
 	const handleLogOut = async () => {
 		try {
 			await logOut();
