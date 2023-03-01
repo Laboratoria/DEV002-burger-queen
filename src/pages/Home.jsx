@@ -1,13 +1,16 @@
 //import { UserAuth } from '../context/AuthContext';
 import { logOut } from '/src/firebase/auth.jsx';
+import { useNavigate } from 'react-router-dom';
 
 export function Home(props) {
 	const user = props.user;
 	//const logOut = props.logOut;
 	console.log('Home user: ' + user.email);
+	const toNavigate = useNavigate();
 	const handleLogOut = async () => {
 		try {
 			await logOut();
+			toNavigate('/');
 		} catch (error) {
 			console.error(error.message);
 		}

@@ -16,7 +16,7 @@ function App() {
 	//Ejecuta algo ni bien carga el componente
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-			console.log("currentUser: " + currentUser);
+			console.log('currentUser: ' + {   currentUser   });
 			setUser(currentUser);
 			// setLoading(false);;
 		});
@@ -25,13 +25,13 @@ function App() {
 		};
 	}, []);
 
-	const logOut = () => setUser(null);
+	//const logOut = () => setUser(null);
 
-	console.log(user);
+	console.log("User: "+user);
 	if (user === null) {
 		return (
 			<Routes>
-				{/* <Route path='/' element={<Inicio />} /> */}
+				<Route path='/' element={<Inicio />} />
 				<Route path='*' element={<Login setUser={setUser} />} />
 			</Routes>
 		);
@@ -40,7 +40,7 @@ function App() {
 
 	return (
 		<Routes>
-			<Route path='/home' element={<Home user={user} logOut={logOut} />} />
+			<Route path='/home' element={<Home user={user}   />} />
 		</Routes>
 	);
 }
