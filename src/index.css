@@ -1,4 +1,7 @@
-body {
-  background: #0D0D0D;
-  color: white;
-}
+/* :root {
+  --color-primary: #8F0505;
+  --color-secondary: #FAE3E2;
+  /* ... */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
