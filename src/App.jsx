@@ -3,20 +3,20 @@ import { Routes, Route } from 'react-router-dom';
 import { Home } from './pages/Home.jsx';
 import { Inicio } from './pages/Inicio.jsx';
 import { Login } from './pages/Login.jsx';
+import { Menu } from './pages/Menu.jsx';
 import { useState, useEffect } from 'react';
 import {
 	onAuthStateChanged,
 } from 'firebase/auth';
 import { auth } from '/src/firebase/init.jsx';
 
-function App() {
-  
+const App = () => {
 	const [user, setUser] = useState(null);
-
+	console.log('User: ' + user);
 	//Ejecuta algo ni bien carga el componente
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-			console.log('currentUser: ' + {   currentUser   });
+			console.log('currentUser: ' + { currentUser });
 			setUser(currentUser);
 			// setLoading(false);;
 		});
@@ -27,7 +27,7 @@ function App() {
 
 	//const logOut = () => setUser(null);
 
-	console.log("User: "+user);
+	console.log('User: ' + user);
 	if (user === null) {
 		return (
 			<Routes>
@@ -40,9 +40,10 @@ function App() {
 
 	return (
 		<Routes>
-			<Route path='/home' element={<Home user={user}   />} />
+			<Route path='/home' element={<Home user={user} />} />
+			<Route path='/menu' element={<Menu user={user}  />} />
 		</Routes>
 	);
-}
+};
 
- export default App;
+ export { App };

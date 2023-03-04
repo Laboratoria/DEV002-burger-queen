@@ -11,6 +11,7 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.16",
     "firebase": "^9.17.1",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",

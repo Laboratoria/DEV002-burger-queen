@@ -1,0 +1,27 @@
+[
+    {
+        "id": "01",
+        "name": "Tamal verde con chicharròn de cerdo",
+        "price": "s/.20.00"
+    },
+    {
+        "id": "02",
+        "name": "Pan con pejerrey",
+        "price": "s/.23.00"
+    },
+    {
+        "id": "03",
+        "name": "Pan con chicharrón",
+        "price": "s/.23.00"
+    },
+    {
+        "id": "04",
+        "name": "Jugazo especial",
+        "price": "s/.15.00"
+    },
+    {
+        "id": "05",
+        "name": "Cafecito de La Convención",
+        "price": "s/.10.00"
+    }
+]
