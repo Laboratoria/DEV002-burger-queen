@@ -1,9 +1,9 @@
 //definir multiples rutas
 import { Routes, Route } from 'react-router-dom';
-import { Home } from './pages/Home.jsx';
-import { Inicio } from './pages/Inicio.jsx';
-import { Login } from './pages/Login.jsx';
-import { Menu } from './pages/Menu.jsx';
+import { Home } from '/src/pages/Home';
+import { Inicio } from '/src/pages/Inicio';
+import { Login } from '/src/pages/Login';
+import { Menu } from '/src/pages/Menu';
 import { useState, useEffect } from 'react';
 import {
 	onAuthStateChanged,

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-export function Inicio() {
+const Inicio = () => {
 	const toNavigate = useNavigate();
 	return (
 		<div className='flex items-center justify-center bg-red-800'>
@@ -11,4 +11,5 @@ export function Inicio() {
 			</button>
 		</div>
 	);
-}
+};
+export { Inicio };
