@@ -1,7 +1,7 @@
 const OptionsContainer = (props) => {
 	return (
-		<section className='options-section'>
-			<div className='options-container'>{props.children}</div>
+		<section>
+			<div>{props.children}</div>
 		</section>
 	);
 };
