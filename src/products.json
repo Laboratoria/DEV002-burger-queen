@@ -66,5 +66,32 @@
             "name": "Lomo saltado",
             "price": "s/.49.00"
         }
+],
+"refrescos": [
+    {
+        "id": "11",
+        "name": "Chicha morada casera",
+        "price": "s/.20.00"
+    },
+    {
+        "id": "12",
+        "name": "Maracuyá",
+        "price": "s/.18.00"
+    },
+    {
+        "id": "13",
+        "name": "Limonada",
+        "price": "s/.15.00"
+    },
+    {
+        "id": "14",
+        "name": "Naranjada",
+        "price": "s/.18.00"
+    },
+    {
+        "id": "15",
+        "name": "Inka cola",
+        "price": "s/.8.00"
+    }
 ]
 }
