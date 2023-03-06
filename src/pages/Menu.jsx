@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { MenuPicotería } from '../components/MenuPicotería';
 import { MenuFondazos } from '../components/MenuFondazos';
 import { MenuRefrescos } from '../components/MenuRefrescos';
-import { Header } from '../components/Header';
+import { NavBar } from '../components/NavBar';
 
 const Menu = () => {
-	const [toShowMenuPicotería, settoShowMenuPicotería] = useState(false);
+	const [toShowMenuPicotería, settoShowMenuPicotería] = useState(true);
 	const [toShowMenuFondazos, settoShowMenuFondazos] = useState(false);
 	const [toShowMenuRefrescos, settoShowMenuRefrescos] = useState(false);
 
@@ -26,9 +26,7 @@ const Menu = () => {
 	};
 	return (
 		<div>
-			<header className='flex flex-row items-center bg-[#8F0505]'>
-				<Header    />
-			</header>
+			{<NavBar />}
 			<div className='flex flex-colum space-x-4 items-center justify-center font-sans '>
 				<button
 					onClick={() => toShowMenu('Picotería')}

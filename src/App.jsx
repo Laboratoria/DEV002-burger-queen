@@ -1,5 +1,6 @@
 //definir multiples rutas
 import { Routes, Route } from 'react-router-dom';
+import { NavBar } from './components/NavBar';
 import { Home } from '/src/pages/Home';
 import { Inicio } from '/src/pages/Inicio';
 import { Login } from '/src/pages/Login';
@@ -32,17 +33,18 @@ const App = () => {
 		return (
 			<Routes>
 				<Route path='/' element={<Inicio />} />
-				<Route path='*' element={<Login setUser={setUser} />} />
+				<Route path='/login' element={<Login setUser={setUser} />} />
 			</Routes>
 		);
 	}
 	console.log('Estoy logueada');
 
 	return (
-		<Routes>
-			<Route path='/home' element={<Home user={user} />} />
-			<Route path='/menu' element={<Menu user={user}  />} />
-		</Routes>
+			<Routes>
+				<Route path='/home' element={<Home user={user} />} />
+				<Route path='/menu' element={<Menu user={user} />} />
+			</Routes>
+		
 	);
 };
 
