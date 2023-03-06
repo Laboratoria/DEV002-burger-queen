@@ -1,13 +1,19 @@
 import { useState } from 'react';
+import { NavBar } from '../components/NavBar';
 import { MenuPicotería } from '../components/MenuPicotería';
 import { MenuFondazos } from '../components/MenuFondazos';
 import { MenuRefrescos } from '../components/MenuRefrescos';
-import { NavBar } from '../components/NavBar';
+import { NewOrderContainer } from '../components/NewOrderContainer';
+import { OrderListContext } from '../context/OrderListContext';
+import products from '../products.json/'
+
 
 const Menu = () => {
 	const [toShowMenuPicotería, settoShowMenuPicotería] = useState(true);
 	const [toShowMenuFondazos, settoShowMenuFondazos] = useState(false);
 	const [toShowMenuRefrescos, settoShowMenuRefrescos] = useState(false);
+	const [order, setOrder] = useState(products.order);
+	const [toShowNewOrderContainer, settoShowNewOrderContainer] = useState(true);
 
 	const toShowMenu = (menu) => {
 		if (menu === 'Picotería') {
@@ -24,6 +30,11 @@ const Menu = () => {
 			settoShowMenuRefrescos(true);
 		}
 	};
+
+	const addItem = (item) => {
+		settoShowNewOrderContainer([...toShowNewOrderContainer, item])
+	}
+	
 	return (
 		<div>
 			{<NavBar />}
@@ -50,9 +61,14 @@ const Menu = () => {
 					Refrescos
 				</button>
 			</div>
+			<div>
 			{toShowMenuPicotería && <MenuPicotería />}
 			{toShowMenuFondazos && <MenuFondazos />}
 			{toShowMenuRefrescos && <MenuRefrescos />}
+			</div>
+			<div>
+				{<NewOrderContainer order={order} />}
+			</div>
 		</div>
 	);
 };

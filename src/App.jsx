@@ -1,14 +1,11 @@
 //definir multiples rutas
 import { Routes, Route } from 'react-router-dom';
-import { NavBar } from './components/NavBar';
 import { Home } from '/src/pages/Home';
 import { Inicio } from '/src/pages/Inicio';
 import { Login } from '/src/pages/Login';
 import { Menu } from '/src/pages/Menu';
 import { useState, useEffect } from 'react';
-import {
-	onAuthStateChanged,
-} from 'firebase/auth';
+import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '/src/firebase/init.jsx';
 
 const App = () => {
@@ -40,12 +37,11 @@ const App = () => {
 	console.log('Estoy logueada');
 
 	return (
-			<Routes>
-				<Route path='/home' element={<Home user={user} />} />
-				<Route path='/menu' element={<Menu user={user} />} />
-			</Routes>
-		
+		<Routes>
+			<Route path='/home' element={<Home user={user} />} />
+			<Route path='/menu' element={<Menu user={user} />} />
+		</Routes>
 	);
 };
 
- export { App };
+export { App };
