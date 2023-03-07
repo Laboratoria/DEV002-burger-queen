@@ -1,5 +1,5 @@
-import { ProductButton } from './ProductButton';
-import { ProductsContainer } from './ProductsContainer';
+import { ProductButton } from '../Menu/ProductButton';
+import { ProductsContainer } from '../Menu/ProductsContainer';
 import products from '/src/products.json';
 
 const MenuFondazos = () => {

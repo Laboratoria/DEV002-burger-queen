@@ -1,20 +1,20 @@
 import { useState } from 'react';
 import { NavBar } from '../components/NavBar';
-import { MenuPicotería } from '../components/MenuPicotería';
-import { MenuFondazos } from '../components/MenuFondazos';
-import { MenuRefrescos } from '../components/MenuRefrescos';
-import { NewOrderContainer } from '../components/NewOrderContainer';
-import { OrderListContext } from '../context/OrderListContext';
 import products from '../products.json/'
+import { MenuPicotería } from '../components/Menu/MenuPicotería';
+import { MenuFondazos } from '../components/Menu/MenuFondazos';
+import { MenuRefrescos } from '../components/Menu/MenuRefrescos';
+import { NewOrderContainer } from '../components/Order/NewOrderContainer';
+import { ClientForm } from '../components/Order/ClientForm';
+
 
 
 const Menu = () => {
 	const [toShowMenuPicotería, settoShowMenuPicotería] = useState(true);
 	const [toShowMenuFondazos, settoShowMenuFondazos] = useState(false);
 	const [toShowMenuRefrescos, settoShowMenuRefrescos] = useState(false);
-	const [order, setOrder] = useState(products.order);
-	const [toShowNewOrderContainer, settoShowNewOrderContainer] = useState(true);
-
+	const [client, setClient] = useState('');
+	const [items, setItems] = useState([]);
 	const toShowMenu = (menu) => {
 		if (menu === 'Picotería') {
 			settoShowMenuPicotería(true);
@@ -32,9 +32,32 @@ const Menu = () => {
 	};
 
 	const addItem = (item) => {
-		settoShowNewOrderContainer([...toShowNewOrderContainer, item])
-	}
-	
+		setItems([...items, item]);
+	};
+
+	const deleteItem = (id) => {
+		setItems(items.filter((item) => item.id !== id));
+	};
+
+	const totalOrder = () => {
+		return items.reduce((total, item) => total + item.price, 0);
+	};
+
+	const sendOrder = () => {
+		//Nada
+	};
+	const handleClickAdd = (item) => {
+		addItem(item);
+	};
+
+	const handleChangeClient = (event) => {
+		setClient(event.target.value);
+	};
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		sendOrder();
+	};
 	return (
 		<div>
 			{<NavBar />}
@@ -62,12 +85,20 @@ const Menu = () => {
 				</button>
 			</div>
 			<div>
-			{toShowMenuPicotería && <MenuPicotería />}
-			{toShowMenuFondazos && <MenuFondazos />}
-			{toShowMenuRefrescos && <MenuRefrescos />}
+				{toShowMenuPicotería && <MenuPicotería />}
+				{toShowMenuFondazos && <MenuFondazos />}
+				{toShowMenuRefrescos && <MenuRefrescos />}
 			</div>
 			<div>
-				{<NewOrderContainer order={order} />}
+				<h2>Nuevo pedido</h2>
+				<ClientForm
+					client={client}
+					handleChangeClient={handleChangeClient}
+					handleSubmit={handleSubmit}
+				/>
+				<div>
+					<NewOrderContainer items={items} addItem={addItem} />
+				</div>
 			</div>
 		</div>
 	);

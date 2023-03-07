@@ -1,5 +1,5 @@
-import { ProductButton } from '../components/ProductButton';
-import { ProductsContainer } from '../components/ProductsContainer';
+import { ProductButton } from '../Menu/ProductButton';
+import { ProductsContainer } from '../Menu/ProductsContainer';
 import products from '/src/products.json';
 
 const MenuPicotería = () => {

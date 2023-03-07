@@ -1,14 +1,37 @@
-import { createContext } from 'react';
+// import { createContext, useState } from 'react';
 
-export const OrderListContext = createContext(null);
+// export const OrderListContext = createContext();
 
-const OrderListContextProvider = (props) => {
-	const [cartItems, setCartItems] = useState({});
+// const OrderListProvider = ({ children }) => {
+// 	const [order, setOrder] = useState({
+// 		id: '',
+// 		to: '',
+// 		items: [],
+// 	});
 
-	const addToOrder = () => {};
-	return (
-		<OrderListContext.Provider> {props.children} </OrderListContext.Provider>
-	);
-};
+// 	const handleAddItem = (item) => {
+// 		setOrder((prevOrder) => ({
+// 			...prevOrder,
+// 			items: [...prevOrder.items, item],
+// 		}));
+// 	};
 
-export { OrderListContextProvider };
+// 	const handleDeleteItem = (item) => {
+// 		setOrder((prevOrder) => ({
+// 			...prevOrder,
+// 			items: [...prevOrder.items.filter((i) => i.id !== item.id)],
+// 		}));
+// 	};
+
+// 	const totalOrder = order.items.reduce((total, item) => total + item.price, 0);
+
+// 	return (
+// 		<OrderListContext.Provider
+// 			value={{ order, handleAddItem, handleDeleteItem, totalOrder }}
+// 		>
+// 			{children}
+// 		</OrderListContext.Provider>
+// 	);
+// };
+
+// export { OrderListProvider };

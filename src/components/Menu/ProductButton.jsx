@@ -1,4 +1,4 @@
-const ProductButton = (props) => {
+const ProductButton = ({ item, addItem, product }) => {
 	return (
 		<div className='flex flex-row place-content-between place-items-center w-2/5'>
 			<button
@@ -6,9 +6,9 @@ const ProductButton = (props) => {
 				onClick={() => addItem(item)}
 				className='px-8 font-sans  text-mytext bg-secoundary-two rounded-full w-full h-20'
 			>
-				<p className='place-items-center '>{props.name}</p>
+				<p className='place-items-center '>{product.name}</p>
 			</button>
-			<p className='content-end gap-3 font-bold'>{props.price}</p>
+			<p className='content-end gap-3 font-bold'>{product.price}</p>
 		</div>
 	);
 };
