@@ -1,9 +1,9 @@
-const OrderItem = ({ item, handleClickDelete }) => {
+const OrderItem = ({ product, handleClickDelete }) => {
 	return (
 		<div>
-			<p>{item.name}</p>
-			<p>{item.price}</p>
-			<button onClick={() => handleClickDelete(item.id)}>Delete</button>
+			<p>{product.name}</p>
+			<p>{product.price}</p>
+			<button onClick={() => handleClickDelete(product.id)}>Delete</button>
 		</div>
 	);
 };
