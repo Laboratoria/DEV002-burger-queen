@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { NavBar } from '../components/NavBar';
 import data from '../data.json/';
 import { MenuBttnCategory } from '../components/Menu/MenuBttnCategory';
-import { ClientForm } from '../components/Order/ClientForm';
+//import { ClientForm } from '../components/Order/ClientForm';
 import { MenuButtnProduct } from '../components/Menu/MenuButtnProduct';
-import { OrderItem } from '../components/Order/OrderItem';
+//import { OrderItem } from '../components/Order/OrderItem';
 
 const Menu = () => {
 	const [category, setCategory] = useState('picotería');
@@ -15,7 +15,7 @@ const Menu = () => {
 
 	const selectCategory = (category) => {
 		setCategory(category);
-		setProducts([]);
+		
 	};
 	const addItem = (item) => {
 		setProducts([...products, item]);
@@ -35,37 +35,37 @@ const Menu = () => {
 			products,
 			total: totalOrder(),
 		});
+		setProducts([]);
 	};
 
-	const handleClickAdd = (item) => {
-		addItem(item);
-	};
+	// const handleClickAdd = (item) => {
+	// 	addItem(item);
+	// };
 
-	const handleChangeClient = (event) => {
-		setClient(event.target.value);
-	};
+	// const handleChangeClient = (event) => {
+	// 	setClient(event.target.value);
+	// };
 
-	const handleSubmit = (event) => {
-		event.preventDefault();
-		sendOrder();
-	};
+	// const handleSubmit = (event) => {
+	// 	event.preventDefault();
+	// 	sendOrder();
+	// };
 
 	return (
 		<div>
 			{<NavBar />}
 			<div>
 				<MenuBttnCategory categorys={categorys} selectCategory={selectCategory} />
-				{category && (
+				<div>
+					<h2>Menú: {category}</h2>
 					<div>
-						<h2>{category}</h2>
-						<div>
+						<div className='flex flex-row items-center justify-center w-full'>
 							<div>
 								<MenuButtnProduct products={data[category]} handleClickAdd={addItem} />
 							</div>
-
-							<div>
+							<div className='border-2 border-rose-500'>
 								<h2>Nuevo pedido</h2>
-								<ul>
+								<ul className='flex flex-col space-y-4 space-x-4 items-center justify-center w-full'>
 									{products.map((product) => (
 										<li key={product.id}>
 											{product.name} - {product.price}
@@ -84,7 +84,7 @@ const Menu = () => {
 							</div>
 						</div>
 					</div>
-				)}
+				</div>
 				;
 			</div>
 		</div>

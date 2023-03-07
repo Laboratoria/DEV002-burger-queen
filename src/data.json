@@ -1,18 +1,4 @@
 {
-    "options": [
-        {
-            "id": "op-1",
-            "name": "Picotería"
-        },
-        {
-            "id": "op-2",
-            "name": "Fondazos"
-        },
-        {
-            "id": "op-3",
-            "name": "Refrescos"
-        }
-    ],
     "picotería": [
         {
             "id": "01",
