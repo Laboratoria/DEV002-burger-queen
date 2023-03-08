@@ -13,8 +13,8 @@ const NavBar = () => {
 		}
 	};
 	return (
-		<div className='flex flex-row items-center bg-[#8F0505]'>
-			<div>
+		<div>
+			<div className='flex flex-row items-center place-content-center w-full bg-[#8F0505]'>
 				<Link to='/home'>
 					<img
 						className='justify-start w-1/6'

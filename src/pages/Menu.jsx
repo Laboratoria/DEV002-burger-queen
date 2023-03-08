@@ -4,6 +4,7 @@ import data from '../data.json/';
 import { MenuBttnCategory } from '../components/Menu/MenuBttnCategory';
 //import { ClientForm } from '../components/Order/ClientForm';
 import { MenuButtnProduct } from '../components/Menu/MenuButtnProduct';
+//import { NewOrderContainer } from '../components/Order/NewOrderContainer.jsx';
 //import { OrderItem } from '../components/Order/OrderItem';
 
 const Menu = () => {
@@ -15,7 +16,6 @@ const Menu = () => {
 
 	const selectCategory = (category) => {
 		setCategory(category);
-		
 	};
 	const addItem = (item) => {
 		setProducts([...products, item]);
@@ -38,34 +38,23 @@ const Menu = () => {
 		setProducts([]);
 	};
 
-	// const handleClickAdd = (item) => {
-	// 	addItem(item);
-	// };
-
-	// const handleChangeClient = (event) => {
-	// 	setClient(event.target.value);
-	// };
-
-	// const handleSubmit = (event) => {
-	// 	event.preventDefault();
-	// 	sendOrder();
-	// };
-
 	return (
 		<div>
 			{<NavBar />}
 			<div>
-				<MenuBttnCategory categorys={categorys} selectCategory={selectCategory} />
+				<div className='flex flex-row items-center justify-center w-full'>
+					<MenuBttnCategory categorys={categorys} selectCategory={selectCategory} />
+				</div>
 				<div>
-					<h2>Menú: {category}</h2>
+					{/* <h2>Menú: {category}</h2> */}
 					<div>
-						<div className='flex flex-row items-center justify-center w-full'>
-							<div>
+						<div className='flex flex-row space-y-8 space-x-16 items-center justify-center w-full'>
+							<div className='items-center justify-center w-1/2 m-8'>
 								<MenuButtnProduct products={data[category]} handleClickAdd={addItem} />
 							</div>
-							<div className='border-2 border-rose-500'>
+							<div className= 'flex flex-col items-center justify-center space-y-8 space-x-16  w-1/2 m-8 border-2 border-rose-500'>
 								<h2>Nuevo pedido</h2>
-								<ul className='flex flex-col space-y-4 space-x-4 items-center justify-center w-full'>
+								<ul>
 									{products.map((product) => (
 										<li key={product.id}>
 											{product.name} - {product.price}

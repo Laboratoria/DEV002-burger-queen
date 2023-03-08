@@ -4,7 +4,7 @@ const ProductButton = ({ item, addItem, product }) => {
 			<button
 				type='button'
 				onClick={() => addItem(item)}
-				className='px-8 font-sans  text-mytext bg-secoundary-two rounded-full w-full h-20'
+				className='px-8 bg-secoundary-two rounded-full w-full h-20'
 			>
 				<p className='place-items-center '>{product.name}</p>
 			</button>

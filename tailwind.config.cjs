@@ -9,7 +9,7 @@ module.exports = {
 			'-text': '#0D0D0D',
 		},
 		fontFamily: {
-			sans: ['Belleza', 'sans-serif'],
+			'-main-font-family': ['"Belleza"', 'sans-serif'],
 		},
 		extend: {},
 	},

@@ -1,26 +1,30 @@
-import products from '/src/products.json';
-import { OrderItem } from './OrderItem';
+// const NewOrderContainer = ({
+// 	products,
+// 	client,
+// 	setClient,
+// 	deleteItem,
+// 	totalOrder,
+// 	sendOrder,
+// }) => {
+// 	<div className='flex flex-col items-center justify-center space-y-8 space-x-16  w-1/2 m-8 border-2 border-rose-500'>
+// 		<h2>Nuevo pedido</h2>
+// 		<ul>
+// 			{products.map((product) => (
+// 				<li key={product.id}>
+// 					{product.name} - {product.price}
+// 					<button onClick={() => deleteItem(product.id)}>Delete</button>
+// 				</li>
+// 			))}
+// 		</ul>
+// 		<p>Total: s/.{totalOrder()}</p>
+// 		<input
+// 			type='text'
+// 			placeholder='nombre del cliente'
+// 			value={client}
+// 			onChange={(e) => setClient(e.target.value)}
+// 		/>
+// 		<button onClick={() => sendOrder()}>Hacer pedido</button>
+// 	</div>;
+// };
 
-const NewOrderContainer = ({ items }) => {
-	const totalOrder = () => {
-		return items.reduce((total, item) => total + item.price, 0);
-	};
-
-	return (
-		<div>
-			<h2>Nuevo Pedido</h2>
-			{items.length > 0 ? (
-				<div>
-					{items.map((item) => (
-						<OrderItem key={item.id} item={item} />
-					))}
-					<p>Total: s/.{totalOrder()}</p>
-				</div>
-			) : (
-				<p>No hay productos en el pedido</p>
-			)}
-		</div>
-	);
-};
-
-export { NewOrderContainer };
+// export { NewOrderContainer };
