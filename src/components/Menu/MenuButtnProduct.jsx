@@ -1,19 +1,20 @@
 const MenuButtnProduct = ({ products, handleClickAdd }) => {
 	return (
-		<div>
+		<ul
+			role='listitem'
+			className='flex flex-col m-8 p-16 gap-8 w-full h-full bg-secoundary-one/50 rounded-lg'>
 			{products.map((product) => (
-				<div className='flex flex-row place-content-center items-center'>
+				<li>
 					<button
-						className='px-8 bg-secoundary-two rounded-full w-full h-20'
+						className=' bg-secoundary-two rounded-lg ring-2 ring-secoundary-two hover:ring-secoundary-one w-full h-full hover:scale-105 '
 						key={product.id}
-						onClick={() => handleClickAdd(product)}
-					>
-						<p className='place-items-center '>{product.name}</p>
+						onClick={() => handleClickAdd(product)}>
+						<p>{product.name}</p>
+						<p className='font-bold'>{product.price}</p>
 					</button>
-					<p className='content-end gap-3 font-bold'>{product.price}</p>
-				</div>
+				</li>
 			))}
-		</div>
+		</ul>
 	);
 };
 

@@ -26,7 +26,10 @@ const Menu = () => {
 	};
 
 	const totalOrder = () => {
-		return products.reduce((total, item) => total + item.price, 0);
+		return products.reduce(
+			(total, item) => parseInt(total) + parseInt(item.price),
+			0
+		);
 	};
 
 	const sendOrder = () => {
@@ -42,19 +45,19 @@ const Menu = () => {
 		<div>
 			{<NavBar />}
 			<div>
-				<div className='flex flex-row items-center justify-center w-full'>
+				<div className='flex flex-row items-center justify-center'>
 					<MenuBttnCategory categorys={categorys} selectCategory={selectCategory} />
 				</div>
 				<div>
 					{/* <h2>Menú: {category}</h2> */}
 					<div>
-						<div className='flex flex-row space-y-8 space-x-16 items-center justify-center w-full'>
-							<div className='items-center justify-center w-1/2 m-8'>
+						<div className='flex flex-row items-center justify-center w-full'>
+							<div className='w-full h-full m-8'>
 								<MenuButtnProduct products={data[category]} handleClickAdd={addItem} />
 							</div>
-							<div className= 'flex flex-col items-center justify-center space-y-8 space-x-16  w-1/2 m-8 border-2 border-rose-500'>
+							<div className='w-full h-full m-8'>
 								<h2>Nuevo pedido</h2>
-								<ul>
+								<ul className='flex flex-col m-8 p-16 gap-8 w-full h-full bg-secoundary-one/50 rounded-lg'>
 									{products.map((product) => (
 										<li key={product.id}>
 											{product.name} - {product.price}
@@ -74,7 +77,6 @@ const Menu = () => {
 						</div>
 					</div>
 				</div>
-				;
 			</div>
 		</div>
 	);

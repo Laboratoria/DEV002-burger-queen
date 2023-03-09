@@ -3,81 +3,81 @@
         {
             "id": "01",
             "name": "Tamal verde con chicharròn de cerdo",
-            "price": "s/.20.00"
+            "price": "20.00"
         },
         {
             "id": "02",
             "name": "Pan con pejerrey",
-            "price": "s/.23.00"
+            "price": "23.00"
         },
         {
             "id": "03",
             "name": "Pan con chicharrón",
-            "price": "s/.23.00"
+            "price": "23.00"
         },
         {
             "id": "04",
             "name": "Jugazo especial",
-            "price": "s/.15.00"
+            "price": "15.00"
         },
         {
             "id": "05",
             "name": "Cafecito de La Convención",
-            "price": "s/.10.00"
+            "price": "10.00"
         }
     ],
     "fondazos": [
         {
             "id": "06",
             "name": "Ceviche mixto de pesca del día",
-            "price": "s/.40.00"
+            "price": "40.00"
         },
         {
             "id": "07",
             "name": "Arroz con pato estilo chiclayano",
-            "price": "s/.50.00"
+            "price": "50.00"
         },
         {
             "id": "08",
             "name": "Ají de gallina de casa",
-            "price": "s/.30.00"
+            "price": "30.00"
         },
         {
             "id": "09",
             "name": "Seco de asado de tira",
-            "price": "s/.69.00"
+            "price": "69.00"
         },
         {
             "id": "10",
             "name": "Lomo saltado",
-            "price": "s/.49.00"
+            "price": "49.00"
         }
 ],
 "refrescos": [
     {
         "id": "11",
         "name": "Chicha morada casera",
-        "price": "s/.20.00"
+        "price": "20.00"
     },
     {
         "id": "12",
         "name": "Maracuyá",
-        "price": "s/.18.00"
+        "price": "18.00"
     },
     {
         "id": "13",
         "name": "Limonada",
-        "price": "s/.15.00"
+        "price": "15.00"
     },
     {
         "id": "14",
         "name": "Naranjada",
-        "price": "s/.18.00"
+        "price": "18.00"
     },
     {
         "id": "15",
         "name": "Inka cola",
-        "price": "s/.8.00"
+        "price": "8.00"
     }
 ]
 }
