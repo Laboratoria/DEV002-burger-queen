@@ -2,20 +2,28 @@ import { useState } from 'react';
 import { NavBar } from '../components/NavBar';
 import data from '../data.json/';
 import { MenuBttnCategory } from '../components/Menu/MenuBttnCategory';
-//import { ClientForm } from '../components/Order/ClientForm';
 import { MenuButtnProduct } from '../components/Menu/MenuButtnProduct';
-import { list } from 'postcss';
-//import { NewOrderContainer } from '../components/Order/NewOrderContainer.jsx';
-//import { OrderItem } from '../components/Order/OrderItem';
+import { NewOrderContainer } from '../components/Order/NewOrderContainer.jsx';
+import { NavBarMobile } from '../components/NavBarMobile';
 
 const Menu = () => {
 	const [category, setCategory] = useState('picotería');
+	const [showMenu, setShowMenu] = useState(false);
+	const [showOrder, setShowOrder] = useState(false);
 	const [mapProducts] = useState(new Map());
 	const [listProducts, setListProducts] = useState([]);
-	const [client, setClient] = useState('');
 
 	const categorys = Object.keys(data);
 
+	const toggleMenu = () => {
+		setShowMenu(!showMenu);
+		setShowOrder(false);
+	};
+
+	const toggleOrders = () => {
+		setShowOrder(!showOrder);
+		setShowMenu(false);
+	};
 	const selectCategory = (category) => {
 		setCategory(category);
 	};
@@ -28,7 +36,7 @@ const Menu = () => {
 		});
 
 		return auxList;
-	}
+	};
 
 	const addItem = (item) => {
 		// setProducts([...mapProducts, item]);
@@ -37,92 +45,56 @@ const Menu = () => {
 		} else {
 			mapProducts.set(item, 1);
 		}
-		
-		// mapProducts.forEach(function (value, key) {
-		// 	setProducts(mapProducts.push(key));
-		// });
 		setListProducts(getListFromMap(mapProducts));
-	};;
-
-	const deleteItem = (item) => {
-		console.log(item);
-		console.log(mapProducts);
-
-		// setProducts(mapProducts.filter((item) => item.id !== id));
-		const amount = mapProducts.get(item);
-		if (amount === 1) {
-			mapProducts.delete(item);
-		} else {
-			mapProducts.set(item, parseInt(amount) - 1);
-		}
-		setListProducts(getListFromMap(mapProducts));
-	};
-
-	const totalOrder = () => {
-		return listProducts.reduce(
-			(total, item) => total + item.price * item.amount, 0
-		);
-	};
-
-	const sendOrder = () => {
-		console.log({
-			client,
-			mapProducts,
-			total: totalOrder(),
-		});
-		setProducts([]);
 	};
 
 	return (
-		<div>
-			{<NavBar />}
-			<div>
-				<div className='flex flex-row items-center justify-center'>
-					<MenuBttnCategory categorys={categorys} selectCategory={selectCategory} />
-				</div>
-				<div>
-					{/* <h2>Menú: {category}</h2> */}
-					<div>
-						<div className='flex flex-row items-center justify-center w-full'>
-							<div className='w-full h-full m-8'>
-								<MenuButtnProduct products={data[category]} handleClickAdd={addItem} />
-							</div>
-							<div className='w-full h-full m-8'>
-								<h2>Nuevo pedido</h2>
-								<ul className='flex flex-col m-8 p-16 gap-8 w-full h-full bg-secoundary-one/50 rounded-lg'>
-									{/* {Array.from(mapProducts.keys()).map((product) => (
-										<li key={product.id}>
-											<span>
-												{product.name} - {product.price} - {mapProducts.get(product)}
-											</span>
-
-											<button onClick={() => deleteItem(product.id)}>Delete</button>
-										</li>
-									))} */}
-
-									{listProducts.map((product) => (
-										<li key={product.id}>
-											<span>
-												{product.name} - {product.price} - {product.amount}
-											</span>
-
-											<button onClick={() => deleteItem(product)}>Delete</button>
-										</li>
-									))}
-								</ul>
-								<p>Total: s/.{totalOrder()}</p>
-								<input
-									type='text'
-									placeholder='nombre del cliente'
-									value={client}
-									onChange={(e) => setClient(e.target.value)}
-								/>
-								<button onClick={() => sendOrder()}>Hacer pedido</button>
-							</div>
+		<div className='bg-secoundary-two w-full min-h-screen'>
+			{/* {<sideBar />} */}
+			<NavBar showMenu={showMenu} />
+			{/* {<Mobile />} */}
+			<NavBarMobile
+				toggleMenu={toggleMenu}
+				toggleOrders={toggleOrders}
+				showMenu={showMenu}
+			/>
+			<main className='lg:pl-28 grid grid-cols-1 lg:grid-cols-8'>
+				<div className='lg:col-span-5'>
+					{/* {<header />} */}
+					<header>
+						{/* {<tittle and date />} */}
+						<div className='flex flex-col md:flex-row md-justify-between md:items-center gap-4 mb-6'>
+							<h1 className='text-2xl text-main'> La ñana restaurant</h1>
+							<p> 10 marzo 2023</p>
 						</div>
+						<nav>
+							{/* {<tabs />} */}
+							<MenuBttnCategory
+								categorys={categorys}
+								selectCategory={selectCategory}
+							/>
+						</nav>
+					</header>
+					{/* {<tittle content />} */}
+					<div className='flex items-center justify-center mb-10 mt-10'>
+						<h2 className='text-2xl text-main font-bold'>Elige los platillos</h2>
 					</div>
+					<div className="grid grid-flow-row md:grid-row-2 lg:grid-row-3 items-center justify-center">
+						{/* {<button product />} */}
+						<MenuButtnProduct products={data[category]} handleClickAdd={addItem} />
+					</div>
+					{/* {<new order />} */}
 				</div>
-			</div>
+				<di>
+					<NewOrderContainer
+						listProducts={listProducts}
+						setListProducts={setListProducts}
+						mapProductsDe={mapProducts}
+						getListFromMap={getListFromMap}
+						addItem={addItem}
+					/>
+				</di>
+			</main>
 		</div>
 	);
 };

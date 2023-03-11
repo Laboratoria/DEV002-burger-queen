@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import { logOut } from '/src/firebase/auth.jsx';
 import { useNavigate } from 'react-router-dom';
+import { RiHome6Line, RiLogoutCircleLine } from 'react-icons/ri';
 
-const NavBar = () => {
+const NavBar = (props) => {
+	const { showMenu } = props;
 	const toNavigate = useNavigate();
 	const handleLogOut = async () => {
 		try {
@@ -13,35 +15,35 @@ const NavBar = () => {
 		}
 	};
 	return (
-		<div>
-			<div className='flex flex-row items-center place-content-center w-full bg-[#8F0505]'>
-				<Link to='/home'>
-					<img
-						className='justify-start w-1/6'
-						src='src/assets/Logotipo-ñaña.png'
-						alt='imagen del logo de ñaña'
-					></img>
-				</Link>
-				<button
-					type='button'
-					onClick={handleLogOut}
-					className='text-gray-900  hover:text-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:text-gray-700 mr-2 mb-2'
-				>
-					<svg
-						xmlns='http://www.w3.org/2000/svg'
-						fill='none'
-						viewBox='0 0 24 24'
-						stroke-width='1.5'
-						stroke='currentColor'
-						className='w-6 h-6 flex items-right'
-					>
-						<path
-							stroke-linecap='round'
-							stroke-linejoin='round'
-							d='M6 18L18 6M6 6l12 12'
-						/>
-					</svg>
-				</button>
+		<div
+			className={`bg-main fixed lg:left-0 top-0 w-28 h-full flex flex-col justify-between py-6 rounded-tr-xl rounded-br-xl z-50 transition-all ${
+				showMenu ? 'left-0' : '-left-full'
+			}`}>
+			<div>
+				<ul className='pl-4'>
+					<li>
+						<h1 className='text-2xl text-gray-300 uppercase font-bold text-center my-5'>
+						
+						</h1>
+					</li>
+					<li className='hover:bg-secoundary-two p-4 rounded-tl-xl rounded-bl-xl group transition-colors'>
+						<Link to='/home' className='p-4 flex justify-center rounded-xl text-main group-hover:text-secoundarytransition-colors'>
+							<RiHome6Line className='text-2xl'/>
+						</Link>
+					</li>
+				</ul>
+			</div>
+			<div>
+				<ul className='pl-4'>
+					<li className='hover:bg-secoundary-two p-4 rounded-tl-xl rounded-bl-xl group transition-colors'>
+						<button
+							type='button'
+							onClick={handleLogOut}
+							className='p-4 flex justify-center rounded-xl text-main group-hover:text-secoundary transition-colors'>
+							<RiLogoutCircleLine className='text-2xl' />
+						</button>
+					</li>
+				</ul>
 			</div>
 		</div>
 	);
