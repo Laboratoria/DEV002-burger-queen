@@ -1,7 +1,9 @@
+import logo from "../assets/logo.png"
+
 function Login(){
     return(
         <>
-        <p>login</p>
+        <img src="logo" alt="logo food express" />
         </>
     )
 }
