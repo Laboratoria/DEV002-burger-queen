@@ -3,10 +3,10 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Chef from "./pages/Chef";
-import Attention from "./pages/Attention";
-import Login from "./pages/Login";
-import Orders from "./pages/Orders";
+import Chef from "./pages/chef/Chef";
+import Attention from "./pages/attention/Attention";
+import Login from "./pages/login/Login";
+import Orders from "./pages/orders/Orders";
 
 // ReactDOM.createRoot(document.getElementById('root')).render(
 //   <React.StrictMode>
