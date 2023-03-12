@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { NavBar } from '../components/NavBar';
+import { Header } from '../components/Header'
 import data from '../data.json/';
-import { MenuBttnCategory } from '../components/Menu/MenuBttnCategory';
 import { MenuButtnProduct } from '../components/Menu/MenuButtnProduct';
 import { NewOrderContainer } from '../components/Order/NewOrderContainer.jsx';
 import { NavBarMobile } from '../components/NavBarMobile';
@@ -13,8 +13,6 @@ const Menu = () => {
 	const [mapProducts] = useState(new Map());
 	const [listProducts, setListProducts] = useState([]);
 
-	const categorys = Object.keys(data);
-
 	const toggleMenu = () => {
 		setShowMenu(!showMenu);
 		setShowOrder(false);
@@ -23,9 +21,6 @@ const Menu = () => {
 	const toggleOrders = () => {
 		setShowOrder(!showOrder);
 		setShowMenu(false);
-	};
-	const selectCategory = (category) => {
-		setCategory(category);
 	};
 
 	const getListFromMap = (mapItems) => {
@@ -48,6 +43,10 @@ const Menu = () => {
 		setListProducts(getListFromMap(mapProducts));
 	};
 
+	const selectCategory = (category) => {
+		setCategory(category);
+	};
+
 	return (
 		<div className='bg-secoundary-two w-full min-h-screen'>
 			{/* {<sideBar />} */}
@@ -59,33 +58,20 @@ const Menu = () => {
 				showMenu={showMenu}
 			/>
 			<main className='lg:pl-28 grid grid-cols-1 lg:grid-cols-8'>
-				<div className='lg:col-span-5'>
-					{/* {<header />} */}
-					<header>
-						{/* {<tittle and date />} */}
-						<div className='flex flex-col md:flex-row md-justify-between md:items-center gap-4 mb-6'>
-							<h1 className='text-2xl text-main'> La ñana restaurant</h1>
-							<p> 10 marzo 2023</p>
-						</div>
-						<nav>
-							{/* {<tabs />} */}
-							<MenuBttnCategory
-								categorys={categorys}
-								selectCategory={selectCategory}
-							/>
-						</nav>
-					</header>
+				<div className='lg:col-span-6'>
+						{/* {<Header />} */}
+					< Header selectCategory = {selectCategory}/>
 					{/* {<tittle content />} */}
 					<div className='flex items-center justify-center mb-10 mt-10'>
 						<h2 className='text-2xl text-main font-bold'>Elige los platillos</h2>
 					</div>
-					<div className='grid grid-flow-row md:grid-row-2 lg:grid-row-3 items-center justify-center'>
+					<div className='grid grid-col-1 md:grid-col-5 lg:grid-col-3 items-center justify-center'>
 						{/* {<button product />} */}
 						<MenuButtnProduct products={data[category]} handleClickAdd={addItem} />
 					</div>
-					{/* {<new order />} */}
 				</div>
-				<di>
+					{/* {<new order />} */}
+				<div>
 					<NewOrderContainer
 						listProducts={listProducts}
 						setListProducts={setListProducts}
@@ -95,7 +81,7 @@ const Menu = () => {
 						showOrder={showOrder}
 						setShowOrder={setShowOrder}
 					/>
-				</di>
+				</div>
 			</main>
 		</div>
 	);
