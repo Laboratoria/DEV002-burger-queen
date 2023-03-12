@@ -1,6 +1,6 @@
 import { BsFillPatchMinusFill, BsFillPatchPlusFill } from 'react-icons/bs';
 import { FaMoneyBillWave } from 'react-icons/fa';
-import { useState } from 'react';
+
 const NewOrderContainer = ({
 	listProducts,
 	setListProducts,
@@ -8,6 +8,8 @@ const NewOrderContainer = ({
 	mapProductsDe,
 	getListFromMap,
 	client,
+	showOrder,
+	setShowOrder,
 }) => {
 	const deleteItem = (item) => {
 		console.log(item);
@@ -39,7 +41,9 @@ const NewOrderContainer = ({
 		setListProducts([]);
 	};
 	return (
-		<div className='lg:col-span-3 fixed lg:static right-0'>
+		<div className={`lg:col-span-2 fixed top-0 bg-[#1F1D2B] w-full lg:w-96 lg:right-0 h-full transition-all z-50 ${
+			showOrder ? "right-0" : "-right-full"
+		}`}>
 			<ul className='flex flex-col m-8 p-16 gap-8 w-full h-full bg-secoundary-one/50 rounded-lg'>
 				{listProducts.map((product) => (
 					<li key={product.id} className='flex flex-row items-center gap-2 w-full'>

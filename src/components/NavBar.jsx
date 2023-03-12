@@ -22,13 +22,13 @@ const NavBar = (props) => {
 			<div>
 				<ul className='pl-4'>
 					<li>
-						<h1 className='text-2xl text-gray-300 uppercase font-bold text-center my-5'>
-						
-						</h1>
+						<h1 className='text-2xl text-gray-300 uppercase font-bold text-center my-5'></h1>
 					</li>
 					<li className='hover:bg-secoundary-two p-4 rounded-tl-xl rounded-bl-xl group transition-colors'>
-						<Link to='/home' className='p-4 flex justify-center rounded-xl text-main group-hover:text-secoundarytransition-colors'>
-							<RiHome6Line className='text-2xl'/>
+						<Link
+							to='/home'
+							className='p-4 flex justify-center rounded-xl text-secoundary-two group-hover:text-secoundary transition-colors'>
+							<RiHome6Line className='text-3xl' />
 						</Link>
 					</li>
 				</ul>
@@ -39,8 +39,8 @@ const NavBar = (props) => {
 						<button
 							type='button'
 							onClick={handleLogOut}
-							className='p-4 flex justify-center rounded-xl text-main group-hover:text-secoundary transition-colors'>
-							<RiLogoutCircleLine className='text-2xl' />
+							className='p-4 flex justify-center rounded-xl text-secoundary-two group-hover:text-secoundary transition-colors'>
+							<RiLogoutCircleLine className='text-3xl' />
 						</button>
 					</li>
 				</ul>

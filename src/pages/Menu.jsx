@@ -79,7 +79,7 @@ const Menu = () => {
 					<div className='flex items-center justify-center mb-10 mt-10'>
 						<h2 className='text-2xl text-main font-bold'>Elige los platillos</h2>
 					</div>
-					<div className="grid grid-flow-row md:grid-row-2 lg:grid-row-3 items-center justify-center">
+					<div className='grid grid-flow-row md:grid-row-2 lg:grid-row-3 items-center justify-center'>
 						{/* {<button product />} */}
 						<MenuButtnProduct products={data[category]} handleClickAdd={addItem} />
 					</div>
@@ -92,6 +92,8 @@ const Menu = () => {
 						mapProductsDe={mapProducts}
 						getListFromMap={getListFromMap}
 						addItem={addItem}
+						showOrder={showOrder}
+						setShowOrder={setShowOrder}
 					/>
 				</di>
 			</main>
