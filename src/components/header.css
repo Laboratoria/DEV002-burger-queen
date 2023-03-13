@@ -1,0 +1,14 @@
+.header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 10vh;
+    /* border: solid 2px #fff; */
+    color: var(--white);
+    font-family: var(--font-urbanist);
+}
+
+.logoHeader{
+    height: 60xp;
+    width: 60px;
+}
