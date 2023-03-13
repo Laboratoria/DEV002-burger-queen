@@ -42,27 +42,33 @@ const NewOrderContainer = ({
 	};
 	return (
 		<div
-			className={`lg:col-span-2 fixed top-0 bg-secoundary-two w-full lg:w-96 lg:right-0 h-full transition-all z-50 ${
+			className={`lg:col-span-2 fixed mt-0 bg-secoundary-two w-full lg:w-96 lg:right-0 h-full transition-all z-50 ${
 				showOrder ? 'right-0' : '-right-full'
 			}`}>
-			<ul className='flex flex-col m-8 p-16 gap-8 w-full h-full bg-secoundary-one/50 rounded-lg'>
+			<ul className='flex flex-col pt-48 px-6 gap-8 w-full h-full bg-secoundary-one rounded-2xl'>
 				{listProducts.map((product) => (
-					<li key={product.id} className='flex flex-row items-center bg-secoundary-two gap-2 w-full'>
+					<li
+						key={product.id}
+						className='flex flex-row items-center bg-secoundary-two gap-2 w-full rounded-2xl p-4'>
 						<div className='flex flex-col text-xl'>
 							<span className='gap-2 w-full'>{product.name}</span>
-							<span className='flex flex-row'>
-								<FaMoneyBillWave className='text-3xl' /> {product.price}
+							<span className='flex flex-row items-center space-x-2 text-main-text'>
+								<FaMoneyBillWave className='text-2xl text-main' /> 
+								<span>{product.price}</span>
 							</span>
 						</div>
-						<div className='flex flex-row items-center justify-end gap-2'>
-							<button onClick={() => deleteItem(product)} className='flex justify-center text-secoundary text-center text-xl cursor-pointer transition-colors'>
-							<span className='text-4xl'>
-							<BsFillPatchMinusFill/>
+						<div className='flex flex-row items-center ml-24 gap-2'>
+							<button
+								onClick={() => deleteItem(product)}
+								className=' text-secoundary text-center text-2xl cursor-pointer transition-colors'>
+								<span className='text-4xl'>
+									<BsFillPatchMinusFill />
 								</span>
-									
 							</button>
-							<span>{product.amount}</span>
-							<button onClick={() => addItem(product)} className='flex justify-center rounded-xl text-main group-hover:text-secoundary transition-colors'>
+							<span className='text-main-text text-xl'>{product.amount}</span>
+							<button
+								onClick={() => addItem(product)}
+								className='rounded-xl text-main group-hover:text-secoundary transition-colors'>
 								<span className='text-4xl'>
 									<BsFillPatchPlusFill />
 								</span>
@@ -70,10 +76,11 @@ const NewOrderContainer = ({
 						</div>
 					</li>
 				))}
-			</ul>
-			<p>Total: s/.{totalOrder()}</p>
+				<p className='flex flex-row items-center space-x-2 text-main-text text-2xl'>Total: s/.{totalOrder()}</p>
 			<input type='text' placeholder='nombre del cliente' value={client} />
-			<button onClick={() => sendOrder()}>Hacer pedido</button>
+			<button onClick={() => sendOrder()} className='flex flex-col items-center bg-secoundary border-2 border-secoundary-two hover:border-main text-secoundary-one rounded-full p-4 mb-4 text-center text-2xl cursor-pointer'>Hacer pedido</button>
+			</ul>
+			
 		</div>
 	);
 };

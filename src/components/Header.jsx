@@ -10,7 +10,12 @@ const Header = ({ selectCategory }) => {
 			<header>
 				{/* {<tittle and date />} */}
 				<div className='flex flex-col md:flex-row md-justify-between md:items-center gap-4 mb-6'>
-					<h1 className='text-2xl text-main'> La ñana restaurant</h1>
+					<img
+						src='src/assets/Logo-2-ñaña.png'
+						className='w-60 rounded-lg'
+						alt='LogoÑaña'
+					/>
+
 					<p> 10 marzo 2023</p>
 				</div>
 				<nav>

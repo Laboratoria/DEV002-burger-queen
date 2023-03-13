@@ -59,8 +59,8 @@ const Menu = () => {
 			/>
 			<main className='lg:pl-28 grid grid-cols-1 lg:grid-cols-8'>
 				<div className='lg:col-span-6'>
-						{/* {<Header />} */}
-					< Header selectCategory = {selectCategory}/>
+					{/* {<Header />} */}
+					<Header selectCategory={selectCategory} />
 					{/* {<tittle content />} */}
 					<div className='flex items-center justify-center mb-10 mt-10'>
 						<h2 className='text-2xl text-main font-bold'>Elige los platillos</h2>
@@ -70,7 +70,7 @@ const Menu = () => {
 						<MenuButtnProduct products={data[category]} handleClickAdd={addItem} />
 					</div>
 				</div>
-					{/* {<new order />} */}
+				{/* {<new order />} */}
 				<div>
 					<NewOrderContainer
 						listProducts={listProducts}
