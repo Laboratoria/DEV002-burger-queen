@@ -52,4 +52,10 @@
     border: none;
     border-radius: 10px;
     background-color: var(--orange);
+    font-family: var(--font-urbanist);
+    font-size: 1rem;
+}
+
+.message{
+    color: var(--orange);
 }
