@@ -1,24 +1,33 @@
 *{
     margin: 0;
     padding: 0;
-    background-color: #797D62;
 }
 
-header{
+.Home{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 50px;
-    min-height: 96.2vh;
+    min-height: 98vh;
+    background-color: #797D62;
 }
 
-p{
+.textoLogoDos{
     margin-top: 5px;
     display: flex;
     justify-content: center;
     font-family: 'Esteban', serif;
     font-size: 65px;
     color: white;
+}
+
+.textoLogo{
+    margin-top: 5px;
+    padding-top: 15vh;
+    display: flex;
+    justify-content: center;
+    font-family: 'Esteban', serif;
+    font-size: 65px;
+    color: white;    
 }
 
 .logoLasaña{
@@ -34,18 +43,19 @@ p{
     width: 60%;
 }
 
-h3{
-    width: 150px;
+.opcionMesero, .opcionChef{ 
+    width: 170px;
     height: 50px;
     margin-top: 15vh;
     display: flex;
-    font-size: 27px;
-    font-weight: 500;
+    font-size: 25px;
+    font-weight: 300;
     justify-content: center;
     align-items: center;
     background-color: #997B66;
     color: white;
     font-family: 'Piazzolla', serif;
+    text-decoration: none;
 }
 
 footer{
@@ -54,4 +64,6 @@ footer{
     justify-content: center;
     font-family: 'Piazzolla', serif;
     font-weight: bolder;
-}
+};
+
+

@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.Menu{
+    height: 7vh;
+    display: flex;
+    background-color: #825F45;
+    flex-direction: row;
+    line-height: 1.5em;
+}
+
+.logoLasañaMenu{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    bottom: 4px;
+}
+
+.opcionInicio, .opcionPedidos{
+    padding: 40px;
+    display: flex;
+    position: relative;
+    align-items: center;
+    left: 10vh;
+    font-family: 'Piazzolla', serif;
+    font-size: 27px;
+    color: white;
+    text-decoration: none;
+}
+
+.sect-input{
+    display: flex;
+    height: 91vh;
+    background-color: #797D62;
+    justify-content: space-around;
+}
+
+.input-name{
+    margin-top: 4vh;
+    width: 39vh;
+    height: 4vh;
+    border-radius: 10px 10px 10px 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.num-mesa{
+    margin-top: 4vh;
+    width: 10vh;
+    height: 4vh;
+    border-radius: 10px 10px 10px 10px;
+    text-align: center;
+    font-weight: 500;
+}
