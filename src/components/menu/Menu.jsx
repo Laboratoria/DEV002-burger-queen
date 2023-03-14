@@ -1,8 +1,9 @@
-import Product from "./Product";
+import Product from "../product/Product";
 import { useState, useEffect } from "react";
-import products from "../../menu.json";
+import products from "../../../menu.json";
 // import products from "../../products.json";
-import Button from "./Button.jsx";
+import Button from "../button/Button";
+import "./menu.css";
 
 //import hamburguesa from "./hamburguesa.png";
 //import bebida from "./agua.png";
@@ -30,25 +31,31 @@ function Menu() {
 
   return (
     <>
-      <Button
-        name="Hamburguesas"
-        onClick={() => {
-          handleClick("hamburguesas");
-        }}
-      ></Button>
-      <Button
-        name="Bebidas"
-        onClick={() => {
-          handleClick("bebidas");
-        }}
-      ></Button>
-      <div>
-        {categoria.map((product) => (
-          <Product key={product.id} data={product} />
-        ))}
-        {/* {products.products.hamburguesas.map((product) => (
+      <div className="containerMenu">
+        <div className="buttonCategories">
+          <Button
+            name="Hamburguesas"
+            onClick={() => {
+              handleClick("hamburguesas");
+            }}
+            id="buttonMenuH"
+          ></Button>
+          <Button
+            name="Bebidas"
+            onClick={() => {
+              handleClick("bebidas");
+            }}
+            id="buttonMenuB"
+          ></Button>
+        </div>
+        <div className="containerProducts">
+          {categoria.map((product) => (
+            <Product key={product.id} data={product} />
+          ))}
+          {/* {products.products.hamburguesas.map((product) => (
           <Product key={product.id} data={product} />
         ))} */}
+        </div>
       </div>
     </>
   );

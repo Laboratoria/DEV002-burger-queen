@@ -1,0 +1,11 @@
+.containerMenuNewOrder{
+    width: 90%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.buttonViewOrder{
+    background-color: var(--orange);
+}

@@ -1,0 +1,12 @@
+.containerNeworder{
+    background-color: var(--gray);
+    color: var(--dark);
+}
+
+.containerBill{
+    display: flex;
+    background-color: var(--dark);
+    color: var(--yellow);
+    width: 80%;
+    border-radius: 5px;
+}

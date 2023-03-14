@@ -1,0 +1,9 @@
+.button { 
+  /* color: var(--white); */
+  height: 60px;
+  width: 160px;
+  border: none;
+  border-radius: 10px;
+  font-family: var(--font-urbanist);
+  font-size: 1rem;
+}
