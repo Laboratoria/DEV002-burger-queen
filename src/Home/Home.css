@@ -1,0 +1,57 @@
+*{
+    margin: 0;
+    padding: 0;
+    background-color: #797D62;
+}
+
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px;
+    min-height: 96.2vh;
+}
+
+p{
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    font-family: 'Esteban', serif;
+    font-size: 65px;
+    color: white;
+}
+
+.logoLasaña{
+    position: relative;
+    left: 60px;
+    width: 200px;
+    height: 170px;
+}
+
+.opciones{
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+}
+
+h3{
+    width: 150px;
+    height: 50px;
+    margin-top: 15vh;
+    display: flex;
+    font-size: 27px;
+    font-weight: 500;
+    justify-content: center;
+    align-items: center;
+    background-color: #997B66;
+    color: white;
+    font-family: 'Piazzolla', serif;
+}
+
+footer{
+    background-color: #825F45;
+    display: flex;
+    justify-content: center;
+    font-family: 'Piazzolla', serif;
+    font-weight: bolder;
+}
