@@ -4,7 +4,7 @@ import products from "../../../menu.json";
 // import products from "../../products.json";
 import Button from "../button/Button";
 import "./menu.css";
-
+import imghamburguesa from "../../assets/hamburguesa.png"
 //import hamburguesa from "./hamburguesa.png";
 //import bebida from "./agua.png";
 console.log(products);
@@ -38,14 +38,14 @@ function Menu() {
             onClick={() => {
               handleClick("hamburguesas");
             }}
-            id="buttonMenuH"
+            // img={imghamburguesa}
           ></Button>
           <Button
             name="Bebidas"
             onClick={() => {
               handleClick("bebidas");
             }}
-            id="buttonMenuB"
+            
           ></Button>
         </div>
         <div className="containerProducts">
