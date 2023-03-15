@@ -16,12 +16,14 @@ function Attention() {
         <Menu />
         <NewOrder />
       </div>
-      <Button
-        name="Pedidos Listos"
-        onClick={() => {
-          navigate("/orders");
-        }}
-      />
+      <div className="buttonViewOrder">
+        <Button
+          name="Pedidos Listos"
+          onClick={() => {
+            navigate("/orders");
+          }}
+        />
+      </div>
     </>
   );
 }

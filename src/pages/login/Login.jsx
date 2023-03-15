@@ -16,21 +16,27 @@ function Login() {
     const password = e.target.password.value;
     console.log(password);
 
-    try {
-      const user = await loginUser(email, password);
-      console.log(user);
-      navigate("/attention");
-      // setCredentials({ email: '', password: '' });
-    } catch (error) {
-      console.error(error.message);
-      if (error.code === "auth/invalid-email") {
-        messageEmail.innerHTML = "correo inválido";
-      } else if (error.code === "auth/user-not-found") {
-        messageEmail.innerHTML = "correo no registrado";
-      } else if (error.code === "auth/wrong-password") {
-        messagePassword.innerHTML = "contraseña incorrecta";
-      } else {
-        alert("algo salio mal");
+    if (email === "") {
+      messageEmail.innerHTML = "ingrese su correo";
+    } else if (password === "") {
+      messagePassword.innerHTML = "ingrese su contraseña";
+    } else {
+      try {
+        const user = await loginUser(email, password);
+        console.log(user);
+        navigate("/attention");
+        // setCredentials({ email: '', password: '' });
+      } catch (error) {
+        console.error(error.message);
+        if (error.code === "auth/invalid-email") {
+          messageEmail.innerHTML = "correo inválido";
+        } else if (error.code === "auth/user-not-found") {
+          messageEmail.innerHTML = "correo no registrado";
+        } else if (error.code === "auth/wrong-password") {
+          messagePassword.innerHTML = "contraseña incorrecta";
+        } else {
+          alert("algo salio mal");
+        }
       }
     }
   }
@@ -44,7 +50,7 @@ function Login() {
     <>
       <div className="containerLogin">
         <img src={logo} alt="logo food express" className="logoLogin" />
-        <p>Por favor llena los siguientes datos para iniciar sesión</p>
+        {/* <p>Por favor llena los siguientes datos para iniciar sesión</p> */}
         <form action="" className="formLogin" onSubmit={handleSubmit}>
           <input
             type="text"

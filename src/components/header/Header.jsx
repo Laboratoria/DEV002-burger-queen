@@ -2,16 +2,35 @@ import "./header.css";
 import logo from "../../assets/logo.png";
 import imgLogout from "../../assets/cerrar-sesion.png";
 
-function Header({ user, time }) {
+function Header({ user }) {
   const today = new Date();
   //   console.log("hoy", today.toUTCString());
   //   const m = today.getMonth() + 1;
   // const mes = (m < 10) ? '0' + m : m;
   //   console.log('Fecha: '+today.getDate(),'/' +mes,'/'+today.getYear())
 
-  var date = today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
-  var hour = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  console.log(date, hour);
+   const date = today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
+  const  hour = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+//  const showTime = () => {
+//     // today = new Date();
+//     const hour = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+//     console.log(hour)
+//     return hour
+//   }
+
+  //console.log(showTime())
+
+//   const prueba = setInterval(() => {
+//     const hour = today.getHours();
+//     const minutes = today.getMinutes();
+//     const seconds = today.getSeconds();
+//      return seconds
+    
+//   }, 1000);
+
+//  console.log(prueba)
+  // const hourInterval = setInterval(today.getSeconds() , 1000);
+  // console.log(hourInterval)
 
   return (
     <>

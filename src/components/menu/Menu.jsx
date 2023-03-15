@@ -4,9 +4,8 @@ import products from "../../../menu.json";
 // import products from "../../products.json";
 import Button from "../button/Button";
 import "./menu.css";
-import imghamburguesa from "../../assets/hamburguesa.png"
-//import hamburguesa from "./hamburguesa.png";
-//import bebida from "./agua.png";
+import imghamburguesa from "../../assets/hamburguesa.png";
+import imgbebida from "../../assets/bebida.png";
 console.log(products);
 // const propiedad = data.products.bebidas
 // console.log(propiedad)
@@ -33,20 +32,27 @@ function Menu() {
     <>
       <div className="containerMenu">
         <div className="buttonCategories">
-          <Button
-            name="Hamburguesas"
+          <button
             onClick={() => {
               handleClick("hamburguesas");
             }}
-            // img={imghamburguesa}
-          ></Button>
-          <Button
-            name="Bebidas"
+            className="categoryH"
+          >
+            <img
+              src={imghamburguesa}
+              alt="imagen de la categoria Hamburguesas"
+            />
+            Hamburguesas
+          </button>
+          <button
             onClick={() => {
               handleClick("bebidas");
             }}
-            
-          ></Button>
+            className="categoryB"
+          >
+            <img src={imgbebida} alt="imagen de la categoria Bebidas" />
+            Bebidas
+          </button>
         </div>
         <div className="containerProducts">
           {categoria.map((product) => (

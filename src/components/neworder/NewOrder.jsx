@@ -6,11 +6,18 @@ function NewOrder() {
     <>
       <div>
         <div className="containerNeworder">
-          <input type="text" name="client" placeholder="nombre del cliente" className="client" />
+          <input
+            type="text"
+            name="client"
+            placeholder="nombre del cliente"
+            className="client"
+          />
           <div className="orderClient">productos</div>
           <div className="containerBill">
             <p>TOTAL</p>
-            <p>S/. <span>0</span> </p>
+            <p>
+              S/.<span>0</span>
+            </p>
           </div>
         </div>
         <div className="buttonCocina">

@@ -1,14 +1,15 @@
-.button { 
-  /* color: var(--white); */
+.button {
   height: 60px;
   width: 160px;
   border: none;
   border-radius: 10px;
   font-family: var(--font-urbanist);
   font-size: 1rem;
+  background-color: var(--orange);
+  color: var(--white);
 }
 
-.imgbutton{
+.imgbutton {
   height: 40px;
   width: 40px;
 }
