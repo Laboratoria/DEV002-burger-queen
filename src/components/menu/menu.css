@@ -34,8 +34,9 @@
   width: 30px;
 }
 
-.buttonCategories button:active{
+.buttonCategories button:focus{
     background-color: var(--orange);
+    color: var(--white);
 }
 
 .containerProducts {
