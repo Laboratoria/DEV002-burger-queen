@@ -1,12 +1,9 @@
 const MenuButtnProduct = ({ products, handleClickAdd }) => {
 	return (
-		<ul
-			role='listitem'>
+		<ul role='listitem'>
 			{products.map((product) => (
-				<li className='flex flex-col items-center bg-secoundary-one border-2 border-secoundary-two hover:border-main text-main-text rounded-full p-8 mb-4 text-center text-xl cursor-pointer'>
-					<button
-						key={product.id}
-						onClick={() => handleClickAdd(product)}>
+				<li className='flex flex-col items-center justify-center w-96 bg-secoundary-one border-2 border-secoundary-two hover:border-main text-main-text rounded-full p-8 mb-4 text-center text-2xl cursor-pointer'>
+					<button key={product.id} onClick={() => handleClickAdd(product)}>
 						<p>{product.name}</p>
 						<p>s/.{product.price}</p>
 					</button>

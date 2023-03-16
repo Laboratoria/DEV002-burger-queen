@@ -1,12 +1,12 @@
 //definir multiples rutas
 import { Routes, Route } from 'react-router-dom';
-import { Home } from '/src/pages/Home';
 import { Inicio } from '/src/pages/Inicio';
 import { Login } from '/src/pages/Login';
 import { Menu } from '/src/pages/Menu';
+import { Orders } from '/src/pages/Orders.jsx';
 import { useState, useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '/src/firebase/init.jsx';
+import { auth } from '/src/firebase/firebase-init.js';
 
 const App = () => {
 	const [user, setUser] = useState(null);
@@ -38,8 +38,8 @@ const App = () => {
 
 	return (
 		<Routes>
-			<Route path='/home' element={<Home user={user} />} />
 			<Route path='/menu' element={<Menu user={user} />} />
+			<Route path='/orders' element={<Orders user={user} />} />
 		</Routes>
 	);
 };
