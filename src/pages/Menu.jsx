@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import { NavBar } from '../components/NavBar';
-import { Header } from '../components/Header';
-import data from '../data.json/';
-import { MenuButtnProduct } from '../components/Menu/MenuButtnProduct';
-import { NewOrderContainer } from '../components/Order/NewOrderContainer.jsx';
 import { NavBarMobile } from '../components/NavBarMobile';
+import { Header } from '../components/Header';
+import { MenuButtnProduct } from '../components/Menu/MenuButtnProduct';
+import { NewOrderContainer } from '../components/Order/NewOrderContainer';
+import data from '../data.json/';
 
-const Menu = () => {
+const Menu = ({userEmail, addOrder}) => {
 	const [category, setCategory] = useState('picotería');
 	const [showMenu, setShowMenu] = useState(false);
 	const [showOrder, setShowOrder] = useState(false);
-	const [mapProducts] = useState(new Map());
 	const [listProducts, setListProducts] = useState([]);
+	const [mapProducts] = useState(new Map());
 
 	const toggleMenu = () => {
 		setShowMenu(!showMenu);
@@ -21,6 +21,10 @@ const Menu = () => {
 	const toggleOrders = () => {
 		setShowOrder(!showOrder);
 		setShowMenu(false);
+	};
+
+	const selectCategory = (category) => {
+		setCategory(category);
 	};
 
 	const getListFromMap = (mapItems) => {
@@ -43,10 +47,6 @@ const Menu = () => {
 		setListProducts(getListFromMap(mapProducts));
 	};
 
-	const selectCategory = (category) => {
-		setCategory(category);
-	};
-
 	const deleteItem = (item) => {
 		console.log(item);
 		console.log(mapProductsDe);
@@ -60,35 +60,27 @@ const Menu = () => {
 		setListProducts(getListFromMap(mapProductsDe));
 	};
 
-	const totalOrder = () => {
-		return listProducts.reduce(
-			(total, item) => total + item.price * item.amount,
-			0
-		);
-	};
-
-	// const sendOrder = () => {
-	// 	console.log({
-	// 		client,
-	// 		mapProductsDe,
-	// 		total: totalOrder(),
-	// 	});
-	// 	setShowModal(false);
-	// 	setListProducts([]);
-	// };
-	const [showModal, setShowModal] = useState(false);
-
-	const handleClick = () => {
-		setMostrarPopup(true);
-	};
-
-	const handleClose = () => {
-		setMostrarPopup(false);
-	};
-
-	const handleEnviar = () => {
-		handleClose();
-	};
+	const totalOrder = listProducts.reduce(
+		(total, item) => total + item.price * item.amount,
+		0
+	);
+	
+const sendOrder = () => {
+	if(mapProductsDe.size === 0) {
+		alert("Por favor, seleciona algún producto a la nueva orden")
+	} else if (client === '') {
+		alert("Por favor, agrega el nombre del cliente")
+	} else {
+		addOrder(client, mapProductsDe, totalOrder)
+		setListProducts([]);
+		setClient(null)
+	}
+	console.log({
+		client,
+		mapProductsDe,
+		totalOrder,
+	});
+};
 	
 	return (
 		<div className='bg-secoundary-two w-full min-h-screen'>
@@ -103,7 +95,7 @@ const Menu = () => {
 			<main className='lg:pl-28 grid grid-cols-1 lg:grid-cols-8'>
 				<div className='lg:col-span-5 flex flex-col items-center justify-center gap-8'>
 					{/* {<Header />} */}
-					<Header selectCategory={selectCategory} />
+					<Header userEmail={userEmail} selectCategory={selectCategory} />
 					{/* {<tittle content />} */}
 					<h2 className='text-2xl text-main font-bold'>Elige los platillos</h2>
 					{/* {<button product />} */}

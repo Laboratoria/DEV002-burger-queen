@@ -2,17 +2,17 @@ import { BsFillPatchMinusFill, BsFillPatchPlusFill, BsFillClipboard2PlusFill } f
 import { FaMoneyBillWave } from 'react-icons/fa';
 // import {PopUpModal} from '../PopUpModal'
 import {useState} from 'react'
+import { addOrder } from '../../firestore/firestore-funct';
 const NewOrderContainer = ({
 	listProducts,
 	setListProducts,
 	addItem,
 	mapProductsDe,
 	getListFromMap,
-	client,
 	showOrder
 }) => {
-	// const [showModal, setShowModal] = useState(false);
-
+	// const [showModal, setShowModal] = useState(false)
+	const [client, setClient] = useState('')
 	const deleteItem = (item) => {
 		console.log(item);
 		console.log(mapProductsDe);
@@ -38,21 +38,33 @@ const NewOrderContainer = ({
   // const handleEnviar = () => {
   //   handleClose();
   // }
-	const totalOrder = () => {
-		return listProducts.reduce(
+	const totalOrder = listProducts.reduce(
 			(total, item) => total + item.price * item.amount,
 			0
 		);
-	};
+		
 	const sendOrder = () => {
+		if(mapProductsDe.size === 0) {
+			alert("Por favor, seleciona algún producto a la nueva orden")
+		} else if (client === '') {
+			alert("Por favor, agrega el nombre del cliente")
+		} else {
+			addOrder(client, mapProductsDe, totalOrder)
+			setListProducts([]);
+			setClient(null)
+		}
 		console.log({
 			client,
 			mapProductsDe,
-			total: totalOrder(),
+			totalOrder,
 		});
 		// setShowModal(false);
-		setListProducts([]);
+		
 	};
+
+const handleClientChange  = (e) => {
+setClient(e.target.value)
+}
 
 	return (
 		<div
@@ -107,9 +119,9 @@ const NewOrderContainer = ({
 					</li>
 				))}
 				<p className='flex flex-row items-center space-x-2 text-main-text text-2xl'>
-					Total: s/.{totalOrder()}
+					Total: s/.{totalOrder}
 				</p>
-				<input type='text' placeholder='nombre del cliente' value={client} />
+				<input id='idClient' type='text' placeholder='nombre del cliente' value={client} onChange={handleClientChange}/>
 				<button
 					 onClick={() => sendOrder()}>
 					Hacer pedido
