@@ -6,13 +6,12 @@ import { MenuButtnProduct } from '../components/Menu/MenuButtnProduct';
 import { NewOrderContainer } from '../components/Order/NewOrderContainer';
 import data from '../data.json/';
 
-const Menu = ({ userEmail, addOrder }) => {
+const Menu = ({ userEmail, addOrder, listProducts, setListProducts }) => {
 	const [category, setCategory] = useState('picotería');
 	const [showMenu, setShowMenu] = useState(false);
 	const [showOrder, setShowOrder] = useState(false);
-	const [listProducts, setListProducts] = useState([]);
 	const [mapProducts] = useState(new Map());
-	const [client, setClient] = useState('');;
+	const [client, setClient] = useState('');
 
 	const toggleMenu = () => {
 		setShowMenu(!showMenu);
@@ -72,18 +71,17 @@ const Menu = ({ userEmail, addOrder }) => {
 		} else if (client === '') {
 			alert('Por favor, agrega el nombre del cliente');
 		} else {
-			addOrder(client, mapProducts, totalOrder);
-			mapProducts.clear()
-
+			setListProducts(getListFromMap(mapProducts));
+			addOrder(client, listProducts, totalOrder);
+			console.log({
+				client,
+				listProducts,
+				totalOrder,
+			});
+			mapProducts.clear();
 			setListProducts([]);
-			
-			setClient(null);
+			setClient('');
 		}
-		console.log({
-			client,
-			mapProducts,
-			totalOrder,
-		});
 	};
 
 	return (
@@ -117,7 +115,7 @@ const Menu = ({ userEmail, addOrder }) => {
 						client={client}
 						setClient={setClient}
 					/>
-					
+
 					{/* {showModal ? (
 					<PopUpModal tittle = 'Verifica el pedido y luego envía a cocina' listProducts = {listProducts} setListProducts={setListProducts} showModal={showModal} setShowModal={setShowModal} mapProducts={mapProducts}/>
 				) : null} */}

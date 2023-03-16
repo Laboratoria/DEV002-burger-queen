@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { Inicio } from '/src/pages/Inicio';
 import { Login } from '/src/pages/Login';
 import { Menu } from '/src/pages/Menu';
-import { Orders } from '/src/pages/Orders.jsx';
+import { AllOrders } from '/src/pages/AllOrders.jsx';
 import { useState, useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '/src/firebase/firebase-init.js';
@@ -12,6 +12,7 @@ import { addOrder, onGetOrders } from './firestore/firestore-funct';
 const App = () => {
 	const [user, setUser] = useState(null);
 	const [userEmail, setUserEmail] = useState('');
+	const [listProducts, setListProducts] = useState([]);
 	const [orders, setOrders] = useState([]);
 
 	console.log('User: ' + user);
@@ -54,11 +55,17 @@ useEffect(() => {
 		<Routes>
 			<Route
 				path='/menu'
-				element={<Menu userEmail={userEmail} addOrder={addOrder} />}
+				element={<Menu userEmail={userEmail} addOrder={addOrder} listProducts={listProducts} setListProducts={setListProducts}/>}
 			/>
 			<Route
 				path='/orders'
-				element={<Orders userEmail={userEmail} orders={orders} />}
+				element={
+					<AllOrders
+						userEmail={userEmail}
+						orders={orders}
+						listProducts={listProducts}
+					/>
+				}
 			/>
 		</Routes>
 	);

@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { NavBar } from '/src/components/NavBar.jsx';
 import { NavBarMobile } from '/src/components/NavBarMobile.jsx';
-const Orders = () => {
-	const [orderProducts, setorderProducts] = useState([]);
+import { ClientOrder } from '/src/components/Order/ClientOrder.jsx';
+
+const AllOrders = ({ userEmail, orders, listProducts }) => {
 	const [showMenu, setShowMenu] = useState(false);
 	const [showOrder, setShowOrder] = useState(false);
 	const toggleMenu = () => {
@@ -27,11 +28,13 @@ const Orders = () => {
 			/>
 			<main>
 				<div className='flex flex-col md:flex-col md-justify-between md:items-center h-30 bg-main rounded-tr-2xl'>
-					<div></div>
+					<div>
+						<ClientOrder orders={orders} listProducts={listProducts} />
+					</div>
 				</div>
 			</main>
 		</div>
 	);
 };
 
-export { Orders };
+export { AllOrders };
