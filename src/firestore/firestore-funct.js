@@ -6,11 +6,11 @@ import {
 	q,
 } from '/src/firestore/firestore-init.js';
 
-export const addOrder = async (orderId, products, total) => {
+export const addOrder = async (client, products, total) => {
 	try {
 		await addDoc(ordersCollection, {
 			createdAt: serverTimestamp(),
-			orderId: orderId,
+			client: client,
 			products: products,
 			total: total,
 			status: 'Pendiente',

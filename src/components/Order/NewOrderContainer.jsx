@@ -5,66 +5,20 @@ import {useState} from 'react'
 import { addOrder } from '../../firestore/firestore-funct';
 const NewOrderContainer = ({
 	listProducts,
-	setListProducts,
 	addItem,
-	mapProductsDe,
-	getListFromMap,
-	showOrder
+	deleteItem,
+	showOrder,
+	totalOrder,
+	sendOrder,
+	client,
+	setClient
 }) => {
 	// const [showModal, setShowModal] = useState(false)
-	const [client, setClient] = useState('')
-	const deleteItem = (item) => {
-		console.log(item);
-		console.log(mapProductsDe);
 
-		// setProducts(mapProductsDe.filter((item) => item.id !== id));
-		const amount = mapProductsDe.get(item);
-		if (amount === 1) {
-			mapProductsDe.delete(item);
-		} else {
-			mapProductsDe.set(item, parseInt(amount) - 1);
-		}
-		setListProducts(getListFromMap(mapProductsDe));
+	// const [showModal, setShowModal] = useState(false);
+	const handleClientChange = (e) => {
+		setClient(e.target.value);
 	};
-
-  // const handleClick = () => {
-  //   setMostrarPopup(true);
-  // }
-
-  // const handleClose = () => {
-  //   setMostrarPopup(false);
-  // }
-
-  // const handleEnviar = () => {
-  //   handleClose();
-  // }
-	const totalOrder = listProducts.reduce(
-			(total, item) => total + item.price * item.amount,
-			0
-		);
-		
-	const sendOrder = () => {
-		if(mapProductsDe.size === 0) {
-			alert("Por favor, seleciona algún producto a la nueva orden")
-		} else if (client === '') {
-			alert("Por favor, agrega el nombre del cliente")
-		} else {
-			addOrder(client, mapProductsDe, totalOrder)
-			setListProducts([]);
-			setClient(null)
-		}
-		console.log({
-			client,
-			mapProductsDe,
-			totalOrder,
-		});
-		// setShowModal(false);
-		
-	};
-
-const handleClientChange  = (e) => {
-setClient(e.target.value)
-}
 
 	return (
 		<div
@@ -72,11 +26,7 @@ setClient(e.target.value)
 				showOrder ? 'right-0' : '-right-full'
 			}`}>
 			<div className='flex flex-col md:flex-col md-justify-between md:items-center h-30 bg-main rounded-tr-2xl'>
-				<img
-					src='src/assets/Logo-2-ñaña.png'
-					className='w-1/3 '
-					alt='LogoÑaña'
-				/>
+				<img src='src/assets/Logo-2-ñaña.png' className='w-1/3 ' alt='LogoÑaña' />
 			</div>
 			{/*
 			<div className='flex items-center justify-center w-full h-full bg-secoundary-one'>
@@ -118,17 +68,17 @@ setClient(e.target.value)
 						</div>
 					</li>
 				))}
-				<p className='flex flex-row items-center space-x-2 text-main-text text-2xl'>
-					Total: s/.{totalOrder}
-				</p>
-				<input id='idClient' type='text' placeholder='nombre del cliente' value={client} onChange={handleClientChange}/>
-				<button
-					 onClick={() => sendOrder()}>
-					Hacer pedido
-				</button>
-				{/* {showModal ? (
-					<PopUpModal tittle = 'Verifica el pedido y luego envía a cocina' listProducts = {listProducts} setListProducts={setListProducts} showModal={showModal} setShowModal={setShowModal} mapProductsDe={mapProductsDe}/>
-				) : null} */}
+				<p className='text-main-text text-2xl'>
+						Total: s/.{totalOrder}
+					</p>
+					<input
+						id='idClient'
+						type='text'
+						placeholder='nombre del cliente'
+						value={client}
+						onChange={handleClientChange}
+					/>
+					<button onClick={() => sendOrder()}>Hacer pedido</button>
 			</ul>
 		</div>
 	);

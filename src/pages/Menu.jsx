@@ -6,12 +6,13 @@ import { MenuButtnProduct } from '../components/Menu/MenuButtnProduct';
 import { NewOrderContainer } from '../components/Order/NewOrderContainer';
 import data from '../data.json/';
 
-const Menu = ({userEmail, addOrder}) => {
+const Menu = ({ userEmail, addOrder }) => {
 	const [category, setCategory] = useState('picotería');
 	const [showMenu, setShowMenu] = useState(false);
 	const [showOrder, setShowOrder] = useState(false);
 	const [listProducts, setListProducts] = useState([]);
 	const [mapProducts] = useState(new Map());
+	const [client, setClient] = useState('');;
 
 	const toggleMenu = () => {
 		setShowMenu(!showMenu);
@@ -49,39 +50,42 @@ const Menu = ({userEmail, addOrder}) => {
 
 	const deleteItem = (item) => {
 		console.log(item);
-		console.log(mapProductsDe);
-		// setProducts(mapProductsDe.filter((item) => item.id !== id));
-		const amount = mapProductsDe.get(item);
+		console.log(mapProducts);
+		// setProducts(mapProducts.filter((item) => item.id !== id));
+		const amount = mapProducts.get(item);
 		if (amount === 1) {
-			mapProductsDe.delete(item);
+			mapProducts.delete(item);
 		} else {
-			mapProductsDe.set(item, parseInt(amount) - 1);
+			mapProducts.set(item, parseInt(amount) - 1);
 		}
-		setListProducts(getListFromMap(mapProductsDe));
+		setListProducts(getListFromMap(mapProducts));
 	};
 
 	const totalOrder = listProducts.reduce(
 		(total, item) => total + item.price * item.amount,
 		0
 	);
-	
-const sendOrder = () => {
-	if(mapProductsDe.size === 0) {
-		alert("Por favor, seleciona algún producto a la nueva orden")
-	} else if (client === '') {
-		alert("Por favor, agrega el nombre del cliente")
-	} else {
-		addOrder(client, mapProductsDe, totalOrder)
-		setListProducts([]);
-		setClient(null)
-	}
-	console.log({
-		client,
-		mapProductsDe,
-		totalOrder,
-	});
-};
-	
+
+	const sendOrder = () => {
+		if (mapProducts.size === 0) {
+			alert('Por favor, seleciona algún producto a la nueva orden');
+		} else if (client === '') {
+			alert('Por favor, agrega el nombre del cliente');
+		} else {
+			addOrder(client, mapProducts, totalOrder);
+			mapProducts.clear()
+
+			setListProducts([]);
+			
+			setClient(null);
+		}
+		console.log({
+			client,
+			mapProducts,
+			totalOrder,
+		});
+	};
+
 	return (
 		<div className='bg-secoundary-two w-full min-h-screen'>
 			{/* {<sideBar />} */}
@@ -105,14 +109,18 @@ const sendOrder = () => {
 				<div className='lg:col-span-3'>
 					<NewOrderContainer
 						listProducts={listProducts}
-						setListProducts={setListProducts}
-						mapProductsDe={mapProducts}
-						getListFromMap={getListFromMap}
 						addItem={addItem}
 						deleteItem={deleteItem}
 						showOrder={showOrder}
-						setShowOrder={setShowOrder}
+						totalOrder={totalOrder}
+						sendOrder={sendOrder}
+						client={client}
+						setClient={setClient}
 					/>
+					
+					{/* {showModal ? (
+					<PopUpModal tittle = 'Verifica el pedido y luego envía a cocina' listProducts = {listProducts} setListProducts={setListProducts} showModal={showModal} setShowModal={setShowModal} mapProducts={mapProducts}/>
+				) : null} */}
 				</div>
 			</main>
 		</div>
