@@ -1,8 +1,23 @@
-import React from "react";
+import {useEffect, useState} from "react";
 import Logo from "../Imagenes/logoLasaña.png";
+import signoMas from "../Imagenes/signoMas.png"
+import signoMenos from "../Imagenes/signoMenos.png"
+import axios from 'axios';
 import './Menu.css';
 
 const Menu = () => {
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        axios
+            .get('data.json')
+            .then(res => res.data)
+            .then(res => {
+                setData(res.products)
+            })
+    }, [])
+
+
     return (
         <>
             <main className="Menu">
@@ -25,8 +40,36 @@ const Menu = () => {
                     <option value='Mesa4'>Mesa 4</option>
                     <option value='Mesa5'>Mesa 5</option>
                 </select>
+            
             </div>
-
+            <section className="containerMenu">
+            <h2 className="menuPrincipal">MENÚ</h2>
+            <section className="container-comidas">
+                {data.filter(product => product.category.includes("Comida")).map(items => (
+                    <div className="comidas-div" key={items.id}>
+                        <p className="nombreProd">{items.name}</p>
+                        <img className="imgLasaña" src={items.img} alt='' />
+                        <img className="signoMas" src={signoMas} alt='' />
+                        <p className="cantidadProd">1</p>
+                        <img className="signoMenos" src={signoMenos} alt='' />  
+                        <p className="precio">{items.price}</p>                      
+                    </div>
+                ))}
+            </section>
+            <h2 className="bebidas">BEBIDAS</h2>
+            <section className="container-bebidas">
+                {data.filter(product => product.category.includes("Bebidas")).map(items => (
+                    <div className="bebidas-div" key={items.id}>
+                        <p className="nombreProducto">{items.name}</p>
+                        <img className="imgBebidas" src={items.img} alt='' />
+                        <img className="signoMasDos" src={signoMas} alt='' />
+                        <p className="cantidadProducto">1</p>
+                        <img className="signoMenosDos" src={signoMenos} alt='' />
+                        <p className="precioBebidas">{items.price}</p>
+                    </div>
+                ))}
+            </section>
+            </section>
             <footer>@2023 - Erika Ríos Suesca</footer>
         </>
     )

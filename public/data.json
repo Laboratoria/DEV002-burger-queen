@@ -1,0 +1,46 @@
+{
+    "products": [
+        {
+            "id": "01",
+            "name": "Lasaña Carne",
+            "category": "Comida",
+            "price": "$12",
+            "img": "/Imagenes/LasañaCarne.png"
+        },
+        {
+            "id": "02",
+            "name": "Lasaña Pollo",
+            "category": "Comida",
+            "price": "$12",
+            "img": "/Imagenes/LasañaCarne.png"
+        },
+        {
+            "id": "03",
+            "name": "Lasaña Mixta",
+            "category": "Comida",
+            "price": "$15",
+            "img": "/Imagenes/LasañaCarne.png"
+        },
+        {
+            "id": "04",
+            "name": "Gaseosa",
+            "category": "Bebidas",
+            "price": "$6",
+            "img": "/Imagenes/gaseosa.png"
+        },
+        {
+            "id": "05",
+            "name": "Jugo",
+            "category": "Bebidas",
+            "price": "$5",
+            "img": "/Imagenes/jugo.png"
+        },
+        {
+            "id": "05",
+            "name": "Limonada",
+            "category": "Bebidas",
+            "price": "$8",
+            "img": "/Imagenes/limonada.png"
+        }
+    ]    
+}
