@@ -42,9 +42,14 @@
     width: 30px;
   }
   
-  .buttonCategories button:focus{
+  /* .buttonCategories button.red{
       background-color: var(--orange);
       color: var(--white);
+  } */
+
+  .buttonCategories button.chooseRed{
+    background-color: var(--orange);
+    color: var(--white);
   }
   
   .containerProducts {

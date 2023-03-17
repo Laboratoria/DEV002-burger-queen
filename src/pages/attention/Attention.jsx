@@ -44,11 +44,6 @@ function Attention() {
       setOrder(copyOrder);
     }
     //console.log(product);
-    // const sumSubtotal = copyOrder.map((e) => e.subtotal);
-    // console.log(sumSubtotal);
-    // //const totalSum = sumSubtotal.reduce((a, b) => a + b, 0)
-    // setTotal(sumSubtotal.reduce((a, b) => a + b, 0));
-    //console.log(totalSum)
   }
 
   useEffect(() => {
@@ -97,7 +92,7 @@ function Attention() {
               onClick={() => {
                 handleClick("hamburguesas");
               }}
-              className="categoryH"
+              className = { choose === "hamburguesas" ? "chooseRed" : ""}
             >
               <img
                 src={imghamburguesa}
@@ -109,7 +104,7 @@ function Attention() {
               onClick={() => {
                 handleClick("bebidas");
               }}
-              className="categoryB"
+              className = { choose === "bebidas" ? "chooseRed" : ""}
             >
               <img src={imgbebida} alt="imagen de la categoria Bebidas" />
               Bebidas
