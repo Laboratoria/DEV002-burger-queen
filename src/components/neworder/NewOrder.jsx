@@ -2,8 +2,8 @@ import Button from "../button/Button";
 import "./neworder.css";
 import NewProduct from "../newProduct/newProduct";
 
-function NewOrder({ array, count }) {
-  console.log(array)
+function NewOrder({ array, total, add, subtract, delet }) {
+  //console.log(array)
   return (
     <>
       <div>
@@ -14,15 +14,21 @@ function NewOrder({ array, count }) {
             placeholder="nombre del cliente"
             className="client"
           />
+          <div className="headerNewProduct">
+            <p>Cantidad</p>
+            <p>Producto</p>
+            <p>Costo Unid.</p>
+            <p>Sub Total</p>
+          </div>
           <div className="orderClient">
             {array.map((product) => 
-              <NewProduct key={product.id} data={product} />
+              <NewProduct key={product.id} data={product} add={add} subtract={subtract} delet={delet} />
             )}
           </div>
           <div className="containerBill">
             <p>TOTAL</p>
             <p>
-              S/.<span>0</span>
+              S/.<span>{total}</span>
             </p>
           </div>
         </div>

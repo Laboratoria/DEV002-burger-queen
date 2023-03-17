@@ -3,7 +3,7 @@ import Header from "../../components/header/Header.jsx";
 import Button from "../../components/button/Button";
 import NewOrder from "../../components/neworder/NewOrder.jsx";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Product from "../../components/product/Product.jsx";
 import imghamburguesa from "../../assets/hamburguesa.png";
 import imgbebida from "../../assets/bebida.png";
@@ -21,30 +21,71 @@ function Attention() {
   const categoria = products.menu[choose];
   //console.log(categoria);
 
-  //-------------------------prueba
+  //-------------------------nueva orden
+
   const [order, setOrder] = useState([]);
   const copyOrder = [...order];
   //const [count, setCount] = useState(1);
+  const [total, setTotal] = useState(0);
 
   function addProduct(product) {
     const find = copyOrder.findIndex((e) => e.id === product.id);
-    console.log(find);
+    //console.log(find);
     if (find === -1) {
-      const newProduct = {...product, count:1 , subtotal: product.cost}
+      const newProduct = { ...product, count: 1, subtotal: product.cost };
       setOrder(copyOrder.concat(newProduct));
+      //setOrder([...copyOrder,newProduct]);
     } else {
-      //setCount(prev =>  prev.map((i) => i.id === product.id ? { ...i, count: i.count + 1} : i))
       copyOrder[find].count += 1;
-      //console.log(copyOrder[find].count += 1);
-      copyOrder[find].subtotal = copyOrder[find].count * copyOrder[find].cost;
+      copyOrder[find].subtotal =
+        copyOrder[find].count === 1
+          ? copyOrder[find].cost
+          : copyOrder[find].count * copyOrder[find].cost;
       setOrder(copyOrder);
     }
-    // setOrder(find ? copyOrder : copyOrder.concat(product));
-    // setCount(find ? (count + 1 ): count)
-    console.log(product);
-
+    //console.log(product);
+    // const sumSubtotal = copyOrder.map((e) => e.subtotal);
+    // console.log(sumSubtotal);
+    // //const totalSum = sumSubtotal.reduce((a, b) => a + b, 0)
+    // setTotal(sumSubtotal.reduce((a, b) => a + b, 0));
+    //console.log(totalSum)
   }
 
+  useEffect(() => {
+    //console.log(order)
+    const sumSubtotal = copyOrder.map((e) => e.subtotal);
+    console.log(sumSubtotal);
+    //const totalSum = sumSubtotal.reduce((a, b) => a + b, 0)
+    setTotal(sumSubtotal.reduce((a, b) => a + b, 0));
+    //console.log(totalSum)
+  }, [order]);
+
+  function subtractProduct(product) {
+    const find = copyOrder.findIndex((e) => e.id === product.id);
+    //const newProduct = { ...product, count: 1, subtotal: product.cost };
+    //setOrder(copyOrder.concat(newProduct));
+    //setOrder([...copyOrder,newProduct]);
+    if (find > -1) {
+      if (copyOrder[find].count > 1) {
+        copyOrder[find].count -= 1;
+        copyOrder[find].subtotal =
+          copyOrder[find].count === 1
+            ? copyOrder[find].cost
+            : copyOrder[find].count * copyOrder[find].cost;
+      }
+      // else if(copyOrder[find].count === 0 ){
+      //   copyOrder.splice(find,1)
+      // }
+    }
+    setOrder(copyOrder);
+  }
+
+  function deleteProduct(product) {
+    const find = copyOrder.findIndex((e) => e.id === product.id);
+    //console.log("dlete",find)
+    copyOrder.splice(find, 1);
+    setOrder(copyOrder);
+  }
 
   return (
     <>
@@ -81,7 +122,13 @@ function Attention() {
           </div>
         </div>
         <div>
-          <NewOrder array={order} />
+          <NewOrder
+            array={order}
+            total={total}
+            add={addProduct}
+            subtract={subtractProduct}
+            delet={deleteProduct}
+          />
         </div>
       </div>
       <div className="buttonViewOrder">
@@ -97,27 +144,3 @@ function Attention() {
 }
 
 export default Attention;
-
-// function addProduct(product) {
-
-//   const find = copyOrder.findIndex(e => (e.id === product.id))
-//   console.log(find)
-//   if(find === -1){
-//     setOrder(copyOrder.concat(product))
-//   } else{
-//     //setCount(prev =>  prev.map((i) => i.id === product.id ? { ...i, count: i.count + 1} : i))
-//     console.log(copyOrder[find])
-//     console.log(setCount(count + 1))
-//     setOrder(copyOrder)
-//   }
-//     // setOrder(find ? copyOrder : copyOrder.concat(product));
-//     // setCount(find ? (count + 1 ): count)
-//     console.log(product)
-
-//     // if(order.find(e => e.id === product.id)){
-//     //   console.log("estas"+ product.id)
-//     //   setOrder(order)
-//     //   setCount( count + 1)
-//     // }
-
-// }

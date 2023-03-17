@@ -44,18 +44,6 @@
     color: #A09E9E;
 }
 
-.button-login{
-    margin-top: 10px;
-    color: var(--white);
-    height: 40px;
-    width: 150px;
-    border: none;
-    border-radius: 10px;
-    background-color: var(--orange);
-    font-family: var(--font-urbanist);
-    font-size: 1rem;
-}
-
 .message{
     color: var(--orange);
 }

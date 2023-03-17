@@ -3,6 +3,7 @@ import logo from "../../assets/logo.png";
 import { useState } from "react";
 import { loginUser } from "../../firebase/firebase";
 import { useNavigate } from "react-router-dom";
+import Button from "../../components/button/Button";
 
 function Login() {
   //const [credential, setCredential] = useState(false);
@@ -66,7 +67,9 @@ function Login() {
             onKeyUp={handleChange}
           />
           <span id="messagePassword" className="message"></span>
-          <button className="button-login">INICIA SESIÓN</button>
+          <div>
+            <Button name={"INICIA SESIÓN"}></Button>
+          </div>
         </form>
       </div>
     </>

@@ -5,6 +5,7 @@
     height: 60vh;
     background-color: var(--gray);
     color: var(--dark);
+    font-family: var(--font-urbanist);
 }
 
 .client{
@@ -20,10 +21,18 @@
 }
 
 .orderClient{
-    height: 75%;
+    height: 70%;
+    width: 90%;
+    /* margin-top: 10px; */
+}
+
+.headerNewProduct{
+    height: 5%;
     width: 90%;
     margin-top: 10px;
-    font-family: var(--font-urbanist);
+    display:flex;
+    justify-content: space-around;
+
 }
 
 .containerBill{
