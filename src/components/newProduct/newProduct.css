@@ -1,0 +1,10 @@
+.containerNewProduct{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.btn {
+    height: 20px;
+    width: 20px;
+}

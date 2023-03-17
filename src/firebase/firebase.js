@@ -19,8 +19,8 @@ const loginUser = (email, password) => {
   return signInWithEmailAndPassword(auth, email, password);
 };
 
-const logoutUser = () => {
-  return signOut();
+const logoutUser = async() => {
+  return await signOut(auth);
 };
 
 

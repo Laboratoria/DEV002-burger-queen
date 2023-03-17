@@ -1,7 +1,9 @@
 import Button from "../button/Button";
 import "./neworder.css";
+import NewProduct from "../newProduct/newProduct";
 
-function NewOrder() {
+function NewOrder({ array, count }) {
+  console.log(array)
   return (
     <>
       <div>
@@ -12,7 +14,11 @@ function NewOrder() {
             placeholder="nombre del cliente"
             className="client"
           />
-          <div className="orderClient">productos</div>
+          <div className="orderClient">
+            {array.map((product) => 
+              <NewProduct key={product.id} data={product} />
+            )}
+          </div>
           <div className="containerBill">
             <p>TOTAL</p>
             <p>

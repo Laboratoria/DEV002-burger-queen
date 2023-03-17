@@ -22,7 +22,7 @@ function Menu() {
   };
 
   const categoria = products.menu[choose];
-  console.log(categoria);
+  //console.log(categoria);
 
   // useEffect(() => {
   //   setCategoria(products.products[choose]);
