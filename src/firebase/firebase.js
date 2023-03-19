@@ -7,21 +7,38 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   onAuthStateChanged,
-  signOut
+  signOut,
 } from "firebase/auth";
+
+import {
+  getFirestore,
+  collection,
+  getDoc,
+  getDocs,
+  addDoc,
+  Timestamp,
+
+} from "firebase/firestore";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
+const db = getFirestore(app);
 
 const loginUser = (email, password) => {
   return signInWithEmailAndPassword(auth, email, password);
 };
 
-const logoutUser = async() => {
+const logoutUser = async () => {
   return await signOut(auth);
 };
 
+const orderCollection = collection(db, "NewOrder");
 
-export {loginUser, logoutUser}
+// const addOrder = (client, order, time) => addDoc(orderCollection, {
+//  client, order, time
+// })
+
+
+export { loginUser, logoutUser, orderCollection, Timestamp, addDoc };

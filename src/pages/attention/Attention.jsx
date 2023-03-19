@@ -12,6 +12,7 @@ import products from "../../../menu.json";
 function Attention() {
   const navigate = useNavigate();
 
+  // ------------categoria elegida
   const [choose, setChoose] = useState("hamburguesas");
 
   const handleClick = (selectedCategory) => {
@@ -21,7 +22,7 @@ function Attention() {
   const categoria = products.menu[choose];
   //console.log(categoria);
 
-  //-------------------------nueva orden
+  //-------------------------nueva orden y operaciones
 
   const [order, setOrder] = useState([]);
   const copyOrder = [...order];
@@ -49,7 +50,7 @@ function Attention() {
   useEffect(() => {
     //console.log(order)
     const sumSubtotal = copyOrder.map((e) => e.subtotal);
-    console.log(sumSubtotal);
+    //console.log(sumSubtotal);
     //const totalSum = sumSubtotal.reduce((a, b) => a + b, 0)
     setTotal(sumSubtotal.reduce((a, b) => a + b, 0));
     //console.log(totalSum)
@@ -92,7 +93,7 @@ function Attention() {
               onClick={() => {
                 handleClick("hamburguesas");
               }}
-              className = { choose === "hamburguesas" ? "chooseRed" : ""}
+              className={choose === "hamburguesas" ? "chooseRed" : ""}
             >
               <img
                 src={imghamburguesa}
@@ -104,7 +105,7 @@ function Attention() {
               onClick={() => {
                 handleClick("bebidas");
               }}
-              className = { choose === "bebidas" ? "chooseRed" : ""}
+              className={choose === "bebidas" ? "chooseRed" : ""}
             >
               <img src={imgbebida} alt="imagen de la categoria Bebidas" />
               Bebidas
