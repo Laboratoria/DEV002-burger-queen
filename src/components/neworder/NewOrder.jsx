@@ -46,7 +46,7 @@ function NewOrder({ array, total, add, subtract, delet }) {
             <p>Sub Total</p>
           </div>
           <div className="orderClient">
-            {array.length === 0 ? <p>No selecciono ningun producto :/</p> : ""}
+            {array.length === 0 ? <p>No hay productos seleccionados :/</p> : ""}
             {array.map((product) => (
               <NewProduct
                 key={product.id}

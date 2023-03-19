@@ -1,0 +1,9 @@
+.containerPendingReady{
+    height: 80vh;
+    width: 90vw;
+    display: grid;
+    grid-template-columns: 50%50%;
+    margin: auto;
+    margin-top: 40px;
+    font-family: var(--font-urbanist);
+}

@@ -41,4 +41,4 @@ const orderCollection = collection(db, "NewOrder");
 // })
 
 
-export { loginUser, logoutUser, orderCollection, Timestamp, addDoc };
+export { loginUser, logoutUser, orderCollection, Timestamp, addDoc, getDocs, getDoc };
