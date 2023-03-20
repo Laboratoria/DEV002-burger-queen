@@ -26,11 +26,11 @@ const AllOrders = ({ userEmail, orders, listProducts }) => {
 				toggleOrders={toggleOrders}
 				showMenu={showMenu}
 			/>
-			<main>
-				<div className='flex flex-col md:flex-col md-justify-between md:items-center h-30 bg-main rounded-tr-2xl'>
-					<div>
+			<main className='pt-10'>
+				<div className='lg:pl-28 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-center m-8'>
+					
 						<PrintOrder orders={orders} listProducts={listProducts} />
-					</div>
+					
 				</div>
 			</main>
 		</div>
