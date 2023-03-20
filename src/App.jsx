@@ -33,7 +33,10 @@ const App = () => {
 
 useEffect(() => {
 	const unsubscribe = onGetOrders((query) => {
-		const newOrders = query.docs.map((doc) => doc.data());
+		const newOrders = query.docs.map((doc) => ({
+			id: doc.id,
+			...doc.data(),
+		}));
 		setOrders(newOrders);
 	});
 	return () => {

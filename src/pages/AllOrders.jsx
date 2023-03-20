@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { NavBar } from '/src/components/NavBar.jsx';
 import { NavBarMobile } from '/src/components/NavBarMobile.jsx';
-import { ClientOrder } from '/src/components/Order/ClientOrder.jsx';
+import { PrintOrder } from '/src/components/Order/PrintOrder.jsx';
 
 const AllOrders = ({ userEmail, orders, listProducts }) => {
 	const [showMenu, setShowMenu] = useState(false);
@@ -29,7 +29,7 @@ const AllOrders = ({ userEmail, orders, listProducts }) => {
 			<main>
 				<div className='flex flex-col md:flex-col md-justify-between md:items-center h-30 bg-main rounded-tr-2xl'>
 					<div>
-						<ClientOrder orders={orders} listProducts={listProducts} />
+						<PrintOrder orders={orders} listProducts={listProducts} />
 					</div>
 				</div>
 			</main>

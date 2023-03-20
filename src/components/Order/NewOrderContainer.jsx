@@ -1,8 +1,8 @@
 import { BsFillPatchMinusFill, BsFillPatchPlusFill, BsFillClipboard2PlusFill } from 'react-icons/bs';
 import { FaMoneyBillWave } from 'react-icons/fa';
 // import {PopUpModal} from '../PopUpModal'
-import {useState} from 'react'
-import { addOrder } from '../../firestore/firestore-funct';
+import { useState, useEffect } from 'react';
+import { addOrder } from '/src/firestore/firestore-funct';
 const NewOrderContainer = ({
 	listProducts,
 	addItem,
