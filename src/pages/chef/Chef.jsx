@@ -12,7 +12,7 @@ function Chef() {
     console.log(data.docs);
 
     setOrder(data.docs.map((doc) => (
-        console.log(doc.data()),
+        //console.log(doc.data()),
 
         { ...doc.data(), id: doc.id })));
     //console.log(array)
@@ -28,7 +28,7 @@ function Chef() {
     <>
       <Header></Header>
       <div className="containerPendingReady">
-        <section>
+        <section className="orders orderPending">
           <h2>PEDIDOS PENDIENTES</h2>
           <div>
             {order.map((element) => (
@@ -36,7 +36,7 @@ function Chef() {
             ))}
           </div>
         </section>
-        <section>
+        <section className="orders orderReady">
           <h2>PEDIDOS LISTOS</h2>
           <div></div>
         </section>

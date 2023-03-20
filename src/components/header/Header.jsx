@@ -11,9 +11,12 @@ function Header({ user }) {
   const date = today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
 
 function logout(){
-  logoutUser();
-  navigate("/")
-  console.log("logout")
+  const confirmLogout = confirm("¿Desea cerrar sesión?")
+  if(confirmLogout){
+    console.log("logout")
+    logoutUser();
+    navigate("/")
+  }
 }
 
   return (

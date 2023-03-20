@@ -20,11 +20,25 @@
     text-align: center;
 }
 
+#messageClient{
+    color:var(--orange);
+    font-size: 0.8rem;
+}
+
+
 .orderClient{
     height: 70%;
     width: 90%;
     /* margin-top: 10px; */
+
 }
+
+.messageOrderClient{
+    padding-top: 30%;
+    text-align: center;
+    color: #A09E9E;    
+}
+
 
 .headerNewProduct{
     height: 5%;

@@ -14,16 +14,23 @@ function NewOrder({ array, total, add, subtract, delet }) {
     } else if (client === "") {
       messageClient.innerHTML = "ingrese el nombre del cliente";
     } else {
-      try {
-        await addDoc(orderCollection, {
-          client: client,
-          order: array,
-          date: Timestamp.fromDate(new Date()),
-        });
-      } catch (error) {
-        console.log(error);
+      const confirmSendOrder = confirm("¿Desea enviar el pedido?");
+      if (confirmSendOrder) {
+        try {
+          await addDoc(orderCollection, {
+            client: client,
+            order: array,
+            date: Timestamp.fromDate(new Date()),
+          });
+        } catch (error) {
+          console.log(error);
+        }
       }
     }
+  }
+
+  function handleChange() {
+    messageClient.innerHTML = "";
   }
 
   return (
@@ -38,6 +45,7 @@ function NewOrder({ array, total, add, subtract, delet }) {
             onChange={(e) => {
               setClient(e.target.value);
             }}
+            onKeyUp={handleChange}
           />
           <span id="messageClient"></span>
           <div className="headerNewProduct">
@@ -46,7 +54,7 @@ function NewOrder({ array, total, add, subtract, delet }) {
             <p>Sub Total</p>
           </div>
           <div className="orderClient">
-            {array.length === 0 ? <p>No hay productos seleccionados :/</p> : ""}
+            {array.length === 0 ? <p className="messageOrderClient">No hay productos seleccionados :/</p> : ""}
             {array.map((product) => (
               <NewProduct
                 key={product.id}

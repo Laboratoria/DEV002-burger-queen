@@ -1,10 +1,12 @@
+import "./pendingOrder.css";
+
 function PendingOrder(data) {
   //const { order, client, date } = data
-  console.log(data.data.client);
+  //console.log(data.data.client);
   return (
     <>
-      <div>
-        <section>
+      <div className="containerPendingOrder">
+        <section className="headerOrderPending">
           <p>{data.data.client}</p>
           <p>timer</p>
         </section>
@@ -12,18 +14,18 @@ function PendingOrder(data) {
           <p>Pedido</p>
           <div>
             {data.data.order.map((element) => {
-                console.log(element.count);
+              console.log(element.name);
               <div key={element.id}>
                 <p>{element.count}</p>
                 <p>{element.name}</p>
-              </div>
+              </div>;
             })}
           </div>
         </section>
-        <section>
+        <section className="containerTimerButton">
           <p>{data.data.date.toDate().toLocaleDateString()}</p>
+          <button className="buttonOk">OK</button>
         </section>
-        <button>OK</button>
       </div>
     </>
   );
