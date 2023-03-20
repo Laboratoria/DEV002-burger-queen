@@ -2,9 +2,11 @@ import Button from "../button/Button";
 import "./neworder.css";
 import NewProduct from "../newProduct/newProduct";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { addDoc, orderCollection, Timestamp } from "../../firebase/firebase";
 
 function NewOrder({ array, total, add, subtract, delet }) {
+  const navigate = useNavigate();
   //console.log(array)
   const [client, setClient] = useState("");
 
@@ -73,7 +75,7 @@ function NewOrder({ array, total, add, subtract, delet }) {
           </div>
         </div>
         <div className="buttonCocina">
-          <Button name={"Enviar a cocina"} onClick={handleClick}  />
+          <Button name={"Enviar a cocina"} onClick={handleClick}   />
         </div>
       </div>
     </>

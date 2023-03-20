@@ -1,19 +1,16 @@
 import { useEffect, useState } from "react";
 
-
 function Timer() {
+  const [timer, setTimer] = useState({ h: 0, m: 0, s: 0 });
+  //console.log(timer);
 
-    const [timer, setTimer] = useState({ h:0, m:0, s:0})
-    console.log(timer)
+  let hour = timer.h;
+  let minutes = timer.m;
+  let seconds = timer.s;
+  //console.log(hour);
+  //const { ms, s, m, h} = time
 
-
-    let hour = timer.h
-    let minutes = timer.m 
-    let seconds = timer.s
-    console.log(hour)
-    //const { ms, s, m, h} = time
-
- if (hour < 10) {
+  if (hour < 10) {
     hour = "0" + hour;
   }
   if (minutes < 10) {
@@ -23,28 +20,28 @@ function Timer() {
     seconds = "0" + seconds;
   }
 
-  const showTimer = hour + ":" + minutes + ":" + seconds
+  const showTimer = hour + ":" + minutes + ":" + seconds;
 
-  let updatedH = timer.h
-  let updatedM = timer.m
-  let updatedS = timer.s
+  let updatedH = timer.h;
+  let updatedM = timer.m;
+  let updatedS = timer.s;
 
-  function run(){
-    if(updatedS === 60){
-        updatedM++
-        updatedS = 0
+  function run() {
+    if (updatedS === 60) {
+      updatedM++;
+      updatedS = 0;
     }
-    if(updatedM === 60){
-        updatedH++
-        updatedM = 0
+    if (updatedM === 60) {
+      updatedH++;
+      updatedM = 0;
     }
     updatedS++;
-    return setTimer({s:updatedS, m:updatedM, h:updatedH})
+    return setTimer({ s: updatedS, m: updatedM, h: updatedH });
   }
 
   const intervalTimer = () => {
-    setInterval(run,1000)
-  }
+    setInterval(run, 1000);
+  };
 
   return (
     <>

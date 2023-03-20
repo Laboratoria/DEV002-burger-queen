@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 function Header({ user }) {
   const navigate = useNavigate();
   const today = new Date();
-  const date = today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
+  const date = today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear();
 
 function logout(){
   const confirmLogout = confirm("¿Desea cerrar sesión?")

@@ -12,6 +12,7 @@
 
 .orderPending{
     width: 90%;
+
 }
 
 .orderPending h2{
@@ -30,6 +31,7 @@
     margin-top: 5px;
     background-color: var(--gray);
     /* align-items: center; */
+    
 }
 
 .orderReady{

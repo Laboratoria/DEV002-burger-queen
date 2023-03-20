@@ -1,13 +1,13 @@
 .containerPendingOrder{
     width: 90%;
-    height: 10%; 
+    /* height: 10%;  */
     display: flex;
     flex-direction: column;
     color: var(--dark);  
-    justify-content: center; 
+    /* justify-content: center;  */
 }
 
-.headerOrderPending{
+.containerPendingOrder .headerOrderPending{
     display: flex;
     justify-content: space-around;
 }
