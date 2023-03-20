@@ -51,7 +51,7 @@ function NewOrder({ array, total, add, subtract, delet }) {
           <div className="headerNewProduct">
             <p>Cantidad</p>
             <p>Producto</p>
-            <p>Sub Total</p>
+            <p className="subtotalH">Sub Total</p>
           </div>
           <div className="orderClient">
             {array.length === 0 ? <p className="messageOrderClient">No hay productos seleccionados :/</p> : ""}
@@ -73,7 +73,7 @@ function NewOrder({ array, total, add, subtract, delet }) {
           </div>
         </div>
         <div className="buttonCocina">
-          <Button name={"Enviar a cocina"} onClick={handleClick} />
+          <Button name={"Enviar a cocina"} onClick={handleClick}  />
         </div>
       </div>
     </>

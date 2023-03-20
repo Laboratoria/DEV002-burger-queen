@@ -1,67 +1,67 @@
-.containerMenuNewOrder{
-    width: 90%;
-    display: grid;
-    grid-template-columns: 50% 50%;
-    margin: auto;
-    margin-top: 40px;
+.containerMenuNewOrder {
+  width: 90%;
+  height: 50%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin: auto;
+  margin-top: 40px;
 }
 
 .containerMenu {
-    height: 40vh;
-    width: 50vw;
-    display: flex;
-    flex-direction: column;
-    /* margin-top: 40px;
+  height: 90%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  /* margin-top: 40px;
       margin-left: 50px; */
-  }
-  
-  .buttonCategories {
-    display: flex;
-    height: 10vh;
-    width: 40vw;
-    gap: 10px;
-  }
-  
-  .buttonCategories button {
-    height: 8vh;
-    width: 16vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 5px;
-    border: none;
-    border-radius: 7px;
-    font-family: var(--font-urbanist);
-    font-size: 1rem;
-    color: var(--dark);
-    background-color: var(--yellow);
-  }
-  
-  .buttonCategories button img {
-    height: 30px;
-    width: 30px;
-  }
-  
-  /* .buttonCategories button.red{
+}
+
+.buttonCategories {
+  display: flex;
+  height: 10vh;
+  width: 40vw;
+  gap: 10px;
+}
+
+.buttonCategories button {
+  height: 8vh;
+  width: 16vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5px;
+  border: none;
+  border-radius: 7px;
+  font-family: var(--font-urbanist);
+  font-size: 1rem;
+  color: var(--dark);
+  background-color: var(--yellow);
+}
+
+.buttonCategories button img {
+  height: 30px;
+  width: 30px;
+}
+
+/* .buttonCategories button.red{
       background-color: var(--orange);
       color: var(--white);
   } */
 
-  .buttonCategories button.chooseRed{
-    background-color: var(--orange);
-    color: var(--white);
-  }
-  
-  .containerProducts {
-    height: 50vh;
-    width: 40vw;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 13px;
-  }
-
-.buttonViewOrder{
-    margin-left: 50px;
+.buttonCategories button.chooseRed {
+  background-color: var(--orange);
+  color: var(--white);
 }
 
+.containerProducts {
+  height: 40%;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.buttonViewOrder {
+  margin-left: 50px;
+  margin-top: -60px;
+}
