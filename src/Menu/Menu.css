@@ -120,32 +120,16 @@
     position: relative;
     width: 45px;
     height: 45px;
-    top: 5px;
-    left: 30px;
+    bottom: 7.3vh;
+    right: 3vh;;
 }
 
 .signoMenos{
     position: relative;
     width: 60px;
     height: 60px;
-    bottom: 85px;
-    left: 85px;
-}
-
-.signoMasDos{
-    position: relative;
-    width: 45px;
-    height: 45px;
-    top: 10px;
-    left: 15px;
-}
-
-.signoMenosDos{
-    position: relative;
-    width: 60px;
-    height: 60px;
-    bottom: 80px;
-    left: 60px;
+    left: 3vh;
+    top: 20.9px;
 }
 
 .cantidadProducto{

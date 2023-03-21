@@ -1,6 +1,7 @@
 import { db } from '../Firebase/fb-config'
 import { collection, addDoc } from "firebase/firestore"
 import Swal from "sweetalert2"
+import './Menu.css';
 
 const AddToCart = ({ addOrder, personName, tableSelect }) => {
     const uploadOrder = async () => {
