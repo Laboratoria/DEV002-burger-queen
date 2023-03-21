@@ -1,7 +1,11 @@
 import { useState } from "react";
+import signoMas from "../Imagenes/signoMas.png"
+import signoMenos from "../Imagenes/signoMenos.png"
+import './Menu.css'
 
 const AddProducts = ({ dataProduct, addOrder, setAddOrder }) => {
     const [count, setCount] = useState(0);
+    // console.log(dataProduct, 'addProducts')
 
     const addToCart = (idDataProduct) => {
         /* Devuelve el índice del primer elemento del array que cumpla con el id seleccionado */
@@ -20,4 +24,43 @@ const AddProducts = ({ dataProduct, addOrder, setAddOrder }) => {
             setAddOrder([...addOrder, { ...dataProduct, amount: 1 }])
         }
     }
+
+    const removeToCart = (idDataProduct) => {
+        /* Cuando el valor de amount llegue a 0 se elimina el elemento del array */
+        const indexFound = addOrder.findIndex(item => item.id === idDataProduct)
+        setAddOrder(addOrder.filter(item => item.amount >= 1));
+        if (indexFound !== -1) {
+            const orderFound = addOrder[indexFound];
+            const leftArray = addOrder.slice(0, indexFound);
+            const rightArray = addOrder.slice(indexFound + 1, addOrder.length);
+            if (orderFound.amount >= 1) {
+                setAddOrder([...leftArray, { ...orderFound, amount: orderFound.amount - 1 }, ...rightArray])
+            }
+        }
+    }
+
+    /* Disminuir cantidades en el contador */
+    const subtractCount = () => {
+        if (count > 0) {
+            setCount(count - 1)
+        }
+    }
+    
+    return (
+        <>
+            <section className='sect-btn-amount'>
+                <img src={signoMenos} alt='menos' className="signoMenos" onClick={() => {
+                    removeToCart(dataProduct.id);
+                    subtractCount()
+                }}></img>
+                <p  className="cantidadProd">{count}</p>
+                <img src={signoMas} alt='plus' className="signoMas" onClick={() => {
+                    addToCart(dataProduct.id);
+                    setCount(count + 1)
+                }}></img>
+            </section>
+        </>
+    )
 }
+
+export default AddProducts;

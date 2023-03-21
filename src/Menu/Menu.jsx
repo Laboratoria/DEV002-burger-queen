@@ -1,12 +1,14 @@
 import {useEffect, useState} from "react";
+import AddProducts from "./AddProducts";
+import OrderSummary from "./OrderSummary";
+import AddToCart from "./AddToCart";
 import Logo from "../Imagenes/logoLasaña.png";
-import signoMas from "../Imagenes/signoMas.png"
-import signoMenos from "../Imagenes/signoMenos.png"
 import axios from 'axios';
 import './Menu.css';
 
 const Menu = () => {
     const [data, setData] = useState([]);
+    const [addToOrder, setAddToOrder] = useState([]);
 
     useEffect(() => {
         axios
@@ -33,7 +35,7 @@ const Menu = () => {
                     className='input-name'
                 />
                 <select name='numMesa'className='num-mesa'>
-                    <option disabled selected>MESA</option>
+                    <option disabled value='Mesa'>Mesa</option>
                     <option value='Mesa1'>Mesa 1</option>
                     <option value='Mesa2'>Mesa 2</option>
                     <option value='Mesa3'>Mesa 3</option>
@@ -49,10 +51,12 @@ const Menu = () => {
                     <div className="comidas-div" key={items.id}>
                         <p className="nombreProd">{items.name}</p>
                         <img className="imgLasaña" src={items.img} alt='' />
-                        <img className="signoMas" src={signoMas} alt='' />
-                        <p className="cantidadProd">1</p>
-                        <img className="signoMenos" src={signoMenos} alt='' />  
-                        <p className="precio">{items.price}</p>                      
+                        <AddProducts
+                                        dataProduct={items}
+                                        addOrder={addToOrder}
+                                        setAddOrder={setAddToOrder}
+                                    />         
+                        <p className="precio">${items.price}</p>          
                     </div>
                 ))}
             </section>
@@ -62,14 +66,25 @@ const Menu = () => {
                     <div className="bebidas-div" key={items.id}>
                         <p className="nombreProducto">{items.name}</p>
                         <img className="imgBebidas" src={items.img} alt='' />
-                        <img className="signoMasDos" src={signoMas} alt='' />
-                        <p className="cantidadProducto">1</p>
-                        <img className="signoMenosDos" src={signoMenos} alt='' />
-                        <p className="precioBebidas">{items.price}</p>
+                        <AddProducts
+                                        dataProduct={items}
+                                        addOrder={addToOrder}
+                                        setAddOrder={setAddToOrder}
+                                    />      
+                        <p className="precioBebidas">${items.price}</p>
                     </div>
                 ))}
             </section>
             </section>
+            <div className='order-summary'>
+                    <OrderSummary
+                        addOrder={addToOrder}
+                        setAddOrder={setAddToOrder}
+                    />
+                </div>
+                <AddToCart
+                addOrder={addToOrder}
+                />
             <footer>@2023 - Erika Ríos Suesca</footer>
         </>
     )
