@@ -22,7 +22,11 @@ export const Login = (props) => {
 		try {
 			await signIn(email, password);
 			setUser(true);
-			toNavigate('/menu');
+			if  (email === 'patricio_mozo@restaurant.pe')  {
+				toNavigate('/menu');
+			} else if (email === 'fernando_cheff@restaurant.pe')  {
+				toNavigate('/orders');
+			}
 		} catch (error) {
 			setError(error.message);
 			console.log('setError: ' + error.message);

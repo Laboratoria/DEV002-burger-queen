@@ -15,15 +15,18 @@ const App = () => {
 	const [listProducts, setListProducts] = useState([]);
 	const [orders, setOrders] = useState([]);
 
-	console.log('User: ' + user);
+	//console.log('User: ' + user);
 	//Ejecuta algo ni bien carga el componente
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (user) => {
-			console.log('currentUser: ' + { user });
+			console.log('currentUser: ' + user);
 			if (user) {
 				setUser(true);
 				setUserEmail(user.email);
 				localStorage.setItem('employee', user.email);
+			}
+			else {
+				setUser(null)
 			}
 		});
 		return () => {
@@ -31,18 +34,18 @@ const App = () => {
 		};
 	}, []);
 
-useEffect(() => {
-	const unsubscribe = onGetOrders((query) => {
-		const newOrders = query.docs.map((doc) => ({
-			id: doc.id,
-			...doc.data(),
-		}));
-		setOrders(newOrders);
-	});
-	return () => {
-		unsubscribe();
-	};
-}, []);
+	useEffect(() => {
+		const unsubscribe = onGetOrders((query) => {
+			const newOrders = query.docs.map((doc) => ({
+				id: doc.id,
+				...doc.data(),
+			}));
+			setOrders(newOrders);
+		});
+		return () => {
+			unsubscribe();
+		};
+	}, []);
 
 	if (user === null) {
 		return (
@@ -54,19 +57,32 @@ useEffect(() => {
 	}
 	console.log('Estoy logueada');
 
+	if (userEmail === 'fernando_cheff@restaurant.pe') {
+		return (
+			<Routes>
+				<Route
+					path='/orders'
+					element={
+						<AllOrders
+							userEmail={userEmail}
+							orders={orders}
+							listProducts={listProducts}
+						/>
+					}
+				/>
+			</Routes>
+		);
+	}
 	return (
 		<Routes>
 			<Route
 				path='/menu'
-				element={<Menu userEmail={userEmail} addOrder={addOrder} listProducts={listProducts} setListProducts={setListProducts}/>}
-			/>
-			<Route
-				path='/orders'
 				element={
-					<AllOrders
+					<Menu
 						userEmail={userEmail}
-						orders={orders}
+						addOrder={addOrder}
 						listProducts={listProducts}
+						setListProducts={setListProducts}
 					/>
 				}
 			/>
