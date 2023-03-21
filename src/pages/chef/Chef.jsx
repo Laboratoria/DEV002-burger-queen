@@ -1,7 +1,7 @@
 import Header from "../../components/header/Header";
 import PendingOrder from "../../components/pendingorder/PendingOrder";
 import "./chef.css";
-import { getDocs, orderCollection } from "../../firebase/firebase";
+import { getDocs, orderCollection, updateDoc, doc, db, query, where, orderBy} from "../../firebase/firebase";
 import { useEffect, useState } from "react";
 import ReadyOrder from "../../components/readyOrder/readyOrder";
 
@@ -11,63 +11,92 @@ function Chef() {
   const getOrder = async () => {
     const data = await getDocs(orderCollection);
     //console.log(data.docs);
-
-    setOrder(
-      data.docs.map((doc) =>
-        //console.log(doc.data()),
-
-        ({ ...doc.data(), id: doc.id })
-      )
+    
+    const filterOrderPending = data.docs.filter((doc)=> (doc.data().state === "pending"))
+    setOrder( 
+     
+      filterOrderPending.map((doc) =>
+        //console.log(doc.data())
+        ({ ...doc.data(), id: doc.id }))
+      
     );
-    //console.log(array)
+  
     //console.log(order);
     //const singleOrder = order.map(element => console.log(element))
   };
 
   useEffect(() => {
     getOrder();
+    getOrderReady();
   }, []);
 
-  // cambio de estao de la orden
+  // cambio de estado de la orden
 
-  const [ready, setReady] = useState([]);
-  const copyReady = [...ready];
+const handleStateReady = async (order) => {
+  const newOrder= doc(db, "NewOrder", order.id);
+  const data = {state: "ready"}
+  await updateDoc(newOrder,data)
+}
 
-  const handleOk = (orderU) => {
-    console.log(orderU);
-    //const singleOrder = order.map(element => console.log(element))
-    console.log(ready);
-    const index = copyReady.findIndex((e) => e.id === orderU.id);
-    console.log(index);
-    //setReady(copyReady.concat(order))
-    if (index === -1) {
-      const newOrder = { ...orderU};
-      setReady(copyReady.concat(newOrder));
 
-      order.splice(index, 1);
-      setOrder(order);
 
-    }
+const getOrderReady = async () => {
 
-  };
+  const q = query(orderCollection, orderBy("ready"))
+  //console.log(q)
+  const data = await getDocs(q);
+   //console.log(data.docs);
+  // console.log(order)
+  // setOrder(
+  //   data.docs.map((doc) =>
+  //     //console.log(doc.data())
+
+  //     ({ ...doc.data(), id: doc.id })
+  //   )
+  // );
+};
+
+
+  //------------------------------
+
+  // const [ready, setReady] = useState([]);
+  // const copyReady = [...ready];
+
+  // const handleOk = (orderU) => {
+  //   console.log(orderU);
+  //   //const singleOrder = order.map(element => console.log(element))
+  //   console.log(ready);
+  //   const index = copyReady.findIndex((e) => e.id === orderU.id);
+  //   console.log(index);
+  //   //setReady(copyReady.concat(order))
+  //   if (index === -1) {
+  //     const newOrder = { ...orderU};
+  //     setReady(copyReady.concat(newOrder));
+
+  //     order.splice(index, 1);
+  //     setOrder(order);
+  //   }
+
+  // };
 
   //console.log(ready)
+
   return (
     <>
       <Header></Header>
       <div className="containerPendingReady">
         <section className="orders orderPending">
           <h2>PEDIDOS PENDIENTES</h2>
-          <div>
+          <div className="divOrdersPending">
             {order.map((element) => (
-              <PendingOrder key={element.id} data={element} ready={handleOk} />
+              <PendingOrder key={element.id} data={element} ready={handleStateReady} />
             ))}
           </div>
         </section>
         <section className="orders orderReady">
           <h2>PEDIDOS LISTOS</h2>
           <div>
-            {console.log(ready)}
+            {/* {ready.map(e => console.log(e))} */}
             {/* { ready.map((element)=> (
               <ReadyOrder key={element.id} data={element}/>
             ))} */}

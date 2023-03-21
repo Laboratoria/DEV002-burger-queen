@@ -17,6 +17,11 @@ import {
   getDocs,
   addDoc,
   Timestamp,
+  updateDoc,
+  doc,
+  query,
+  orderBy,
+  where,
 
 } from "firebase/firestore";
 
@@ -40,5 +45,18 @@ const orderCollection = collection(db, "NewOrder");
 //  client, order, time
 // })
 
-
-export { loginUser, logoutUser, orderCollection, Timestamp, addDoc, getDocs, getDoc };
+export {
+  loginUser,
+  logoutUser,
+  orderCollection,
+  Timestamp,
+  addDoc,
+  getDocs,
+  getDoc,
+  updateDoc,
+  doc,
+  db,
+  query,
+  orderBy,
+  where,
+};

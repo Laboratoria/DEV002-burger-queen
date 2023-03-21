@@ -8,7 +8,7 @@ function PendingOrder({ data, ready }) {
   //console.log(prop);
   // const [timer, setTimer] = useState({ s:0, m:0, h:0})
   // console.log(timer)
-  console.log(data);
+  //console.log(data);
   // const updatedS = timer.s
   // function handleClick(){
   //   onClick(data.dta)
@@ -19,7 +19,7 @@ function PendingOrder({ data, ready }) {
       <div className="containerPendingOrder">
         <section className="headerOrderPending">
           <p>{data.client}</p>
-          <Timer />
+          
         </section>
         <section>
           <p>Pedido</p>
@@ -27,7 +27,8 @@ function PendingOrder({ data, ready }) {
             {data.order.map((element) => {
               //console.log(element);
               return (
-                <div key={element.id}>
+                <div key={element.id} >
+                  {/* <Timer /> */}
                   <p>{element.count}</p>
                   <p>{element.name}</p>
                 </div>

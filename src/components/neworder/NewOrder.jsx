@@ -23,6 +23,8 @@ function NewOrder({ array, total, add, subtract, delet }) {
             client: client,
             order: array,
             date: Timestamp.fromDate(new Date()),
+            state: "pending",
+            milisegundos: Date.now()
           });
         } catch (error) {
           console.log(error);

@@ -12,7 +12,7 @@
 
 .orderPending{
     width: 90%;
-
+    
 }
 
 .orderPending h2{
@@ -24,18 +24,27 @@
 
 }
 
+
 .orders div{
     height: 90%;
     display: flex;
     flex-direction: column;
     margin-top: 5px;
     background-color: var(--gray);
-    /* align-items: center; */
+    /* border: 2px solid blue; */
     
+}
+
+.divOrdersPending{
+    border: 2px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .orderReady{
     width: 90%;
+
 }
 
 .orderReady h2{
