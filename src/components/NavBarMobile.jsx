@@ -11,10 +11,10 @@ const NavBarMobile = (toggleMenu, toggleOrders, showMenu) => {
 				<button className='p-2'>
 					<RiAddLine />
 				</button>
-				<button onClick={toggleOrders} className='p-2'>
+				<button onClick={()  =>  toggleOrders()} className='p-2'>
 					<RiPieChartLine />
 				</button>
-				<button onClick={toggleMenu} className='text-white p-2'>
+				<button onClick={()  =>  toggleMenu()} className='text-white p-2'>
 					{showMenu ? <RiCloseLine /> : <RiMenu3Fill />}
 				</button>
 			</nav>

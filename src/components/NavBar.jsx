@@ -55,7 +55,7 @@ const NavBar = (props) => {
 					<li className='hover:bg-secoundary-two p-4 rounded-tl-xl rounded-bl-xl group transition-colors'>
 						<button
 							type='button'
-							onClick={() => handleLogOut()}
+							onClick={handleLogOut}
 							className='p-4 flex justify-center rounded-xl text-secoundary-two group-hover:text-secoundary transition-colors'>
 							<RiLogoutCircleLine className='text-3xl' />
 						</button>
