@@ -10,9 +10,10 @@ const PrintOrder = ({ orders }) => {
 				{/* <p> {order.createdAt.toDate()}</p> */}
 			</div>
 			<ul>
+				<h3> Cantidad | Producto </h3>
 				{order?.products.map((item) => (
 					<li key={item.id}>
-						{item.price}: {item.name}
+						{item.amount} - {item.name}
 					</li>
 				))}
 			</ul>
