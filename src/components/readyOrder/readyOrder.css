@@ -1,3 +1,11 @@
 .containerReadyOrder{
     color: var(--dark);
 }
+
+.buttonOkReady{
+    display: none;
+}
+
+.buttonOkReady-Attention{
+    display: block;
+}

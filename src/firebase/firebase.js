@@ -22,6 +22,7 @@ import {
   query,
   orderBy,
   where,
+  onSnapshot
 
 } from "firebase/firestore";
 
@@ -59,4 +60,5 @@ export {
   query,
   orderBy,
   where,
+  onSnapshot
 };

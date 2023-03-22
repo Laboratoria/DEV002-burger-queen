@@ -1,35 +1,35 @@
 import "./readyOrder.css";
-import { getDocs, orderCollection, updateDoc, doc, db, query, orderBy,where } from "../../firebase/firebase";
+import {
+  getDocs,
+  orderCollection,
+  updateDoc,
+  doc,
+  db,
+  query,
+  orderBy,
+  where,
+  onSnapshot,
+} from "../../firebase/firebase";
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
+function ReadyOrder({ data, delivery }) {
+  //console.log(data);
+  const location = useLocation();
+  //console.log(location.pathname);
+  // const [order, setOrder] = useState([]);
 
-function ReadyOrder({ data }) {
-  console.log(data);
-  const [order, setOrder] = useState([]);
+  // useEffect(()=>{
+  //   const order = query(orderCollection, orderBy("date","asc"))
+  //   console.log(order)
+  //   onSnapshot(order, (snapshot)=>{
+  //         const docFilter = snapshot.docs.filter((doc)=> (doc.data().state === "ready"))
+  //         console.log(docFilter)
+  //         setOrder(docFilter.map((doc)=> ({...doc.data(), id: doc.id})))
+  //   })
+  // },[])
 
-  const getOrderReady = async () => {
-
-    const q = await query(orderCollection, where("state", "=", "ready"))
-    console.log(q)
-    const data = await getDocs(orderCollection);
-    console.log(data.docs);
-    console.log(order)
-    setOrder(
-      data.docs.map((doc) =>
-        //console.log(doc.data())
-
-        ({ ...doc.data(), id: doc.id })
-      )
-    );
-  
-    //console.log(order);
-    //const singleOrder = order.map(element => console.log(element))
-  };
-
-  useEffect(() => {
-    getOrderReady();
-  }, []);
-
+  // const docOrder = order.map(element => console.log(element.data()))
 
   return (
     <>
@@ -53,6 +53,16 @@ function ReadyOrder({ data }) {
         </section>
         <section className="containerTimerButton">
           <p>{data.date.toDate().toLocaleDateString()}</p>
+          <button
+            className={
+              location.pathname === "/chef"
+                ? "buttonOkReady"
+                : "buttonOkReady-Attention"
+            }
+            onClick={() => delivery(data)}
+          >
+            OK
+          </button>
         </section>
       </div>
     </>

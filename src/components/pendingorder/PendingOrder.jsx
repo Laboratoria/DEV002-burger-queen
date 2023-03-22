@@ -19,7 +19,6 @@ function PendingOrder({ data, ready }) {
       <div className="containerPendingOrder">
         <section className="headerOrderPending">
           <p>{data.client}</p>
-          
         </section>
         <section>
           <p>Pedido</p>

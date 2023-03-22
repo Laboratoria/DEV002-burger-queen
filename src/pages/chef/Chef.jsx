@@ -4,35 +4,61 @@ import "./chef.css";
 import { getDocs, orderCollection, updateDoc, doc, db, query, where, orderBy} from "../../firebase/firebase";
 import { useEffect, useState } from "react";
 import ReadyOrder from "../../components/readyOrder/readyOrder";
+import { onSnapshot } from "firebase/firestore";
 
 function Chef() {
   const [order, setOrder] = useState([]);
 
-  const getOrder = async () => {
-    const data = await getDocs(orderCollection);
-    //console.log(data.docs);
-    
-    const filterOrderPending = data.docs.filter((doc)=> (doc.data().state === "pending"))
-    setOrder( 
-     
-      filterOrderPending.map((doc) =>
-        //console.log(doc.data())
-        ({ ...doc.data(), id: doc.id }))
-      
-    );
-  
-    //console.log(order);
-    //const singleOrder = order.map(element => console.log(element))
-  };
+  useEffect(()=>{
+    const orderData = query(orderCollection, orderBy("date","asc"))
+    //console.log(orderData)
+    onSnapshot(orderData, (snapshot)=>{
+          const docFilter = snapshot.docs.filter((doc)=> (doc.data().state === "pending"))
+          //console.log(docFilter)
+          setOrder(docFilter.map((doc)=> ({...doc.data(), id: doc.id})))
+    })
+  },[])
 
-  useEffect(() => {
-    getOrder();
-    getOrderReady();
-  }, []);
+  //console.log(order)
+
+  const [orderReady, setOrderReady] = useState([]);
+
+  useEffect(()=>{
+    const orderData = query(orderCollection, orderBy("date","desc"))
+    //console.log(orderData)
+    onSnapshot(orderData, (snapshot)=>{
+          const docFilter = snapshot.docs.filter((doc)=> (doc.data().state === "ready"))
+          //console.log(docFilter)
+          setOrderReady(docFilter.map((doc)=> ({...doc.data(), id: doc.id})))
+    })
+  },[])
+
+  // const getOrder = async () => {
+  //   const data = await getDocs(orderCollection);
+  //   //console.log(data.docs);
+    
+  //   const filterOrderPending = data.docs.filter((doc)=> (doc.data().state === "pending"))
+  //   setOrder( 
+     
+  //     filterOrderPending.map((doc) =>
+  //       //console.log(doc.data())
+  //       ({ ...doc.data(), id: doc.id }))
+      
+  //   );
+  
+  //   //console.log(order);
+  //   //const singleOrder = order.map(element => console.log(element))
+  // };
+
+  // useEffect(() => {
+  //   //getOrder();
+  //   getOrderReady();
+  // }, []);
 
   // cambio de estado de la orden
 
 const handleStateReady = async (order) => {
+  console.log(order)
   const newOrder= doc(db, "NewOrder", order.id);
   const data = {state: "ready"}
   await updateDoc(newOrder,data)
@@ -97,9 +123,9 @@ const getOrderReady = async () => {
           <h2>PEDIDOS LISTOS</h2>
           <div>
             {/* {ready.map(e => console.log(e))} */}
-            {/* { ready.map((element)=> (
+            { orderReady.map((element)=> (
               <ReadyOrder key={element.id} data={element}/>
-            ))} */}
+            ))}
           </div>
         </section>
       </div>
