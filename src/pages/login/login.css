@@ -1,0 +1,49 @@
+.containerLogin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--white);
+    font-family: var(--font-urbanist);
+    margin-top: 100px;
+    gap: 15px;
+}
+
+.containerLogin p{
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+.logoLogin{
+    height: 300px;
+    width: 300px;
+}
+
+.formLogin{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--white);
+    font-family: var(--font-urbanist);
+    gap: 10px;
+}
+
+.formLogin input{
+    background-color: #fff;
+    border: none;
+    width: 310px;
+    height: 40px;
+    text-align: center;
+    font-size: 1rem;
+    
+}
+
+.formLogin input::placeholder{
+    font-family: var(--font-urbanist);
+    text-align: center;
+    color: #A09E9E;
+}
+
+.message{
+    color: var(--orange);
+}

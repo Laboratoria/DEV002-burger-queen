@@ -1,0 +1,58 @@
+{
+  "menu": {
+    "hamburguesas": [
+      {
+        "id": "01",
+        "name": "Hamburguesa de carne ",
+        "cost": 15
+      },
+      {
+        "id": "02",
+        "name": "Hamburguesa de pollo ",
+        "cost": 15
+      },
+      {
+        "id": "03",
+        "name": "Hamburguesa vegetariana ",
+        "cost": 15
+      },
+      {
+        "id": "04",
+        "name": "Hamburguesa mixta ",
+        "cost": 20
+      },
+      {
+        "id": "05",
+        "name": "papas fritas",
+        "cost": 10
+      }
+    ],
+    "bebidas": [
+      {
+        "id": "06",
+        "name": "Café americano ",
+        "cost": 5
+      },
+      {
+        "id": "07",
+        "name": "Gaseosa 1L",
+        "cost": 15
+      },
+      {
+        "id": "08",
+        "name": "Gaseosa 500 ml",
+        "cost": 10
+      },
+      {
+        "id": "09",
+        "name": "Agua mineral 1L",
+        "cost": 15
+      },
+      {
+        "id": "10",
+        "name": "Agua mineral 500 ml",
+        "cost": 10
+      }
+    ]
+  }
+}

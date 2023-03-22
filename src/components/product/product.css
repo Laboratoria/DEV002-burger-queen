@@ -1,0 +1,9 @@
+.containerProduct {
+  color: var(--white);
+  height: 70px;
+  width: 165px;
+  border: none;
+  font-family: var(--font-urbanist);
+  background-color: var(--green);
+  font-size: 1rem;
+}
