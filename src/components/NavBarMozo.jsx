@@ -5,7 +5,7 @@ import { RiLogoutCircleLine } from 'react-icons/ri';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { BsClipboard2Plus } from 'react-icons/bs';
 
-const NavBar = (props) => {
+const NavBarMozo = (props) => {
 	const { showMenu } = props;
 	const toNavigate = useNavigate();
 
@@ -29,7 +29,7 @@ const NavBar = (props) => {
 					</li>
 					<li className='hover:bg-secoundary-two p-4 rounded-tl-xl rounded-bl-xl group transition-colors'>
 						<Link
-							to='/waiterorders'
+							to='/orders'
 							className='p-4 flex justify-center rounded-xl text-secoundary-two group-hover:text-secoundary transition-colors'>
 							<AiOutlineShoppingCart className='text-3xl' />
 						</Link>
@@ -66,4 +66,4 @@ const NavBar = (props) => {
 	);
 };
 
-export { NavBar };
+export { NavBarMozo };

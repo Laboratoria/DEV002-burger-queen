@@ -1,16 +1,16 @@
 import { BsCalendarCheck } from 'react-icons/bs';
 import { RxTimer } from 'react-icons/rx';
 import { updateOrderStatus } from '/src/firestore/firestore-funct.js';
-const PrintOrder = ({ orders }) => {
+const PrintOrderMozo = ({ orders }) => {
 	// orders.forEach(element => {
 	// 	console.log(element);
 	// 	console.log(element.createdAt.toDate());
 	// });
 	const changeOrderStatus = async (order) => {
-		const newOrderStatus = (order.status = 'Enviado');
+		const newOrderStatus = (order.status = 'Entregado');
 		await updateOrderStatus(order.id, { status: newOrderStatus });
 	};
-	
+
 	return (
 		<div className='lg:p-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 bg-secoundary-two'>
 			{orders.map((order) => (
@@ -60,7 +60,7 @@ const PrintOrder = ({ orders }) => {
 						<div className='flex flex-col content-end justify-end mt-10'>
 							<button
 								type='button'
-								onClick={()       =>       changeOrderStatus(order)}
+								onClick={() => changeOrderStatus(order)}
 								className='bg-main text-secoundary-one font-bold rounded-lg p-4 cursor-pointer hover:bg-secoundary-one hover:text-main-text'>
 								<span>{order.status}</span>
 							</button>
@@ -72,4 +72,4 @@ const PrintOrder = ({ orders }) => {
 	);
 };
 
-export { PrintOrder };
+export { PrintOrderMozo };

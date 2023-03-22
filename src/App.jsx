@@ -4,6 +4,7 @@ import { Inicio } from '/src/pages/Inicio';
 import { Login } from '/src/pages/Login';
 import { Menu } from '/src/pages/Menu';
 import { AllOrders } from '/src/pages/AllOrders.jsx';
+import { ReadyOrders } from '/src/pages/ReadyOrders.jsx';
 import { useState, useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '/src/firebase/firebase-init.js';
@@ -15,7 +16,7 @@ const App = () => {
 	const [listProducts, setListProducts] = useState([]);
 	const [orders, setOrders] = useState([]);
 
-	//console.log('User: ' + user);
+	console.log('User: ' + userEmail);
 	//Ejecuta algo ni bien carga el componente
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -24,9 +25,8 @@ const App = () => {
 				setUser(true);
 				setUserEmail(user.email);
 				localStorage.setItem('employee', user.email);
-			}
-			else {
-				setUser(null)
+			} else {
+				setUser(null);
 			}
 		});
 		return () => {
@@ -47,47 +47,45 @@ const App = () => {
 		};
 	}, []);
 
-	if (user === null) {
-		return (
-			<Routes>
-				<Route path='/' element={<Inicio />} />
-				<Route path='/login' element={<Login setUser={setUser} />} />
-			</Routes>
-		);
-	}
-	console.log('Estoy logueada');
-
-	if (userEmail === 'fernando_cheff@restaurant.pe') {
-		return (
-			<Routes>
-				<Route
-					path='/orders'
-					element={
-						<AllOrders
-							userEmail={userEmail}
-							orders={orders}
-							listProducts={listProducts}
-						/>
-					}
-				/>
-			</Routes>
-		);
-	}
 	return (
 		<Routes>
-			<Route
-				path='/menu'
-				element={
-					<Menu
-						userEmail={userEmail}
-						addOrder={addOrder}
-						listProducts={listProducts}
-						setListProducts={setListProducts}
-					/>
-				}
-			/>
+			{(userEmail === 'patricio_mozo@restaurant.pe') && (
+				<>
+				<Route path="/menu" element={
+											<Menu
+												userEmail={userEmail}
+												addOrder={addOrder}
+												listProducts={listProducts}
+												setListProducts={setListProducts}/>} /> 
+				<Route path='/waiterorders' element={<ReadyOrders userEmail={userEmail}
+													orders={orders}
+													listProducts={listProducts}/>} />
+			 </>
+			)}
+			{(userEmail === 'fernando_cheff@restaurant.pe') && (
+				<>
+				<Route path="/orders"
+											element={
+												<AllOrders
+													userEmail={userEmail}
+													orders={orders}
+													listProducts={listProducts}
+												/>} /> 
+			 </>
+			)}
+			{!user && (
+				<>
+				<Route path='/' element={<Inicio />} />
+				<Route path='/login' element={<Login setUser={setUser} />} />
+				</>
+			)}
+			<>
+			<Route path='/*' element={<Inicio />} />
+			<Route path='/login' element={<Login setUser={setUser} />} />
+			</>
 		</Routes>
-	);
+	)
+
 };
 
-export { App };
+export { App }
