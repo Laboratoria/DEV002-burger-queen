@@ -1,9 +1,4 @@
-*{
-    margin: 0;
-    padding: 0;
-}
-
-.Menu{
+.Menu {
     height: 7vh;
     display: flex;
     background-color: #825F45;
@@ -11,14 +6,15 @@
     line-height: 1.5em;
 }
 
-.logoLasañaMenu{
+.logoLasañaMenu {
     position: relative;
     width: 100px;
     height: 100px;
     bottom: 4px;
 }
 
-.opcionInicio, .opcionPedidos{
+.opcionInicio,
+.opcionPedidos {
     padding: 40px;
     display: flex;
     position: relative;
@@ -30,27 +26,191 @@
     text-decoration: none;
 }
 
-.sect-input{
+.sect-input {
     display: flex;
-    height: 91vh;
     background-color: #797D62;
     justify-content: space-around;
 }
 
-.input-name{
+.input-name {
     margin-top: 4vh;
     width: 39vh;
     height: 4vh;
-    border-radius: 10px 10px 10px 10px;
+    border-radius: 10px;
+    border: none;
     text-align: center;
     font-weight: bold;
 }
 
-.num-mesa{
+.containerMenu {
+    background-color: #797D62;
+    height: 140vh;
+}
+
+.num-mesa {
     margin-top: 4vh;
     width: 10vh;
     height: 4vh;
-    border-radius: 10px 10px 10px 10px;
+    border-radius: 10px;
+    border: none;
     text-align: center;
     font-weight: 500;
+}
+
+.menuPrincipal,
+.bebidas {
+    display: flex;
+    padding-left: 18vh;
+    padding-top: 2vh;
+    color: white;
+    font-family: 'Piazzolla', serif;
+    font-size: 27px;
+    font-weight: bolder;
+}
+
+.nombreProd {
+    position: relative;
+    margin-top: 20px;
+}
+
+.nombreProducto {
+    position: relative;
+    margin-top: 20px;
+}
+
+
+.container-comidas {
+    padding: 2%;
+    display: flex;
+    width: 55%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: 'Piazzolla', serif;
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+.container-bebidas {
+    padding: 2%;
+    display: flex;
+    width: 58%;
+    justify-content: center;
+    font-family: 'Piazzolla', serif;
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+.comidas-div,
+.bebidas-div {
+    display: flex;
+    border: 2px solid #825F45;
+    border-radius: 15px;
+    margin-right: 15px;
+    width: 40%;
+    text-align: center;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.imgBebidas {
+    margin-top: 20px;
+    width: 120px;
+    height: 120px;
+}
+
+.signoMas {
+    position: relative;
+    width: 45px;
+    height: 45px;
+    bottom: 7.3vh;
+    right: 3vh;
+    ;
+}
+
+.signoMenos {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    left: 3vh;
+    top: 20.9px;
+}
+
+.cantidadProducto {
+    position: relative;
+    bottom: 37px;
+}
+
+.precio,
+.precioBebidas {
+    position: relative;
+    bottom: 70px;
+}
+
+;
+
+.cancelar {
+    position: relative;
+}
+
+.order-summary {
+    position: absolute;
+    bottom: 32vh;
+    border-radius: 10px;
+    width: 31.5vh;
+    left: 42vh;
+    height: 45vh;
+    border: 3px solid #825F45;
+}
+
+.total-order-price {
+    text-align: right;
+    margin-right: 15px;
+    color: white;
+    font-family: 'Piazzolla', serif;
+    font-style: normal;
+    line-height: 28px;
+    font-size: 18px;
+    font-weight: 100;
+}
+
+.res-ped {
+    color: white;
+    font-family: 'Piazzolla', serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    text-align: center;
+    margin-top: 1vh;
+}
+
+.product-summary {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px;
+}
+
+.delete-order, .btn-save-order{
+    position: relative;
+    top: 34vh;
+    left: 8vh;
+    width: 14vh;
+    height: 4vh;
+    background: #997B66;
+    color: white;
+    border-radius: 15px;
+    border: none;
+    font-family: 'Piazzolla', serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    text-align: center; 
+}
+
+.btn-save-order{
+    width: 30vh;
+    height: 5vh;
+    left: 21vh;
+    top: 1vh;
 }
