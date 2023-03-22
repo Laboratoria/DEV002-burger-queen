@@ -44,7 +44,7 @@
 
 .containerMenu {
     background-color: #797D62;
-    height: 140vh;
+    height: 113vh;
 }
 
 .num-mesa {
@@ -123,28 +123,27 @@
     position: relative;
     width: 45px;
     height: 45px;
-    bottom: 7.3vh;
-    right: 3vh;
-    ;
+    bottom: 2.1vh;
+    right: 5.5vh;
 }
 
 .signoMenos {
     position: relative;
     width: 60px;
     height: 60px;
-    left: 3vh;
-    top: 20.9px;
+    left: 6vh;
+    bottom: 14px;
 }
 
 .cantidadProducto {
     position: relative;
-    bottom: 37px;
+    bottom: 36px;;
 }
 
 .precio,
 .precioBebidas {
     position: relative;
-    bottom: 70px;
+    bottom: 30px;
 }
 
 ;

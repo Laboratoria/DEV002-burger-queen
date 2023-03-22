@@ -21,8 +21,8 @@ const OrderSummary = ({ addOrder, setAddOrder }) => {
             title: '¿Estás seguro de eliminar el pedido?',
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
+            confirmButtonColor: '#825F45',
+            cancelButtonColor: '#797D62',
             confirmButtonText: 'Eliminar'
         }).then((result) => {
             if (result.isConfirmed) {
