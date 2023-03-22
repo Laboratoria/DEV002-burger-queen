@@ -3,10 +3,10 @@ import { collection, addDoc } from "firebase/firestore"
 import Swal from "sweetalert2"
 import './Menu.css';
 
-const AddToCart = ({ addOrder, personName, tableSelect }) => {
+const AddToCart = ({ addOrder}) => {
     const uploadOrder = async () => {
        await addDoc(collection(db, "pedidos"),
-            { ...addOrder, personName, tableSelect, state: 'Enviar a cocina', date: new Date() }
+            { ...addOrder, state: 'Enviar a cocina', date: new Date() }
         )
     }
 
@@ -14,12 +14,7 @@ const createOrder = () => {
     uploadOrder();
 }
 const validateInputName = () => {
-    if (personName === '' || tableSelect === 'Mesa') {
-        Swal.fire({
-            title: '<strong>Por favor rellena todos los campos</strong>',
-            icon: 'info'
-        })
-    } else if (addOrder.length === 0) {
+   if (addOrder.length === 0) {
         Swal.fire({
             title: '<strong>Por favor agrega un producto</strong>',
             icon: 'error'
@@ -39,7 +34,7 @@ return (
                     validateInputName()
                 }}
             >
-                Enviar a cocina
+                ENVIAR A COCINA
             </button>
         </section>
     </>

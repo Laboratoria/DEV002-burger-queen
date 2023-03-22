@@ -34,9 +34,9 @@ const OrderSummary = ({ addOrder, setAddOrder }) => {
     return (
         <>
             <section>
-                <h3>Resumen de pedido</h3>
+                <h3 className="res-ped">RESUMEN DE PEDIDO</h3>
                 <section className='delete-order'>
-                    <p onClick={deleteOrder}>Cancelar</p>
+                    <p onClick={deleteOrder}>CANCELAR</p>
                 </section>
                 {addOrder.map(product =>
                     <div key={product.id} >

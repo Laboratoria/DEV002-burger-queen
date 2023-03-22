@@ -53,7 +53,7 @@ const AddProducts = ({ dataProduct, addOrder, setAddOrder }) => {
                     removeToCart(dataProduct.id);
                     subtractCount()
                 }}></img>
-                <p>{count}</p>
+                <p className="cantidadProducto">{count}</p>
                 <img src={signoMas} alt='mas' className="signoMas" onClick={() => {
                     addToCart(dataProduct.id);
                     setCount(count + 1)

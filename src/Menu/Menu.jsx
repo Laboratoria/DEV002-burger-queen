@@ -75,7 +75,6 @@ const Menu = () => {
                     </div>
                 ))}
             </section>
-            </section>
             <div className='order-summary'>
                     <OrderSummary
                         addOrder={addToOrder}
@@ -85,6 +84,8 @@ const Menu = () => {
                 <AddToCart
                 addOrder={addToOrder}
                 />
+            </section>
+
             <footer>@2023 - Erika Ríos Suesca</footer>
         </>
     )
