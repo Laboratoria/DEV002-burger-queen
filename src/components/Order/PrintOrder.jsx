@@ -1,41 +1,52 @@
-import {useState} from 'react'
-// import {format} from 'date-fns'
 import { BsCalendarCheck } from 'react-icons/bs';
-import {RxTimer} from 'react-icons/rx'
+import { RxTimer } from 'react-icons/rx';
 
 const PrintOrder = ({ orders }) => {
 	// orders.forEach(element => {
 	// 	console.log(element);
 	// 	console.log(element.createdAt.toDate());
 	// });
-	return orders.map((order) => (
+	return(
+	<div className='lg:p-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 bg-secoundary-two'>
+	{orders.map((order) => (
 		<div
-			key={order.id}
-			className='bg-white border border-main rounded-md shadow-md p-4'>
-			<div className='bg-secoundary-one/50'>
-				<h2>Cliente: {order.client}</h2>
+			key={order.id} className='flex flex-col bg-white rounded-lg shadow-md overflow-hidden'
+			>
+			<div className='py-2 px-4 font-semibold text-main bg-secoundary-one'>
+				Cliente: {order.client}
 			</div>
-			<div className='bg-secoundary-one/50'>
-				<span className='flex flex-row items-center justify-start'> 
-					<BsCalendarCheck/>
-					<p className='ml-2'>{order.createdAt.toDate().toLocaleDateString()}</p>
+			<div className='flex flex-wrap items-center justify-center py-2 px-4 font-medium text-main bg-secoundary-two'>
+				<span className= 'flex items-center'>
+					<BsCalendarCheck />
+					<p className= 'flex items-center'>{order.createdAt.toDate().toLocaleDateString()}</p>
 				</span>
-				<span className='flex flex-row items-center justify-start'>
-				<RxTimer/>
-				<p className='ml-2'>{order.createdAt.toDate().toLocaleTimeString()}</p>
+				<span className= 'flex items-center'>
+					<RxTimer />
+					<p className= 'flex items-center'>{order.createdAt.toDate().toLocaleTimeString()}</p>
 				</span>
-				<p>Status: {order.status}</p>
+				<span>Status: {order.status}</span>
 			</div>
-			<ul>
-				<h3> Cantidad | Producto </h3>
-				{order?.products.map((item) => (
-					<li key={item.id}>
-						{item.amount} - {item.name}
-					</li>
-				))}
-			</ul>
+			<div className='w-full overflow-x-auto flex-grow'>
+				<table className='w-full table-fixed'>
+					<thead>
+						<tr className='bg-gray-200 text-main-text font-medium border-dotted border-b-4 border-main/60'>
+						<th className='w=1/2 px-4 py-2'>Cantidad</th>
+						<th className='w=1/2 px-4 py-2'>Producto</th>
+						</tr>
+					</thead>
+				<tbody className='text-center'>
+					{order?.products.map((item, index) => (
+						<tr key={index} className={`${index % 2 === 0 } border-solid border-b-2 border-secoundary-one text-main-text font-medium`}>
+							<td className='w=1/2 px-4 py-2'>{item.amount}</td>
+							<td className='w=1/2 px-4 py-2'>{item.name}</td>
+						</tr>
+					))}
+				</tbody>
+				</table>
+			</div>
 		</div>
-	));
+	))}
+	</div>)
 };
 
 export { PrintOrder };
