@@ -28,7 +28,10 @@ const AllOrders = ({ userEmail, orders, listProducts }) => {
 			/>
 			<main className='pt-10'>
 				<div className='lg:pl-28'>
-					<PrintOrder orders={orders} listProducts={listProducts} />
+					<PrintOrder
+						orders={orders.filter((order) => order.status === 'Pendiente')}
+						listProducts={listProducts}
+					/>
 				</div>
 			</main>
 		</div>

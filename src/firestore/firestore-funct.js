@@ -1,9 +1,12 @@
 import {
+	db,
 	addDoc,
 	serverTimestamp,
 	ordersCollection,
 	onSnapshot,
 	q,
+	updateDoc,
+	doc,
 } from '/src/firestore/firestore-init';
 
 export const addOrder = async (client, products, total) => {
@@ -25,5 +28,11 @@ export const addOrder = async (client, products, total) => {
 };
 
 export const onGetOrders = (callback) => onSnapshot(q, callback);
+
+// export const editOrderStatus = (id, newOrderStatus) =>
+// 	updateDoc(doc(db, 'orders', id), newOrderStatus);
+
+export const updateOrderStatus = async (id, newOrderStatus) =>
+	await updateDoc(doc(db, 'orders', id), newOrderStatus);
 
 
