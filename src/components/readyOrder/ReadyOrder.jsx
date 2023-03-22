@@ -35,10 +35,10 @@ function ReadyOrder({ data, delivery }) {
     <>
       <div className="containerReadyOrder">
         <section className="headerOrderReady">
-          <p>{data.client}</p>
+          <p>CLIENTE : {data.client}</p>
         </section>
         <section>
-          <p>Pedido</p>
+          <p>PEDIDO:</p>
           <div>
             {data.order.map((element) => {
               //console.log(element);

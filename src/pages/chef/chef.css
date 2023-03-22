@@ -24,27 +24,19 @@
 
 }
 
-
-.orders div{
+.divOrdersPending, .divOrdersReady{
+    display: flex;
+    align-items: center;
     height: 90%;
     display: flex;
     flex-direction: column;
     margin-top: 5px;
     background-color: var(--gray);
-    /* border: 2px solid blue; */
-    
-}
-
-.divOrdersPending{
-    border: 2px solid red;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* border: 2px solid red; */
 }
 
 .orderReady{
     width: 90%;
-
 }
 
 .orderReady h2{

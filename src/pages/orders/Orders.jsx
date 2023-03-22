@@ -58,7 +58,7 @@ function Orders() {
       <div className="orderReadyGiven">
         <section className="orders orderReadyOrder">
           <h2>PEDIDOS LISTOS</h2>
-          <div>
+          <div className="divOrdersReady">
             {orderReady.map((element) => (
               <ReadyOrder
                 key={element.id}
@@ -70,7 +70,7 @@ function Orders() {
         </section>
         <section className="orders orderGiven">
           <h2>PEDIDOS ENTREGADOS</h2>
-          <div>
+          <div className="divOrdersGiven">
             <div>
               {orderDelivery.map((element) => (
                 <DeliveryOrder key={element.id} data={element} />

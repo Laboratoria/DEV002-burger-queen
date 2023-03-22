@@ -121,7 +121,7 @@ const getOrderReady = async () => {
         </section>
         <section className="orders orderReady">
           <h2>PEDIDOS LISTOS</h2>
-          <div>
+          <div className="divOrdersReady">
             {/* {ready.map(e => console.log(e))} */}
             { orderReady.map((element)=> (
               <ReadyOrder key={element.id} data={element}/>

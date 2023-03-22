@@ -1,14 +1,16 @@
+import "./deliveryOrder.css"
+
 function DeliveryOrder({ data }) {
   //console.log(data);
 
   return (
     <>
-      <div className="containerReadyOrder">
-        <section className="headerOrderReady">
-          <p>{data.client}</p>
-        </section>
+      <div className="containerdeliveryOrder">
         <section>
-          <p>Pedido</p>
+          <p>CLIENTE : {data.client}</p>
+        </section>
+        <section className="divPedido">
+          <p>PEDIDO :</p>
           <div>
             {data.order.map((element) => {
               //console.log(element);

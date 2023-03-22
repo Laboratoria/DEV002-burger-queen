@@ -18,17 +18,17 @@ function PendingOrder({ data, ready }) {
     <>
       <div className="containerPendingOrder">
         <section className="headerOrderPending">
-          <p>{data.client}</p>
+          <p>CLIENTE : {data.client}</p>
         </section>
-        <section>
-          <p>Pedido</p>
-          <div>
+        <section className="divPedido">
+          <p>PEDIDO:</p>
+          <div className="divOrder">
             {data.order.map((element) => {
               //console.log(element);
               return (
-                <div key={element.id} >
+                <div key={element.id} className="divOrders">
                   {/* <Timer /> */}
-                  <p>{element.count}</p>
+                  <p>{element.count}</p> 
                   <p>{element.name}</p>
                 </div>
               );
