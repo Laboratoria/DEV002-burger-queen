@@ -3,7 +3,7 @@ import PendingOrder from "../../components/pendingorder/PendingOrder";
 import "./chef.css";
 import { getDocs, orderCollection, updateDoc, doc, db, query, where, orderBy} from "../../firebase/firebase";
 import { useEffect, useState } from "react";
-import ReadyOrder from "../../components/readyOrder/readyOrder";
+import ReadyOrder from "../../components/readyOrder/ReadyOrder";
 import { onSnapshot } from "firebase/firestore";
 
 function Chef() {
