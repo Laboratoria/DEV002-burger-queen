@@ -8,8 +8,9 @@ import Product from "../../components/product/Product.jsx";
 import imghamburguesa from "../../assets/hamburguesa.png";
 import imgbebida from "../../assets/bebida.png";
 import products from "../../../menu.json";
+import imghome from "../../assets/homeY.png"
 
-function Attention() {
+function Attention({user}) {
   const navigate = useNavigate();
 
   // ------------categoria elegida
@@ -85,7 +86,7 @@ function Attention() {
 
   return (
     <>
-      <Header />
+      <Header user={user}/>
       <div className="containerMenuNewOrder">
         <div className="containerMenu">
           <div className="buttonCategories">
@@ -135,6 +136,7 @@ function Attention() {
           }}
         />
       </div>
+      <img src={imghome} alt="home" className="imgHome" onClick={()=> navigate("/home")}/>
     </>
   );
 }

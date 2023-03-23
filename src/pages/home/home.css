@@ -1,0 +1,29 @@
+.containerBtnAtentionChef{
+    height: 40vh;
+    width: 60vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0 auto;
+    margin-top: 150px;
+    
+}
+
+.btnAttention, .btnChef{
+    height: 100px;
+    width: 200px;
+    border: none;
+    border-radius: 10px;
+    font-family: var(--font-urbanist);
+    color: var(--white);
+    font-size: 1.3rem;
+}
+
+.btnAttention{
+    background-color: var(--orange);
+}
+
+.btnChef{
+    background-color: var(--green);
+}
+

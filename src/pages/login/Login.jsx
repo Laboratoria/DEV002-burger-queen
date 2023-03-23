@@ -7,6 +7,7 @@ import Button from "../../components/button/Button";
 
 function Login() {
   //const [credential, setCredential] = useState(false);
+  
   const navigate = useNavigate();
 
   async function handleSubmit(e) {
@@ -25,7 +26,7 @@ function Login() {
       try {
         const user = await loginUser(email, password);
         console.log(user);
-        navigate("/attention");
+        navigate("/home");
         // setCredentials({ email: '', password: '' });
       } catch (error) {
         console.error(error.message);

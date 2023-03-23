@@ -18,3 +18,7 @@
     height: 50px;
     width: 50px;
 }
+
+.userConect{
+    color: var(--yellow)
+}
