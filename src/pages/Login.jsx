@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signIn } from '/src/firebase/auth.js';
-import { Errors } from '/src/pages/Errors.jsx';
 
 //Componente
 export const Login = (props) => {
@@ -23,7 +22,7 @@ export const Login = (props) => {
 			await signIn(email, password);
 			setUser(true);
 			if  (email === 'patricio_mozo@restaurant.pe')  {
-				toNavigate('/menu');
+				toNavigate('/menus');
 			} else if (email === 'fernando_cheff@restaurant.pe')  {
 				toNavigate('/orders');
 			}

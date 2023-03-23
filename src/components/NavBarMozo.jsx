@@ -43,7 +43,7 @@ const NavBarMozo = (props) => {
 					</li>
 					<li className='hover:bg-secoundary-two p-4 rounded-tl-xl rounded-bl-xl group transition-colors'>
 						<Link
-							to='/menu'
+							to='/menus'
 							className='p-4 flex justify-center rounded-xl text-secoundary-two group-hover:text-secoundary transition-colors'>
 							<BsClipboard2Plus className='text-3xl' />
 						</Link>

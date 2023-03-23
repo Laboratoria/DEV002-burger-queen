@@ -7,8 +7,11 @@ const PrintOrder = ({ orders }) => {
 	// 	console.log(element.createdAt.toDate());
 	// });
 	const changeOrderStatus = async (order) => {
-		const newOrderStatus = (order.status = 'Enviado');
-		await updateOrderStatus(order.id, { status: newOrderStatus });
+		const newOrderStatus = (order.status = 'Preparado');
+		await updateOrderStatus(order.id, {
+			status: newOrderStatus,
+			deliveringAt: new Date(),
+		});
 	};
 	
 	return (

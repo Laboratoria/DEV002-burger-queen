@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 import { logOut } from '/src/firebase/auth.js';
 import { useNavigate } from 'react-router-dom';
 import { RiLogoutCircleLine } from 'react-icons/ri';
-import { AiOutlineShoppingCart } from 'react-icons/ai';
-import { BsClipboard2Plus } from 'react-icons/bs';
+import { BsCheckCircle, BsDashCircle, BsStopwatch } from 'react-icons/bs';
+import { GoHome } from 'react-icons/go';
 
-const NavBar = (props) => {
+const NavBarWaiter = (props) => {
 	const { showMenu } = props;
 	const toNavigate = useNavigate();
 
@@ -24,28 +24,32 @@ const NavBar = (props) => {
 			}`}>
 			<div>
 				<ul className='pl-4'>
-					<li>
-						<h1 className='text-2xl text-gray-300 uppercase font-bold text-center my-5'></h1>
+					<li className='hover:bg-secoundary-two active:bg-secoundary-two focus-ring p-4 mt-16 rounded-tl-xl rounded-bl-xl group transition-colors'>
+						<Link
+							to='/menus'
+							className=' p-4 flex justify-center rounded-xl text-secoundary-two group-hover:text-secoundary transition-colors'>
+							<GoHome className='text-3xl' />
+						</Link>
 					</li>
 					<li className='hover:bg-secoundary-two p-4 rounded-tl-xl rounded-bl-xl group transition-colors'>
 						<Link
 							to='/waiterorders'
 							className='p-4 flex justify-center rounded-xl text-secoundary-two group-hover:text-secoundary transition-colors'>
-							<AiOutlineShoppingCart className='text-3xl' />
+							<BsStopwatch className='text-3xl' />
 						</Link>
-					</li>
-				</ul>
-			</div>
-			<div>
-				<ul className='pl-4'>
-					<li>
-						<h1 className='text-2xl text-gray-300 uppercase font-bold text-center my-5'></h1>
 					</li>
 					<li className='hover:bg-secoundary-two p-4 rounded-tl-xl rounded-bl-xl group transition-colors'>
 						<Link
-							to='/menu'
+							to='/menus'
 							className='p-4 flex justify-center rounded-xl text-secoundary-two group-hover:text-secoundary transition-colors'>
-							<BsClipboard2Plus className='text-3xl' />
+							<BsCheckCircle className='text-3xl' />
+						</Link>
+					</li>
+					<li className='hover:bg-secoundary-two p-4 rounded-tl-xl rounded-bl-xl group transition-colors'>
+						<Link
+							to='/waiterorders'
+							className='p-4 flex justify-center rounded-xl text-secoundary-two group-hover:text-secoundary transition-colors'>
+							<BsDashCircle className='text-3xl' />
 						</Link>
 					</li>
 				</ul>
@@ -66,4 +70,4 @@ const NavBar = (props) => {
 	);
 };
 
-export { NavBar };
+export { NavBarWaiter };

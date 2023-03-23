@@ -25,9 +25,9 @@ const NewOrderContainer = ({
 			className={`lg:col-span-3 fixed mt-0 bg-secoundary-two w-full lg:w-2/5 lg:right-0 h-full overflow-y-scroll transition-all z-50 ${
 				showOrder ? 'right-0' : '-right-full'
 			}`}>
-			<div className='flex flex-col md:flex-col md-justify-between md:items-center h-30 bg-main rounded-tr-2xl'>
+			{/* <div className='flex flex-col md:flex-col md-justify-between md:items-center h-30 bg-main rounded-tr-2xl'>
 				<img src='src/assets/Logo-2-ñaña.png' className='w-1/3 ' alt='LogoÑaña' />
-			</div>
+			</div> */}
 			{/*
 			<div className='flex items-center justify-center w-full h-full bg-secoundary-one'>
 			<button onClick = {()=> startNewOrder(showOrder)}
@@ -37,7 +37,7 @@ const NewOrderContainer = ({
 					</span>
 				</button>
 			</div> */}
-			<ul className='flex flex-col pt-8 px-6 gap-4 w-full h-full bg-secoundary-one'>
+			<ul className='flex flex-col items-center pt-8 px-6 gap-4 w-full h-full bg-secoundary-one'>
 				{listProducts.map((product) => (
 					<li
 						key={product.id}
@@ -68,17 +68,20 @@ const NewOrderContainer = ({
 						</div>
 					</li>
 				))}
-				<p className='text-main-text text-2xl'>
-						Total: s/.{totalOrder}
-					</p>
-					<input
-						id='idClient'
-						type='text'
-						placeholder='nombre del cliente'
-						value={client}
-						onChange={handleClientChange}
-					/>
-					<button onClick={() => sendOrder()}>Hacer pedido</button>
+				<p className='text-main-text text-2xl'>Total: s/.{totalOrder}</p>
+				<input
+					id='idClient'
+					type='text'
+					placeholder='nombre del cliente'
+					value={client}
+					onChange={handleClientChange}
+					className='w-1/2 py-2 bg-secoundary-one/0 border-b border-main text-main-text px-1 outline-none mb-4'
+				/>
+				<button
+					onClick={() => sendOrder()}
+					className='px-8 bg-main text-secoundary-two text-2xl rounded-full w-1/2 h-16'>
+					Hacer pedido
+				</button>
 			</ul>
 		</div>
 	);

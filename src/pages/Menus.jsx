@@ -1,18 +1,20 @@
 import { useState } from 'react';
-import { NavBar } from '../components/NavBar';
+import { NavBarWaiter } from '../components/NavBarWaiter';
 import { NavBarMobile } from '../components/NavBarMobile';
 import { Header } from '../components/Header';
 import { MenuButtnProduct } from '../components/Menu/MenuButtnProduct';
 import { NewOrderContainer } from '../components/Order/NewOrderContainer';
+import { MenuBttnCategory } from '/src/components/Menu/MenuBttnCategory';
 import data from '../data.json/';
 
-const Menu = ({ userEmail, addOrder, listProducts, setListProducts }) => {
+const Menus = ({ userEmail, addOrder, listProducts, setListProducts }) => {
 	const [category, setCategory] = useState('picotería');
 	const [showMenu, setShowMenu] = useState(false);
 	const [showOrder, setShowOrder] = useState(false);
 	const [mapProducts] = useState(new Map());
 	const [client, setClient] = useState('');
 
+	const categorys = Object.keys(data);
 	const toggleMenu = () => {
 		setShowMenu(!showMenu);
 		setShowOrder(false);
@@ -87,7 +89,7 @@ const Menu = ({ userEmail, addOrder, listProducts, setListProducts }) => {
 	return (
 		<div className='bg-secoundary-two w-full min-h-screen'>
 			{/* {<sideBar />} */}
-			<NavBar showMenu={showMenu} />
+			<NavBarWaiter showMenu={showMenu} />
 			{/* {<Mobile />} */}
 			<NavBarMobile
 				toggleMenu={toggleMenu}
@@ -97,7 +99,12 @@ const Menu = ({ userEmail, addOrder, listProducts, setListProducts }) => {
 			<main className='lg:pl-28 grid grid-cols-1 lg:grid-cols-8'>
 				<div className='lg:col-span-5 flex flex-col items-center justify-center gap-8'>
 					{/* {<Header />} */}
-					<Header userEmail={userEmail} selectCategory={selectCategory} />
+					<Header userEmail={userEmail} />
+					{/* {<tittle and date />} */}
+					<nav className='flex justify-start items-center mt-20 ml-10 mb-0'>
+						{/* {<tabs />} */}
+						<MenuBttnCategory categorys={categorys} selectCategory={selectCategory} />
+					</nav>
 					{/* {<tittle content />} */}
 					<h2 className='text-2xl text-main font-bold'>Elige los platillos</h2>
 					{/* {<button product />} */}
@@ -125,4 +132,4 @@ const Menu = ({ userEmail, addOrder, listProducts, setListProducts }) => {
 	);
 };
 
-export { Menu };
+export { Menus };

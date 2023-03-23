@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { NavBarMozo } from '../components/NavBarMozo.jsx';
-import { PrintOrderMozo } from '../components/Order/PrintOrderMozo.jsx';
-const ReadyOrders = ({ userEmail, orders, listProducts }) => {
+import { NavBarMozo } from '/src/components/NavBarMozo.jsx';
+import { PrintOrderMozo } from './PrintOrderMozo.jsx';
+const ReadyOrders = ({ orders, listProducts, status }) => {
 	const [showMenu] = useState(false);
 
 	return (
@@ -11,7 +11,7 @@ const ReadyOrders = ({ userEmail, orders, listProducts }) => {
 			<main className='pt-10'>
 				<div className='lg:pl-28'>
 					<PrintOrderMozo
-						orders={orders.filter((order) => order.status === 'Enviado')}
+						orders={orders.filter((order) => order.status === 'Preparado')}
 						listProducts={listProducts}
 					/>
 				</div>

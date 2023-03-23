@@ -1,22 +1,26 @@
-import { MenuBttnCategory } from '../components/Menu/MenuBttnCategory';
-import data from '../data.json/';
+// import { MenuBttnCategory } from '../components/Menu/MenuBttnCategory';
+import { IoIosPerson } from 'react-icons/io';
+// import data from '../data.json/';
 
-const Header = ({ userEmail, selectCategory }) => {
-	const categorys = Object.keys(data);
-
+const Header = ({ userEmail }) => {
 	return (
 		<div>
 			{/* {<header />} */}
-			<header>
 				<div>
-					<h2>Bienvenido: {userEmail}</h2>
+					<div className='flex flex-row md:flex-row gap-32 h-30 rounded-tr-2xl'>
+						<img
+							src='src/assets/Logo-3-ñaña.png'
+							className='mt-6 w-48'
+							alt='LogoÑaña'
+						/>
+						<div className='flex items-center text-xl text-main-text/80 mt-8'>
+							<span className='flex justify-items-end text-4xl text-main-text'>
+								<IoIosPerson />
+							</span>
+							{userEmail}
+						</div>
+					</div>
 				</div>
-				{/* {<tittle and date />} */}
-				<nav className='flex justify-start items-center mt-20 ml-10 mb-0'>
-					{/* {<tabs />} */}
-					<MenuBttnCategory categorys={categorys} selectCategory={selectCategory} />
-				</nav>
-			</header>
 		</div>
 	);
 };
