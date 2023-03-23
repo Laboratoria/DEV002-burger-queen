@@ -19,17 +19,21 @@ function NewOrder({ array, total, add, subtract, delet }) {
       const confirmSendOrder = confirm("¿Desea enviar el pedido?");
       if (confirmSendOrder) {
         try {
-          await addDoc(orderCollection, {
+           const addOrder = await addDoc(orderCollection, {
             client: client,
             order: array,
             date: Timestamp.fromDate(new Date()),
             state: "pending",
             milisegundos: Date.now()
           });
+          
         } catch (error) {
           console.log(error);
         }
+
+        
       }
+
     }
   }
 
