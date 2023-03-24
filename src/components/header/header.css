@@ -1,24 +1,24 @@
-.header{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 12vh;
-    /* border: solid 2px #fff; */
-    color: var(--white);
-    font-family: var(--font-urbanist);
-    border-bottom: solid 2px var(--green);
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 12vh;
+  /* border: solid 2px #fff; */
+  color: var(--white);
+  font-family: var(--font-urbanist);
+  border-bottom: solid 2px var(--green);
 }
 
-.logoHeader{
-    height: 75px;
-    width: 75px;
+.logoHeader {
+  height: 75px;
+  width: 75px;
 }
 
-.imgLogout{
-    height: 50px;
-    width: 50px;
+.imgLogout {
+  height: 50px;
+  width: 50px;
 }
 
-.userConect{
-    color: var(--yellow)
+.userConect {
+  color: var(--yellow);
 }

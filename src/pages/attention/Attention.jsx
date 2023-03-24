@@ -8,7 +8,7 @@ import Product from "../../components/product/Product.jsx";
 import imghamburguesa from "../../assets/hamburguesa.png";
 import imgbebida from "../../assets/bebida.png";
 import products from "../../../menu.json";
-import imghome from "../../assets/homeY.png"
+import imghome from "../../assets/homeG.png"
 
 function Attention({user}) {
   const navigate = useNavigate();

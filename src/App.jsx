@@ -40,9 +40,14 @@ function App() {
   const userEmail = userUid.map((doc) => doc.correo);
   const userName = userUid.map((doc) => doc.nombre);
   //console.log(userEmail);
-  const userConect = (user !== null && userEmail.filter((element) => element === user.email)) ? user.email : null;
+  const userConect =
+    user !== null && userEmail.filter((element) => element === user.email)
+      ? user.email
+      : null;
   // console.log(userConect);
-  
+
+  const userMesero =
+    userConect === "ana@gmail.com" || userConect === "angel@gmail.com";
 
   useEffect(() => {
     getUsers();

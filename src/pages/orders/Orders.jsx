@@ -15,7 +15,7 @@ import {
   onSnapshot,
 } from "../../firebase/firebase";
 
-function Orders({user}) {
+function Orders({ user }) {
   const navigate = useNavigate();
 
   const [orderReady, setOrderReady] = useState([]);
@@ -54,7 +54,7 @@ function Orders({user}) {
 
   return (
     <>
-      <Header user={user}/>
+      <Header user={user} />
       <div className="orderReadyGiven">
         <section className="orders orderReadyOrder">
           <h2>PEDIDOS LISTOS</h2>

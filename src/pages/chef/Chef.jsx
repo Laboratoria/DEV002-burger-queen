@@ -12,7 +12,7 @@ import {
 import { useEffect, useState } from "react";
 import ReadyOrder from "../../components/readyOrder/ReadyOrder";
 import { onSnapshot } from "firebase/firestore";
-import imghome from "../../assets/homeY.png";
+import imghome from "../../assets/homeG.png";
 import { useNavigate } from "react-router-dom";
 
 function Chef({ user }) {
