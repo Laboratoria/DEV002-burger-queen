@@ -20,9 +20,9 @@ const q = query(ordersCollection, orderBy('createdAt', 'desc'));
 
 export {
 	db,
-	ordersCollection,
 	q,
 	collection,
+	ordersCollection,
 	query,
 	orderBy,
 	serverTimestamp,

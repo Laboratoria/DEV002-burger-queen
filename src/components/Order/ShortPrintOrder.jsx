@@ -1,8 +1,9 @@
+import { useState } from 'react';
 import { BsCalendarCheck } from 'react-icons/bs';
 import { IoTicket } from 'react-icons/io5';
 import { RxTimer } from 'react-icons/rx';
 // import { updateOrderStatus } from '/src/firestore/firestore-funct.js';
-const ShortPrintOrder = ({ orders, setShowOrderDetails }) => {
+const ShortPrintOrder = ({ orders, setShowOrderDetails, setSelectedOrder }) => {
 	// const changeOrderStatus = async (order) => {
 	// 	const newOrderStatus = (order.status = 'Preparado');
 	// 	await updateOrderStatus(order.id, {
@@ -11,13 +12,23 @@ const ShortPrintOrder = ({ orders, setShowOrderDetails }) => {
 	// 	});
 	// };
 
+	// const onGetOrderId = (newOrderId) => {
+	// 	setOrderId(newOrderId);
+	// 	setShowOrderDetails(true);
+	// };
+
+	const onSelectedOrder = (order) => {
+		setSelectedOrder(order);
+		setShowOrderDetails(true);
+	};
+
 	return (
 		<div className='flex flex-col items-center justify-between gap-8'>
 			{orders.map((order) => (
 				<div key={order.id} className='rounded-lg shadow-md overflow-hidden w-full'>
 					<div className='flex flex-row items-center justify-between gap-8 py-4 px-4 font-semibold bg-secoundary-one text-main text-xl'>
 						<button
-							onClick={() => setShowOrderDetails(true)}
+							onClick={() => onSelectedOrder(order)}
 							className='flex items-center justify-center bg-main rounded-lg p-4 text-secoundary-two'>
 							<span className='flex items-center gap-4'>
 								<IoTicket className='text-4xl' />
@@ -36,14 +47,14 @@ const ShortPrintOrder = ({ orders, setShowOrderDetails }) => {
 						</div>
 					</div>
 					<div className='flex flex-wrap items-center justify-between py-2 px-4 font-medium text-main bg-secoundary-two'></div>
-					<div className='flex items-center justify-center'>
+					{/* <div className='flex items-center justify-center'>
 						<button
 							type='button'
 							onClick={() => changeOrderStatus(order)}
 							className='bg-main text-secoundary-one font-bold rounded-lg p-4 cursor-pointer hover:bg-secoundary-one hover:text-main-text'>
 							<span className='flex items-center'>{order.status}</span>
 						</button>
-					</div>
+					</div> */}
 				</div>
 			))}
 		</div>
