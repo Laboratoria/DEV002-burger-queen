@@ -1,22 +1,23 @@
 import { useState } from 'react';
-import { NavBarWaiter } from '/src/components/NavBarWaiter';
+import { NavBarCheff } from '/src/components/NavBarCheff';
 import { NavBarMobile } from '/src/components/NavBarMobile';
 import { ShortPrintOrder } from '/src/components/Order/ShortPrintOrder';
 import { Header } from '/src/components/Header';
 import { OrderDetail } from '/src/components/Order/OrderDetail';
 import { OrdenBttnStatus } from '/src/components/Order/OrdenBttnStatus';
 import { updateOrderStatus } from '/src/firestore/firestore-funct';
+import dataStatus from '/src/dataStatus.json';
 
-const Orders = ({ userEmail, orders, listProducts, setOrders }) => {
+const Orders = ({ userEmail, orders }) => {
 	const [showMenu, setShowMenu] = useState(false);
 	const [showOrder, setShowOrder] = useState(false);
 	const [orderStatus, setStatus] = useState('Pendiente');
 	const [showOrderDetails, setShowOrderDetails] = useState(false);
 	const [selectedOrder, setSelectedOrder] = useState(null);
 
-	// const [orderId, setOrderId] = useState('');
-	const statusArray = ['Pendiente', 'Preparando', 'Enviado'];
+	const statusArray = Object.keys(dataStatus.status);
 
+	console.log(statusArray);
 	const selectStatus = (status) => {
 		setStatus(status);
 	};
@@ -35,14 +36,14 @@ const Orders = ({ userEmail, orders, listProducts, setOrders }) => {
 		const newOrderStatus = (order.status = 'Preparando');
 		await updateOrderStatus(order.id, {
 			status: newOrderStatus,
-			deliveringAt: new Date(),
+			cookingAt: new Date(),
 		});
 	};
 
 	return (
 		<div className='bg-secoundary-two w-full min-h-screen'>
 			{/* {<sideBar />} */}
-			<NavBarWaiter showMenu={showMenu} />
+			<NavBarCheff showMenu={showMenu} />
 			{/* {<Mobile />} */}
 			<NavBarMobile
 				toggleMenu={toggleMenu}
@@ -58,14 +59,19 @@ const Orders = ({ userEmail, orders, listProducts, setOrders }) => {
 					</div>
 					<div className=' flex flex-col items-center justify-center m-8'>
 						<ShortPrintOrder
-							orders={orders.filter((order) => order.status === orderStatus)} setShowOrderDetails={setShowOrderDetails} setSelectedOrder={setSelectedOrder}
+							orders={orders.filter((order) => order.status === orderStatus)}
+							setShowOrderDetails={setShowOrderDetails}
+							setSelectedOrder={setSelectedOrder}
 						/>
 					</div>
 				</div>
 				<div className='bg-secoundary-one lg:col-start-2 flex flex-col items-center justify-center'>
 					{showOrderDetails ? (
 						<div className='m-10'>
-							<OrderDetail selectedOrder={selectedOrder} changeOrderStatus={changeOrderStatus}/>
+							<OrderDetail
+								selectedOrder={selectedOrder}
+								changeOrderStatus={changeOrderStatus}
+							/>
 						</div>
 					) : null}
 				</div>

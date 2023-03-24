@@ -1,0 +1,9 @@
+{
+    "status": {
+        "Pendiente": "0",
+        "Preparando": "1",
+        "Enviado": "2",
+        "Entregado": "3",
+        "Cancelado": "4"
+    }
+}

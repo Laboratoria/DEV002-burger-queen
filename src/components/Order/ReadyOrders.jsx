@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import { NavBarMozo } from '/src/components/NavBarMozo.jsx';
-import { PrintOrderMozo } from './PrintOrderMozo.jsx';
+import { NavBarWaiter } from '/src/components/NavBarWaiter';
+import { PrintOrderMozo } from './PrintOrderMozo';
 const ReadyOrders = ({ orders, listProducts, status }) => {
 	const [showMenu] = useState(false);
 
 	return (
 		<div className='bg-secoundary-two w-full min-h-screen'>
 			{/* {<sideBar />} */}
-			<NavBarMozo showMenu={showMenu} />
+			<NavBarWaiter showMenu={showMenu} />
 			<main className='pt-10'>
 				<div className='lg:pl-28'>
 					<PrintOrderMozo
