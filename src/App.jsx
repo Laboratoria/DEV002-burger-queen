@@ -46,8 +46,8 @@ function App() {
       : null;
   // console.log(userConect);
 
-  const userMesero =
-    userConect === "ana@gmail.com" || userConect === "angel@gmail.com";
+  // const userMesero =
+  //   userConect === "ana@gmail.com" || userConect === "angel@gmail.com";
 
   useEffect(() => {
     getUsers();
