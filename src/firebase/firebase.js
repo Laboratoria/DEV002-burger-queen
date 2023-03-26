@@ -22,8 +22,7 @@ import {
   query,
   orderBy,
   where,
-  onSnapshot
-
+  onSnapshot,
 } from "firebase/firestore";
 
 // Initialize Firebase
@@ -42,6 +41,8 @@ const logoutUser = async () => {
 
 const orderCollection = collection(db, "NewOrder");
 
+const usersCollection = collection(db, "users");
+
 // const addOrder = (client, order, time) => addDoc(orderCollection, {
 //  client, order, time
 // })
@@ -50,6 +51,7 @@ export {
   loginUser,
   logoutUser,
   orderCollection,
+  usersCollection,
   Timestamp,
   addDoc,
   getDocs,
@@ -60,5 +62,7 @@ export {
   query,
   orderBy,
   where,
-  onSnapshot
+  onSnapshot,
+  onAuthStateChanged,
+  auth,
 };

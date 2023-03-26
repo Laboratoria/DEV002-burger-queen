@@ -23,7 +23,7 @@ function logout(){
     <>
       <div className="header">
         <img src={logo} alt="logo del restaurant" className="logoHeader" />
-        <p>{"Hola, Usuario"}</p>
+        <div> Hola,<p className="userConect">{user}</p></div>
         <div>
           <p>{date}</p>
           <Time />
