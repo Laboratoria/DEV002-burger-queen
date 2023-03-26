@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addDoc, orderCollection, Timestamp } from "../../firebase/firebase";
 import Attention from "../../pages/attention/Attention";
+import Swal from "sweetalert2";
 
 function NewOrder({ array, total, add, subtract, delet }) {
   const navigate = useNavigate();
@@ -17,32 +18,43 @@ function NewOrder({ array, total, add, subtract, delet }) {
     } else if (client === "") {
       messageClient.innerHTML = "ingrese el nombre del cliente";
     } else {
-      const confirmSendOrder = confirm("¿Desea enviar el pedido?");
-      if (confirmSendOrder) {
-        try {
-           const addOrder = await addDoc(orderCollection, {
-            client: client,
-            order: array,
-            date: Timestamp.fromDate(new Date()),
-            state: "pending",
-            milisegundos: Date.now()
-          });
-          if(addOrder){
-            console.log("se envio a cocina")
-            // console.log(valueClient)
-            //document.querySelector(".valueClient").value = ""
-            // orderClient.innerHTML = ""
+      const sweet = Swal.fire({
+        icon: "question",
+        iconColor: "#fe5f55",
+        html: "<p>¿Desea <b>enviar</b> el pedido?</p>",
+        showCancelButton: true,
+        cancelButtonText: "Cancelar",
+        cancelButtonColor: "#21262b",
+        confirmButtonText: "Enviar",
+        confirmButtonColor: "#fe5f55",
+      }).then( async (response) => {
+        if(response.isConfirmed){
+          try {
+            const addOrder = await addDoc(orderCollection, {
+              client: client,
+              order: array,
+              date: Timestamp.fromDate(new Date()),
+              state: "pending",
+              milisegundos: Date.now(),
+            });
+            if (addOrder) {
+              console.log("se envio a cocina");
+              // console.log(valueClient)
+              //document.querySelector(".valueClient").value = ""
+              // orderClient.innerHTML = ""
+            }
+          } catch (error) {
+            console.log(error);
           }
-          
-        } catch (error) {
-          console.log(error);
         }
-
-        
-      }
+      })
 
     }
   }
+
+  // useEffect(() => {
+  //   handleClick()
+  // }, []);
 
   function handleChange() {
     messageClient.innerHTML = "";
@@ -70,7 +82,13 @@ function NewOrder({ array, total, add, subtract, delet }) {
             <p className="subtotalH">Sub Total</p>
           </div>
           <div className="orderClient" id="orderClient">
-            {array.length === 0 ? <p className="messageOrderClient">No hay productos seleccionados :/</p> : ""}
+            {array.length === 0 ? (
+              <p className="messageOrderClient">
+                No hay productos seleccionados :/
+              </p>
+            ) : (
+              ""
+            )}
             {array.map((product) => (
               <NewProduct
                 key={product.id}
@@ -89,7 +107,7 @@ function NewOrder({ array, total, add, subtract, delet }) {
           </div>
         </div>
         <div className="buttonCocina">
-          <Button name={"Enviar a cocina"} onClick={handleClick}   />
+          <Button name={"Enviar a cocina"} onClick={handleClick} />
         </div>
       </div>
     </>
