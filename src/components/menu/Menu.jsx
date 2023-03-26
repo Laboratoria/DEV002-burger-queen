@@ -1,8 +1,6 @@
 import Product from "../product/Product";
 import { useState, useEffect } from "react";
 import products from "../../../menu.json";
-// import products from "../../products.json";
-import Button from "../button/Button";
 import "./menu.css";
 import imghamburguesa from "../../assets/hamburguesa.png";
 import imgbebida from "../../assets/bebida.png";
@@ -13,9 +11,6 @@ console.log(products);
 function Menu() {
   const [choose, setChoose] = useState("hamburguesas");
   // const [categoria, setCategoria] = useState(products.products.hamburguesas)
-
-  // const show = choose ? "seleccionado" : "no seleccionado";
-  // console.log(show);
 
   const handleClick = (selectedCategory) => {
     setChoose(selectedCategory);
@@ -58,9 +53,6 @@ function Menu() {
           {categoria.map((product) => (
             <Product key={product.id} data={product} />
           ))}
-          {/* {products.products.hamburguesas.map((product) => (
-          <Product key={product.id} data={product} />
-        ))} */}
         </div>
       </div>
     </>

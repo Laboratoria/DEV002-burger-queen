@@ -1,32 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@500&display=swap");
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 :root {
-  --font-urbanist: 'Urbanist', sans-serif;
+  --font-urbanist: "Urbanist", sans-serif;
 
-  --dark: #21262B;
-  --yellow: #FFD658;
-  --orange: #FE5F55;
-  --green: #5D8584;
-  --gray: #F0F0F0;
-  --white: #FFFFFF;
-  
+  --dark: #21262b;
+  --yellow: #ffd658;
+  --orange: #fe5f55;
+  --green: #5d8584;
+  --gray: #f0f0f0;
+  --white: #ffffff;
 }
 
-body{
+body {
   background-color: var(--dark);
-  color: var(--white)
+  color: var(--white);
 }
 
 /* #root{
   background-color: var(--dark);
 } */
-
-
-
-

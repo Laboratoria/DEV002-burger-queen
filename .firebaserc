@@ -1,6 +1,7 @@
 {
   "projects": {
-    "burguer-queen": "burguer-queen--project"
+    "burguer-queen": "burguer-queen--project",
+    "default": "burguer-queen--project"
   },
   "targets": {},
   "etags": {}

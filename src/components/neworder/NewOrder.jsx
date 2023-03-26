@@ -1,9 +1,10 @@
 import Button from "../button/Button";
 import "./neworder.css";
 import NewProduct from "../newProduct/newProduct";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addDoc, orderCollection, Timestamp } from "../../firebase/firebase";
+import Attention from "../../pages/attention/Attention";
 
 function NewOrder({ array, total, add, subtract, delet }) {
   const navigate = useNavigate();
@@ -26,6 +27,12 @@ function NewOrder({ array, total, add, subtract, delet }) {
             state: "pending",
             milisegundos: Date.now()
           });
+          if(addOrder){
+            console.log("se envio a cocina")
+            // console.log(valueClient)
+            //document.querySelector(".valueClient").value = ""
+            // orderClient.innerHTML = ""
+          }
           
         } catch (error) {
           console.log(error);
@@ -54,6 +61,7 @@ function NewOrder({ array, total, add, subtract, delet }) {
               setClient(e.target.value);
             }}
             onKeyUp={handleChange}
+            id="valueClient"
           />
           <span id="messageClient"></span>
           <div className="headerNewProduct">
@@ -61,7 +69,7 @@ function NewOrder({ array, total, add, subtract, delet }) {
             <p>Producto</p>
             <p className="subtotalH">Sub Total</p>
           </div>
-          <div className="orderClient">
+          <div className="orderClient" id="orderClient">
             {array.length === 0 ? <p className="messageOrderClient">No hay productos seleccionados :/</p> : ""}
             {array.map((product) => (
               <NewProduct

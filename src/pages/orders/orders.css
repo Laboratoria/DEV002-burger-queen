@@ -15,7 +15,7 @@
 
 .orderReadyOrder h2{
     background-color: var(--orange);
-    height: 8%;
+    height: 7vh;
     border-radius: 5px;
     text-align: center;
     padding-top: 9px;
@@ -40,7 +40,7 @@
 
 .orderGiven h2{
     background-color: var(--green);
-    height: 8%;
+    height: 7vh;
     border-radius: 5px;
     text-align: center;
     padding-top: 9px;
