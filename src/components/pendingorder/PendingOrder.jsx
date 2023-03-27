@@ -19,6 +19,7 @@ function PendingOrder({ data, ready }) {
       <div className="containerPendingOrder">
         <section className="headerOrderPending">
           <p>CLIENTE : {data.client}</p>
+          <Timer timerOrder={data.milisegundos}/>
         </section>
         <section className="divPedido">
           <p>PEDIDO:</p>
