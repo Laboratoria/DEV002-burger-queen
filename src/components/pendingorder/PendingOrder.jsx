@@ -19,7 +19,7 @@ function PendingOrder({ data, ready }) {
       <div className="containerPendingOrder">
         <section className="headerOrderPending">
           <p>CLIENTE : {data.client}</p>
-          <Timer timerOrder={data.milisegundos}/>
+          <Timer timerOrder={data.milisegundos} />
         </section>
         <section className="divPedido">
           <p>PEDIDO:</p>
@@ -29,7 +29,7 @@ function PendingOrder({ data, ready }) {
               return (
                 <div key={element.id} className="divOrders">
                   {/* <Timer /> */}
-                  <p>{element.count}</p> 
+                  <p>{element.count}</p>
                   <p>{element.name}</p>
                 </div>
               );
