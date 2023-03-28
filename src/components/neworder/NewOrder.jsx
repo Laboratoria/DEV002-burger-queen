@@ -103,8 +103,8 @@ function NewOrder({ array, total, add, subtract, delet, cleanArray }) {
           </div>
         </div>
         <div className="buttonCocina">
-          <Button name={"Enviar a cocina"} onClick={handleClick} />
-          <Button name={"Cancelar order"} onClick={cleanOrder} />
+          <Button name={"Cancelar orden"} onClick={cleanOrder} />
+          <Button name={"Enviar a cocina"} onClick={handleClick} /> 
         </div>
     </>
   );

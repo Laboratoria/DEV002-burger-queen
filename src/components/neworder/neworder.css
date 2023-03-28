@@ -60,6 +60,9 @@
 }
 
 .buttonCocina {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
   margin-top: 5px;
-  margin-left: 300px;
+  /* margin-left: 300px; */
 }
