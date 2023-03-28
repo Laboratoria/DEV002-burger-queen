@@ -2,8 +2,7 @@ import { Link } from 'react-router-dom';
 import { logOut } from '/src/firebase/auth.js';
 import { useNavigate } from 'react-router-dom';
 import { RiLogoutCircleLine } from 'react-icons/ri';
-import { AiOutlineShoppingCart } from 'react-icons/ai';
-import { BsClipboard2Plus } from 'react-icons/bs';
+import { BsClipboard2Plus, BsClockHistory } from 'react-icons/bs';
 
 const NavBarWaiter = (props) => {
 	const { showMenu } = props;
@@ -29,11 +28,12 @@ const NavBarWaiter = (props) => {
 						<h1 className='text-2xl text-gray-300 uppercase font-bold text-center my-5'></h1>
 					</li>
 					<li className='hover:bg-secoundary-two p-4 rounded-tl-xl rounded-bl-xl group transition-colors'>
-						<Link
-							to='/orders'
+					<Link
+							to='/menus'
 							className='p-4 flex justify-center rounded-xl text-secoundary-two group-hover:text-secoundary transition-colors'>
-							<AiOutlineShoppingCart className='text-3xl' />
+							<BsClipboard2Plus className='text-3xl' />
 						</Link>
+						
 					</li>
 				</ul>
 			</div>
@@ -43,10 +43,10 @@ const NavBarWaiter = (props) => {
 						<h1 className='text-2xl text-gray-300 uppercase font-bold text-center my-5'></h1>
 					</li>
 					<li className='hover:bg-secoundary-two p-4 rounded-tl-xl rounded-bl-xl group transition-colors'>
-						<Link
-							to='/menus'
+					<Link
+							to='/waiterorders'
 							className='p-4 flex justify-center rounded-xl text-secoundary-two group-hover:text-secoundary transition-colors'>
-							<BsClipboard2Plus className='text-3xl' />
+							<BsClockHistory className='text-3xl' />
 						</Link>
 					</li>
 				</ul>

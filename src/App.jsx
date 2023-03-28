@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '/src/firebase/firebase-init.js';
 import { addOrder, onGetOrders } from './firestore/firestore-funct';
+import { OrdersWaiter } from './pages/OrdersWaiter';
 
 const App = () => {
 	const [user, setUser] = useState(null);
@@ -65,7 +66,7 @@ const App = () => {
 					<Route
 						path='/waiterorders'
 						element={
-							<ReadyOrders
+							<OrdersWaiter
 								userEmail={userEmail}
 								orders={orders}
 								listProducts={listProducts}

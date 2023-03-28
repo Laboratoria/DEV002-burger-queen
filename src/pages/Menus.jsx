@@ -15,6 +15,7 @@ const Menus = ({ userEmail, addOrder, listProducts, setListProducts }) => {
 	const [client, setClient] = useState('');
 
 	const categorys = Object.keys(data);
+
 	const toggleMenu = () => {
 		setShowMenu(!showMenu);
 		setShowOrder(false);

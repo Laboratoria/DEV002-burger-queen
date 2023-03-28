@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { NavBarCheff } from '/src/components/NavBarCheff';
 import { NavBarMobile } from '/src/components/NavBarMobile';
 import { ShortPrintOrder } from '/src/components/Order/ShortPrintOrder';
 import { Header } from '/src/components/Header';
@@ -7,20 +6,20 @@ import { OrderDetail } from '/src/components/Order/OrderDetail';
 import { OrdenBttnStatus } from '/src/components/Order/OrdenBttnStatus';
 import { updateOrderStatus } from '/src/firestore/firestore-funct';
 import dataStatus from '/src/dataStatus.json';
+import { NavBarWaiter } from '../components/NavBarWaiter';
 
-const Orders = ({ userEmail, orders }) => {
+const OrdersWaiter = ({ userEmail, orders }) => {
 	const [showMenu, setShowMenu] = useState(false);
 	const [showOrder, setShowOrder] = useState(false);
 	const [orderStatus, setStatus] = useState('Pendiente');
 	const [showOrderDetails, setShowOrderDetails] = useState(false);
 	const [selectedOrder, setSelectedOrder] = useState(null);
+	const [clean, setClean] = useState([]);
 
-	// const statusArray = Object.keys(dataStatus.status);
-	const statusArray = ['Pendiente', 'Preparando', 'Enviado'];
+	const statusArray = ['Pendiente', 'Enviado', 'Entregado', 'Cancelado'];
 
-
-	console.log(statusArray);
 	const selectStatus = (status) => {
+		setClean([]);
 		setStatus(status);
 	};
 
@@ -34,26 +33,26 @@ const Orders = ({ userEmail, orders }) => {
 		setShowMenu(false);
 	};
 
-	const changeOrderStatus = async (order) => {
-		const newOrderStatus = (order.status = 'Preparando');
+	const changeOrderStatusCanceled = async (order) => {
+		const newOrderStatus = (order.status = 'Cancelado');
 		await updateOrderStatus(order.id, {
 			status: newOrderStatus,
-			cookingAt: new Date(),
+			canceledAt: new Date(),
 		});
 	};
 
-	const changeOrderStatusSend = async (order) => {
-		const newOrderStatus = (order.status = 'Enviado');
+	const changeOrderStatusDelivered = async (order) => {
+		const newOrderStatus = (order.status = 'Entregado');
 		await updateOrderStatus(order.id, {
 			status: newOrderStatus,
-			sendAt: new Date(),
+			deliveredAt: new Date(),
 		});
 	};
 
 	return (
 		<div className='bg-secoundary-two w-full min-h-screen'>
 			{/* {<sideBar />} */}
-			<NavBarCheff showMenu={showMenu} />
+			<NavBarWaiter showMenu={showMenu} />
 			{/* {<Mobile />} */}
 			<NavBarMobile
 				toggleMenu={toggleMenu}
@@ -64,9 +63,7 @@ const Orders = ({ userEmail, orders }) => {
 				<div className='lg:col-start-1 flex flex-col gap-8'>
 					{/* {<Header />} */}
 					<Header userEmail={userEmail} />
-					
 					<div className='flex justify-start items-center mt-20 ml-10 mb-0'>
-					
 						<OrdenBttnStatus statusArray={statusArray} selectStatus={selectStatus} />
 					</div>
 					<div className=' flex flex-col items-center justify-center m-8'>
@@ -79,36 +76,36 @@ const Orders = ({ userEmail, orders }) => {
 				</div>
 				<div className='bg-secoundary-one lg:col-start-2 flex flex-col items-center justify-center'>
 					{showOrderDetails ? (
-						(orderStatus === 'Pendiente') ? (
-						<div className='m-10'>
-							<OrderDetail
-								selectedOrder={selectedOrder}
-								changeOrderStatus={changeOrderStatus}
-								userEmail={userEmail}
-							/>
-						</div>
-						) : (orderStatus === 'Preparando') ? (
+						orderStatus === 'Pendiente' ? (
 							<div className='m-10'>
 								<OrderDetail
 									selectedOrder={selectedOrder}
-									changeOrderStatus={changeOrderStatusSend}
+									changeOrderStatus={changeOrderStatusCanceled}
 									userEmail={userEmail}
 								/>
-							</div> 
-							) : (orderStatus === 'Enviado') ? (
+							</div>
+						) : orderStatus === 'Enviado' ? (
 							<div className='m-10'>
 								<OrderDetail
 									selectedOrder={selectedOrder}
+									changeOrderStatus={changeOrderStatusDelivered}
 									userEmail={userEmail}
 								/>
-							</div> 
-							): null ) : null}
+							</div>
+						) : orderStatus === 'Entregado' ? (
+							<div className='m-10'>
+								<OrderDetail selectedOrder={selectedOrder} userEmail={userEmail} />
+							</div>
+						) : orderStatus === 'Cancelado' ? (
+							<div className='m-10'>
+								<OrderDetail selectedOrder={selectedOrder} userEmail={userEmail} />
+							</div>
+						) : null
+					) : null}
 				</div>
-								
-
 			</main>
 		</div>
 	);
 };
 
-export { Orders };
+export { OrdersWaiter };
