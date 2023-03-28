@@ -3,7 +3,7 @@ import Button from "../../components/button/Button";
 import "./orders.css";
 import DeliveryOrder from "../../components/deliveryOrder/DeliveryOrder";
 import { useNavigate } from "react-router-dom";
-import ReadyOrder from "../../components/readyOrder/readyOrder";
+import ReadyOrder from "../../components/readyOrder/ReadyOrder";
 import { useState, useEffect } from "react";
 import {
   orderCollection,

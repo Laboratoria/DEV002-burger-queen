@@ -1,6 +1,5 @@
 import "./login.css";
 import logo from "../../assets/logo.png";
-import { useState } from "react";
 import { loginUser } from "../../firebase/firebase";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/button/Button";
