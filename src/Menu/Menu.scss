@@ -44,7 +44,7 @@
 
 .containerMenu {
     background-color: #797D62;
-    height: 113vh;
+    height: 83vh;
 }
 
 .num-mesa {
@@ -57,11 +57,19 @@
     font-weight: 500;
 }
 
-.menuPrincipal,
-.bebidas {
+.menuPrincipal {
     display: flex;
     padding-left: 18vh;
     padding-top: 2vh;
+    color: white;
+    font-family: 'Piazzolla', serif;
+    font-size: 27px;
+    font-weight: bolder;
+}
+
+.bebidas {
+    display: flex;
+    padding-left: 18vh;
     color: white;
     font-family: 'Piazzolla', serif;
     font-size: 27px;
@@ -101,64 +109,50 @@
     font-weight: bolder;
 }
 
-.comidas-div,
-.bebidas-div {
+.comidas-div {
     display: flex;
     border: 2px solid #825F45;
     border-radius: 15px;
     margin-right: 15px;
     width: 40%;
-    text-align: center;
-    flex-direction: column;
-    margin-bottom: 15px;
+    flex-direction: row;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.bebidas-div{
+    display: flex;
+    border: 2px solid #825F45;
+    border-radius: 15px;
+    margin-right: 15px;
+    width: 40%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center
 }
 
 .imgBebidas {
-    margin-top: 20px;
-    width: 120px;
-    height: 120px;
+    width: 90px;
+    height: 90px;
 }
-
-.signoMas {
-    position: relative;
-    width: 45px;
-    height: 45px;
-    bottom: 2.1vh;
-    right: 5.5vh;
-}
-
-.signoMenos {
-    position: relative;
-    width: 60px;
-    height: 60px;
-    left: 6vh;
-    bottom: 14px;
-}
-
-.cantidadProducto {
-    position: relative;
-    bottom: 36px;;
-}
-
-.precio,
-.precioBebidas {
-    position: relative;
-    bottom: 30px;
-}
-
-;
 
 .cancelar {
     position: relative;
 }
 
 .order-summary {
-    position: absolute;
-    bottom: 32vh;
+    position: relative;
+    height: 3.5vh;
+}
+
+.Resumen{
+    position: relative;
+    bottom: 75vh;
     border-radius: 10px;
     width: 31.5vh;
     left: 42vh;
-    height: 45vh;
+    height: 37vh;
     border: 3px solid #825F45;
 }
 
@@ -187,12 +181,17 @@
 .product-summary {
     display: flex;
     justify-content: space-between;
-    margin: 15px;
+    
+    p{
+      width: 32%;
+      text-align: left;
+      margin: 0 0 10px 12px;  
+    }
 }
 
 .delete-order, .btn-save-order{
     position: relative;
-    top: 34vh;
+    top: 28vh;
     left: 8vh;
     width: 14vh;
     height: 4vh;
@@ -208,8 +207,32 @@
 }
 
 .btn-save-order{
-    width: 30vh;
-    height: 5vh;
-    left: 21vh;
-    top: 1vh;
+    position: absolute;
+    top: 65vh;
+    left: 47vh;
+    width: 21vh;
+    height: 4vh;
+    background: #997B66;
+    color: white;
+    border-radius: 15px;
+    border: none;
+    font-family: "Piazzolla", serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    text-align: center;
+}
+
+
+.sect-btn-amount {
+    display: flex;
+    justify-content: space-around;
+    img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+.save-order{
+    height: 0;
 }

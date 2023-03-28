@@ -1,7 +1,7 @@
 import { useState } from "react";
 import signoMas from "../Imagenes/signoMas.png"
 import signoMenos from "../Imagenes/signoMenos.png"
-import './Menu.css'
+import './Menu.scss'
 
 const AddProducts = ({ dataProduct, addOrder, setAddOrder }) => {
     const [count, setCount] = useState(0);

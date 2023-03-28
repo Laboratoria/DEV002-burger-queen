@@ -4,11 +4,13 @@ import OrderSummary from "./OrderSummary";
 import AddToCart from "./AddToCart";
 import Logo from "../Imagenes/logoLasaña.png";
 import axios from 'axios';
-import './Menu.css';
+import './Menu.scss';
 
 const Menu = () => {
     const [data, setData] = useState([]);
     const [addToOrder, setAddToOrder] = useState([]);
+    const [person, setPerson]=useState('');
+    const [table, setTable]=useState('Mesa');
 
     useEffect(() => {
         axios
@@ -19,6 +21,14 @@ const Menu = () => {
             })
     }, [])
 
+    const onCustomerName = (event) => {
+        setPerson(event.target.value);
+    }
+    const onTableSelect = (event) => {
+        setTable(
+            event.target.value
+        );
+    }
 
     return (
         <>
@@ -33,8 +43,12 @@ const Menu = () => {
                     type='text'
                     placeholder='NOMBRE DEL CLIENTE'
                     className='input-name'
+                    onChange={onCustomerName}
                 />
-                <select name='numMesa'className='num-mesa'>
+                <select 
+                className='num-mesa'
+                onChange={onTableSelect}
+                >
                     <option disabled value='Mesa'>Mesa</option>
                     <option value='Mesa1'>Mesa 1</option>
                     <option value='Mesa2'>Mesa 2</option>
@@ -55,6 +69,7 @@ const Menu = () => {
                                         dataProduct={items}
                                         addOrder={addToOrder}
                                         setAddOrder={setAddToOrder}
+                                        personName={person}
                                     />         
                         <p className="precio">${items.price}</p>          
                     </div>
@@ -70,6 +85,7 @@ const Menu = () => {
                                         dataProduct={items}
                                         addOrder={addToOrder}
                                         setAddOrder={setAddToOrder}
+                                        personName={person}
                                     />      
                         <p className="precioBebidas">${items.price}</p>
                     </div>
@@ -83,6 +99,8 @@ const Menu = () => {
                 </div>
                 <AddToCart
                 addOrder={addToOrder}
+                tableSelect={table}
+                personName={person}
                 />
             </section>
 

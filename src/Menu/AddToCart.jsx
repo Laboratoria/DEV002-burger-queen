@@ -1,12 +1,12 @@
 import { db } from '../Firebase/fb-config'
 import { collection, addDoc } from "firebase/firestore"
 import Swal from "sweetalert2"
-import './Menu.css';
+import './Menu.scss';
 
-const AddToCart = ({ addOrder}) => {
+const AddToCart = ({ addOrder, personName, tableSelect }) => {
     const uploadOrder = async () => {
        await addDoc(collection(db, "pedidos"),
-            { ...addOrder, state: 'Enviar a cocina', date: new Date() }
+            { ...addOrder, personName, tableSelect, state: 'Enviar a cocina', date: new Date() }
         )
     }
 

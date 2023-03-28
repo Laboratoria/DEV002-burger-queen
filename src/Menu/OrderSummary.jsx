@@ -1,6 +1,6 @@
 import React from "react";
 import Swal from "sweetalert2";
-import './Menu.css';
+import './Menu.scss';
 
 
 const OrderSummary = ({ addOrder, setAddOrder }) => {
@@ -32,7 +32,7 @@ const OrderSummary = ({ addOrder, setAddOrder }) => {
 
     return (
         <>
-            <section>
+            <section className="Resumen">
                 <h3 className="res-ped">RESUMEN DE PEDIDO</h3>
                 <section className='delete-order'>
                     <p onClick={deleteOrder}>CANCELAR</p>
