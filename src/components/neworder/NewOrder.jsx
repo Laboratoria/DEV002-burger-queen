@@ -1,20 +1,22 @@
 import Button from "../button/Button";
 import "./neworder.css";
 import NewProduct from "../newProduct/newProduct";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { addDoc, orderCollection, Timestamp } from "../../firebase/firebase";
-import Attention from "../../pages/attention/Attention";
 import Swal from "sweetalert2";
 
-function NewOrder({ array, total, add, subtract, delet }) {
-  const navigate = useNavigate();
+function NewOrder({ array, total, add, subtract, delet, cleanArray }) {
   //console.log(array)
   const [client, setClient] = useState("");
 
   async function handleClick() {
     if (array.length === 0) {
-      alert("No ingreso ningun producto");
+      Swal.fire({
+        icon: "warning",
+        iconColor: "#fe5f55",
+        text: "No ingreso ningun producto",
+        confirmButtonColor: "#fe5f55",
+      })
     } else if (client === "") {
       messageClient.innerHTML = "ingrese el nombre del cliente";
     } else {
@@ -40,8 +42,9 @@ function NewOrder({ array, total, add, subtract, delet }) {
             if (addOrder) {
               console.log("se envio a cocina");
               // console.log(valueClient)
-              //document.querySelector(".valueClient").value = ""
-              // orderClient.innerHTML = ""
+              // valueClient.value = ""
+              // orderClient.innerHTML = "No hay productos seleccionados :/"
+              cleanOrder();
             }
           } catch (error) {
             console.log(error);
@@ -52,26 +55,25 @@ function NewOrder({ array, total, add, subtract, delet }) {
     }
   }
 
-  // useEffect(() => {
-  //   handleClick()
-  // }, []);
-
   function handleChange() {
     messageClient.innerHTML = "";
   }
 
+  function cleanOrder(){
+      setClient("");
+      cleanArray()
+  }
+
   return (
     <>
-      <div>
         <div className="containerNeworder">
           <input
             type="text"
             name="client"
             placeholder="nombre del cliente"
             className="client"
-            onChange={(e) => {
-              setClient(e.target.value);
-            }}
+            onChange={(e) => { setClient(e.target.value)}}
+            value = {client}
             onKeyUp={handleChange}
             id="valueClient"
           />
@@ -82,13 +84,9 @@ function NewOrder({ array, total, add, subtract, delet }) {
             <p className="subtotalH">Sub Total</p>
           </div>
           <div className="orderClient" id="orderClient">
-            {array.length === 0 ? (
-              <p className="messageOrderClient">
-                No hay productos seleccionados :/
-              </p>
-            ) : (
-              ""
-            )}
+            {array.length === 0 
+            ? <p className="messageOrderClient"> No hay productos seleccionados :/</p>  
+            : ""}
             {array.map((product) => (
               <NewProduct
                 key={product.id}
@@ -101,15 +99,13 @@ function NewOrder({ array, total, add, subtract, delet }) {
           </div>
           <div className="containerBill">
             <p>TOTAL</p>
-            <p>
-              S/.<span>{total}</span>
-            </p>
+            <p> S/.<span>{total}</span></p>
           </div>
         </div>
         <div className="buttonCocina">
           <Button name={"Enviar a cocina"} onClick={handleClick} />
+          <Button name={"Cancelar order"} onClick={cleanOrder} />
         </div>
-      </div>
     </>
   );
 }

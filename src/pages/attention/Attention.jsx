@@ -125,6 +125,9 @@ function Attention({ user }) {
             add={addProduct}
             subtract={subtractProduct}
             delet={deleteProduct}
+            cleanArray={()=> {
+              setOrder([])
+            }}
           />
         </div>
       </div>

@@ -51,12 +51,13 @@ function App() {
 
   useEffect(() => {
     getUsers();
+    console.log(user)
   }, []);
 
   return (
     <>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Login/>} />
         <Route path="/attention" element={<Attention user={userConect} />} />
         <Route path="/orders" element={<Orders user={userConect} />} />
         <Route path="/chef" element={<Chef user={userConect} />} />
