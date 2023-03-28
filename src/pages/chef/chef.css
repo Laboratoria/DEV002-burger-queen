@@ -19,7 +19,7 @@
   height: 7vh;
   border-radius: 5px;
   text-align: center;
-  padding-top: 12px;
+  padding-top: 15px;
 }
 
 .divOrdersPending,
@@ -43,7 +43,8 @@
   height: 7vh;
   border-radius: 5px;
   text-align: center;
-  padding-top: 12px;
+  padding-top: 15px;
+  /* border: 2px solid red;  */
 }
 
 .imgHomeChef {

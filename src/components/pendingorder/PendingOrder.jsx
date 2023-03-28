@@ -1,18 +1,10 @@
 import "./pendingOrder.css";
 import Timer from "./Timer";
-import { useState } from "react";
 
 function PendingOrder({ data, ready }) {
   // const dataOrder = data.data
   //const { order, client, date } = dataOrder
   //console.log(prop);
-  // const [timer, setTimer] = useState({ s:0, m:0, h:0})
-  // console.log(timer)
-  //console.log(data);
-  // const updatedS = timer.s
-  // function handleClick(){
-  //   onClick(data.dta)
-  // }
 
   return (
     <>

@@ -1,4 +1,4 @@
-import "./deliveryOrder.css"
+import "./deliveryOrder.css";
 
 function DeliveryOrder({ data }) {
   //console.log(data);
