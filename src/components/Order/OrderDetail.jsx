@@ -91,7 +91,14 @@ const OrderDetail = ({ selectedOrder, changeOrderStatus, userEmail }) => {
 								className='bg-main text-secoundary-one opacity-50 font-bold rounded-lg p-4 cursor-not-allowed'>
 								<span>Cancelado</span>
 							</button>
-						) : userEmail === 'patricio_mozo@restaurant.pe' ? (
+						) : selectedOrder.status === 'Entregado' ? (
+							<button
+								type='button'
+								className='bg-main text-secoundary-one opacity-50 font-bold rounded-lg p-4 cursor-not-allowed'>
+								<span>Entregado</span>
+							</button>
+						) :
+						userEmail === 'patricio_mozo@restaurant.pe' ? (
 							<button
 								type='button'
 								onClick={() => changeOrderStatus(selectedOrder)}
@@ -102,14 +109,17 @@ const OrderDetail = ({ selectedOrder, changeOrderStatus, userEmail }) => {
 									<span>Entregar</span>
 								) : null}
 							</button>
+						
 						) : null}
-						{selectedOrder.status === 'Enviado' ? (
-							<button
-								type='button'
-								className='bg-main text-secoundary-one opacity-50 font-bold rounded-lg p-4 cursor-not-allowed'>
-								<span>Enviado</span>
-							</button>
-						) : userEmail === 'fernando_cheff@restaurant.pe' ? (
+						
+						{userEmail === 'fernando_cheff@restaurant.pe' ? (
+							selectedOrder.status === 'Enviado' ? (
+								<button
+									type='button'
+									className='bg-main text-secoundary-one opacity-50 font-bold rounded-lg p-4 cursor-not-allowed'>
+									<span>Enviado</span>
+								</button>
+							) : (
 							<button
 								type='button'
 								onClick={() => changeOrderStatus(selectedOrder)}
@@ -120,7 +130,7 @@ const OrderDetail = ({ selectedOrder, changeOrderStatus, userEmail }) => {
 									<span>Enviar</span>
 								) : null}
 							</button>
-						) : null}
+						) ):null}
 					</div>
 				</div>
 			</div>
