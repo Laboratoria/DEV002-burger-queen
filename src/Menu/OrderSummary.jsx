@@ -6,7 +6,7 @@ import './Menu.css';
 const OrderSummary = ({ addOrder, setAddOrder }) => {
 
     const priceProducts = addOrder.map(product => {
-        /* Valida si el producto es burrito y realiza la suma de sus adicionales + el precio del producto */
+        /* Valida el producto + el precio del producto */
      if (product.price !== undefined) {
             return product.price * product.amount;
         }
@@ -14,7 +14,6 @@ const OrderSummary = ({ addOrder, setAddOrder }) => {
     })
     /* Retorna la suma acumulada de prirceProducts para hallar el precio total del pedido */
     const totalOrderPrice = priceProducts.reduce((price, sumPrice) => price + sumPrice, 0);
-    // console.log(totalOrderPrice, 'precio')
 
     const deleteOrder = () => {
         Swal.fire({

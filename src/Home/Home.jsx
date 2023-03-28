@@ -1,10 +1,9 @@
-import React, { Fragment } from "react";
 import Logo from "../Imagenes/logoLasaña.png";
 import './Home.css';
 
 const Home = () => {
   return (
-    <Fragment>
+    <>
       <header className="Home">
         <section className="Logo">
         <p className="textoLogo">LASAGNA</p> 
@@ -24,7 +23,7 @@ const Home = () => {
         </nav>
       </header>
       <footer>@2023 - Erika Ríos Suesca</footer>
-    </Fragment>
+    </>
   )
 };
 
