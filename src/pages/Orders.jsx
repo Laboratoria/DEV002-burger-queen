@@ -60,12 +60,13 @@ const Orders = ({ userEmail, orders }) => {
 				toggleOrders={toggleOrders}
 				showMenu={showMenu}
 			/>
-			<main className='lg:pl-40 grid lg:grid-cols-2 h-screen'>
-				<div className='lg:col-start-1 flex flex-col gap-8'>
-					{/* {<Header />} */}
-					<Header userEmail={userEmail} />
+			{/* {<Header />} */}
+			<Header userEmail={userEmail} />
 					
-					<div className='flex justify-start items-center mt-20 ml-10 mb-0'>
+			<main className='lg:pl-36 grid lg:grid-cols-2 h-screen'>
+				<div className='lg:col-start-1 flex flex-col gap-8'>
+					
+					<div className='flex justify-center items-center mt-10 mb-0'>
 					
 						<OrdenBttnStatus statusArray={statusArray} selectStatus={selectStatus} />
 					</div>
@@ -77,10 +78,10 @@ const Orders = ({ userEmail, orders }) => {
 						/>
 					</div>
 				</div>
-				<div className='bg-secoundary-one lg:col-start-2 flex flex-col items-center justify-center'>
+				<div className='flex items-center justify-center'>
 					{showOrderDetails ? (
 						(orderStatus === 'Pendiente') ? (
-						<div className='m-10'>
+						<div className='flex items-start justify-center mt-[-35rem] mr-20'>
 							<OrderDetail
 								selectedOrder={selectedOrder}
 								changeOrderStatus={changeOrderStatus}

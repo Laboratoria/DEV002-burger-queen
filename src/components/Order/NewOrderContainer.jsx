@@ -1,8 +1,9 @@
-import { BsFillPatchMinusFill, BsFillPatchPlusFill, BsFillClipboard2PlusFill } from 'react-icons/bs';
+import {
+	BsFillPatchMinusFill,
+	BsFillPatchPlusFill,
+	BsFillClipboard2PlusFill,
+} from 'react-icons/bs';
 import { FaMoneyBillWave } from 'react-icons/fa';
-// import {PopUpModal} from '../PopUpModal'
-import { useState, useEffect } from 'react';
-import { addOrder } from '/src/firestore/firestore-funct';
 const NewOrderContainer = ({
 	listProducts,
 	addItem,
@@ -11,78 +12,75 @@ const NewOrderContainer = ({
 	totalOrder,
 	sendOrder,
 	client,
-	setClient
+	setClient,
 }) => {
-	// const [showModal, setShowModal] = useState(false)
-
-	// const [showModal, setShowModal] = useState(false);
 	const handleClientChange = (e) => {
 		setClient(e.target.value);
 	};
 
 	return (
-		<div
-			className={`lg:col-span-3 fixed mt-0 bg-secoundary-two w-full lg:w-2/5 lg:right-0 h-full overflow-y-scroll transition-all z-50 ${
-				showOrder ? 'right-0' : '-right-full'
-			}`}>
-			{/* <div className='flex flex-col md:flex-col md-justify-between md:items-center h-30 bg-main rounded-tr-2xl'>
-				<img src='src/assets/Logo-2-ñaña.png' className='w-1/3 ' alt='LogoÑaña' />
-			</div> */}
-			{/*
-			<div className='flex items-center justify-center w-full h-full bg-secoundary-one'>
-			<button onClick = {()=> startNewOrder(showOrder)}
-					className='rounded-xl text-main group-hover:text-secoundary transition-colors'>
-					<span>
-						<BsFillClipboard2PlusFill className='text-9xl' />
-					</span>
-				</button>
-			</div> */}
-			<ul className='flex flex-col items-center pt-8 px-6 gap-4 w-full h-full bg-secoundary-one'>
-				{listProducts.map((product) => (
-					<li
-						key={product.id}
-						className='flex flex-row items-center justify-between bg-secoundary-two gap-2 w-full rounded-2xl p-4'>
-						<div className='flex flex-col text-xl'>
-							<span className='gap-2 w-full'>{product.name}</span>
-							<span className='flex flex-row items-center space-x-2 text-main-text'>
-								<FaMoneyBillWave className='text-2xl text-main' />
-								<span>{product.price}</span>
-							</span>
-						</div>
-						<div className='flex flex-row items-center ml-24 gap-2'>
-							<button
-								onClick={() => deleteItem(product)}
-								className=' text-secoundary text-center text-2xl cursor-pointer transition-colors'>
-								<span className='text-4xl'>
-									<BsFillPatchMinusFill />
+		<div className='flex flex-col items-center justify-center'>
+			<input
+						id='idClient'
+						type='text'
+						placeholder='Nombre del cliente'
+						value={client}
+						onChange={handleClientChange}
+						className='py-2 border-b border-main text-main-text px-1 outline-none mt-2 mb-6 placeholder-main-text/70 text-center'
+					/>
+			<ul className='flex flex-col items-center h-[40rem] w-full border-main border-4 overflow-scroll mt-18 p-2 rounded-3xl'>
+				{totalOrder === 0 ? (
+					<button className='text-main group-hover:text-secoundary transition-colors opacity-50'>
+						<span className=''>
+							<BsFillClipboard2PlusFill className='text-8xl' />
+						</span>
+					</button>
+				) : (
+					listProducts.map((product) => (
+						<li
+							key={product.id}
+							className='flex flex-row items-start gap-2 w-full rounded-2xl p-4'>
+								<div className='flex flex-row items-center justify-center mr-4 gap-2'>
+								<button
+									onClick={() => deleteItem(product)}
+									className=' text-secoundary text-center text-2xl cursor-pointer transition-colors'>
+									<span className='text-4xl'>
+										<BsFillPatchMinusFill />
+									</span>
+								</button>
+								<span className='text-main-text text-xl text-right'>{product.amount}</span>
+								<button
+									onClick={() => addItem(product)}
+									className='rounded-xl text-main group-hover:text-secoundary transition-colors'>
+									<span className='text-4xl'>
+										<BsFillPatchPlusFill />
+									</span>
+								</button>
+							</div>
+							<div className='flex text-xl'>
+								<span className='flex space-x-2 text-main-text'>{product.name}</span>
+								<span className='flex items-end justify-end space-x-2 text-main-text'>
+									<FaMoneyBillWave className='text-2xl text-main' />
+									<p>{product.price}</p>
 								</span>
-							</button>
-							<span className='text-main-text text-xl'>{product.amount}</span>
-							<button
-								onClick={() => addItem(product)}
-								className='rounded-xl text-main group-hover:text-secoundary transition-colors'>
-								<span className='text-4xl'>
-									<BsFillPatchPlusFill />
-								</span>
-							</button>
-						</div>
-					</li>
-				))}
-				<p className='text-main-text text-2xl'>Total: s/.{totalOrder}</p>
-				<input
-					id='idClient'
-					type='text'
-					placeholder='nombre del cliente'
-					value={client}
-					onChange={handleClientChange}
-					className='w-1/2 py-2 bg-secoundary-one/0 border-b border-main text-main-text px-1 outline-none mb-4'
-				/>
-				<button
-					onClick={() => sendOrder()}
-					className='px-8 bg-main text-secoundary-two text-2xl rounded-full w-1/2 h-16'>
-					Hacer pedido
-				</button>
+							</div>
+							
+						</li>
+					))
+				)}
 			</ul>
+		
+			<div className='flex flex-col items-center justify-end w-5/6'>
+				<div className='flex items-center justify-end gap-4 text-main-text text-2xl my-4'>
+					<p>Total: </p>
+					<p>s/.{totalOrder}</p>
+					</div>
+					<button
+						onClick={() => sendOrder()}
+						className='px-8 bg-main text-secoundary-two text-xl rounded-full w-1/2 h-14'>
+						Hacer pedido
+					</button>
+				</div>
 		</div>
 	);
 };

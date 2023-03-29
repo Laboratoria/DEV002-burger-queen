@@ -1,26 +1,21 @@
 // import { MenuBttnCategory } from '../components/Menu/MenuBttnCategory';
-import { IoIosPerson } from 'react-icons/io';
+import { GiCook } from 'react-icons/gi';
 // import data from '../data.json/';
 
 const Header = ({ userEmail }) => {
 	return (
-		<div>
-			{/* {<header />} */}
-				<div>
-					<div className='flex flex-row md:flex-row gap-32 h-30 rounded-tr-2xl'>
-						<img
-							src='src/assets/Logo-3-ñaña.png'
-							className='mt-6 w-48'
-							alt='LogoÑaña'
-						/>
-						<div className='flex items-center text-xl text-main-text/80 mt-8'>
-							<span className='flex justify-items-end text-4xl text-main-text'>
-								<IoIosPerson />
-							</span>
-							{userEmail}
-						</div>
-					</div>
-				</div>
+		<div className=' lg:pl-28 flex flex-row h-35 w-full items-center justify-between'>
+			<img
+				src='src/assets/Logo-3-ñaña.png'
+				className='flex justify-start items-center w-48 opacity-90 mt-8 ml-14'
+				alt='LogoÑaña'
+			/>
+			<div className='flex items-center justify-end mt-10 mr-20'>
+				<span className='flex text-2xl text-main/80'>{userEmail}</span>
+				<span className='flex text-4xl text-main/80'>
+					<GiCook />
+				</span>
+			</div>
 		</div>
 	);
 };

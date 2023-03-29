@@ -88,7 +88,7 @@ const Menus = ({ userEmail, addOrder, listProducts, setListProducts }) => {
 	};
 
 	return (
-		<div className='bg-secoundary-two w-full min-h-screen'>
+		<div className='w-screen h-screen'>
 			{/* {<sideBar />} */}
 			<NavBarWaiter showMenu={showMenu} />
 			{/* {<Mobile />} */}
@@ -97,36 +97,42 @@ const Menus = ({ userEmail, addOrder, listProducts, setListProducts }) => {
 				toggleOrders={toggleOrders}
 				showMenu={showMenu}
 			/>
+			{/* {<Header />} */}
+			<Header userEmail={userEmail} />
 			<main className='lg:pl-28 grid grid-cols-1 lg:grid-cols-8'>
-				<div className='lg:col-span-5 flex flex-col items-center justify-center gap-8'>
-					{/* {<Header />} */}
-					<Header userEmail={userEmail} />
+				<div className='lg:col-span-5 flex flex-col gap-4'>
 					{/* {<tittle and date />} */}
-					<nav className='flex justify-start items-center mt-20 ml-10 mb-0'>
+					<div className='flex justify-center items-center mt-10'>
 						{/* {<tabs />} */}
 						<MenuBttnCategory categorys={categorys} selectCategory={selectCategory} />
-					</nav>
-					{/* {<tittle content />} */}
-					<h2 className='text-2xl text-main font-bold'>Elige los platillos</h2>
-					{/* {<button product />} */}
-					<MenuButtnProduct products={data[category]} handleClickAdd={addItem} />
+					</div>
+					<div className='flex justify-center items-center mt-6'>
+						{/* {<tittle content />} */}
+						<h2 className='text-2xl text-main font-bold'>Elige los platillos</h2>
+					</div>
+					<div className='flex justify-center items-center mt-4'>
+						{/* {<button product />} */}
+						<MenuButtnProduct products={data[category]} handleClickAdd={addItem} />
+					</div>
 				</div>
 				{/* {<new order />} */}
-				<div className='lg:col-span-3'>
-					<NewOrderContainer
-						listProducts={listProducts}
-						addItem={addItem}
-						deleteItem={deleteItem}
-						showOrder={showOrder}
-						totalOrder={totalOrder}
-						sendOrder={sendOrder}
-						client={client}
-						setClient={setClient}
-					/>
-
-					{/* {showModal ? (
-					<PopUpModal tittle = 'Verifica el pedido y luego envía a cocina' listProducts = {listProducts} setListProducts={setListProducts} showModal={showModal} setShowModal={setShowModal} mapProducts={mapProducts}/>
-				) : null} */}
+				<div className='lg:col-span-3 flex flex-col gap-4'>
+					<div className='flex justify-center items-center text-center mr-28 mt-32'>
+						{/* {<tittle content />} */}
+						<h2 className='text-2xl text-main font-bold'>Nuevo pedido</h2>
+					</div>
+					<div>
+						<NewOrderContainer
+							listProducts={listProducts}
+							addItem={addItem}
+							deleteItem={deleteItem}
+							showOrder={showOrder}
+							totalOrder={totalOrder}
+							sendOrder={sendOrder}
+							client={client}
+							setClient={setClient}
+						/>
+					</div>
 				</div>
 			</main>
 		</div>
