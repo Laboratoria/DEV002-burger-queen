@@ -119,7 +119,7 @@ const Menus = ({ userEmail, addOrder, listProducts, setListProducts }) => {
 				<div className='lg:col-span-3 flex flex-col gap-4'>
 					<div className='flex justify-center items-center text-center mr-28 mt-32'>
 						{/* {<tittle content />} */}
-						<h2 className='text-2xl text-main font-bold'>Nuevo pedido</h2>
+						<h2 className='mr-16 text-2xl text-main font-bold'>Nuevo pedido</h2>
 					</div>
 					<div>
 						<NewOrderContainer

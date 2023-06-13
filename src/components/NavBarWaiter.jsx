@@ -28,12 +28,11 @@ const NavBarWaiter = (props) => {
 						<h1 className='text-2xl text-gray-300 uppercase font-bold text-center my-5'></h1>
 					</li>
 					<li className='hover:bg-secoundary-two p-4 rounded-tl-xl rounded-bl-xl group transition-colors'>
-					<Link
+						<Link
 							to='/menus'
 							className='p-4 flex justify-center rounded-xl text-secoundary-two group-hover:text-secoundary transition-colors'>
 							<BsClipboard2Plus className='text-3xl' />
 						</Link>
-						
 					</li>
 				</ul>
 			</div>
@@ -43,7 +42,7 @@ const NavBarWaiter = (props) => {
 						<h1 className='text-2xl text-gray-300 uppercase font-bold text-center my-5'></h1>
 					</li>
 					<li className='hover:bg-secoundary-two p-4 rounded-tl-xl rounded-bl-xl group transition-colors'>
-					<Link
+						<Link
 							to='/waiterorders'
 							className='p-4 flex justify-center rounded-xl text-secoundary-two group-hover:text-secoundary transition-colors'>
 							<BsClockHistory className='text-3xl' />
